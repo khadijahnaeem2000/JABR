@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('withdraws', function (Blueprint $table) {
             $table->id();
+            $table->string('WithdrawAmount')->nullable();
             $table->timestamps();
         });
     }
