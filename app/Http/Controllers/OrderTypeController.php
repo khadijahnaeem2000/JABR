@@ -12,7 +12,7 @@ class OrderTypeController extends Controller
      */
     public function index()
     {
-        //
+        return view('Order.OrderType');
     }
 
     /**

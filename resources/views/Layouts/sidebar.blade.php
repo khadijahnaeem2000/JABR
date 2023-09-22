@@ -36,21 +36,14 @@
                 </a>
                 <ul aria-expanded="false" class="collapse first-level">
                   <li class="sidebar-item">
-                    <a href="blog-posts.html" class="sidebar-link">
+                    <a href="TaskEarning" class="sidebar-link">
                       <div class="round-16 d-flex align-items-center justify-content-center">
                         <i class="ti ti-circle"></i>
                       </div>
                       <span class="hide-menu">Task Earning</span>
                     </a>
                   </li>
-                  <li class="sidebar-item">
-                    <a href="blog-detail.html" class="sidebar-link">
-                      <div class="round-16 d-flex align-items-center justify-content-center">
-                        <i class="ti ti-circle"></i>
-                      </div>
-                      <span class="hide-menu">Referal Earning</span>
-                    </a>
-                  </li>
+             
                 </ul>
               </li>
                <li class="sidebar-item">
@@ -88,7 +81,7 @@
                 </a>
                 <ul aria-expanded="false" class="collapse first-level">
                   <li class="sidebar-item">
-                    <a href="blog-posts.html" class="sidebar-link">
+                    <a href="MembershipType" class="sidebar-link">
                       <div class="round-16 d-flex align-items-center justify-content-center">
                         <i class="ti ti-circle"></i>
                       </div>
@@ -96,7 +89,7 @@
                     </a>
                   </li>
                   <li class="sidebar-item">
-                    <a href="blog-detail.html" class="sidebar-link">
+                    <a href="Membership" class="sidebar-link">
                       <div class="round-16 d-flex align-items-center justify-content-center">
                         <i class="ti ti-circle"></i>
                       </div>
@@ -111,10 +104,10 @@
                     <i class="ti ti-notes"></i>
                   </span>
                   <span class="hide-menu">Deposit</span>
-                </a>
+                </a> 
                 <ul aria-expanded="false" class="collapse first-level">
                   <li class="sidebar-item">
-                    <a href="blog-posts.html" class="sidebar-link">
+                    <a href="DepositAmount" class="sidebar-link">
                       <div class="round-16 d-flex align-items-center justify-content-center">
                         <i class="ti ti-circle"></i>
                       </div>
@@ -122,7 +115,7 @@
                     </a>
                   </li>
                   <li class="sidebar-item">
-                    <a href="blog-detail.html" class="sidebar-link">
+                    <a href="DepositHistory" class="sidebar-link">
                       <div class="round-16 d-flex align-items-center justify-content-center">
                         <i class="ti ti-circle"></i>
                       </div>
@@ -148,7 +141,7 @@
                 </a>
               </li>
                <li class="sidebar-item">
-                <a class="sidebar-link" href="#" aria-expanded="false">
+                <a class="sidebar-link" href="Withdraw" aria-expanded="false">
                   <span>
                     <i class="ti ti-alert-circle"></i>
                   </span>
@@ -164,7 +157,7 @@
                 </a>
                 <ul aria-expanded="false" class="collapse first-level">
                   <li class="sidebar-item">
-                    <a href="blog-posts.html" class="sidebar-link">
+                    <a href="Task" class="sidebar-link">
                       <div class="round-16 d-flex align-items-center justify-content-center">
                         <i class="ti ti-circle"></i>
                       </div>
@@ -190,7 +183,7 @@
                 </a>
                 <ul aria-expanded="false" class="collapse first-level">
                   <li class="sidebar-item">
-                    <a href="blog-posts.html" class="sidebar-link">
+                    <a href="Order" class="sidebar-link">
                       <div class="round-16 d-flex align-items-center justify-content-center">
                         <i class="ti ti-circle"></i>
                       </div>
@@ -198,7 +191,7 @@
                     </a>
                   </li>
                   <li class="sidebar-item">
-                    <a href="blog-detail.html" class="sidebar-link">
+                    <a href="OrderType" class="sidebar-link">
                       <div class="round-16 d-flex align-items-center justify-content-center">
                         <i class="ti ti-circle"></i>
                       </div>
@@ -208,7 +201,7 @@
                 </ul>
               </li>
               <li class="sidebar-item">
-                <a class="sidebar-link" href="#" aria-expanded="false">
+                <a class="sidebar-link" href="Contact" aria-expanded="false">
                   <span>
                     <i class="ti ti-phone"></i>
                   </span>
@@ -216,7 +209,7 @@
                 </a>
               </li>
                 <li class="sidebar-item">
-                <a class="sidebar-link" href="#" aria-expanded="false">
+                  <a class="sidebar-link" href="LetterHead" aria-expanded="false">
                   <span>
                     <i class="ti ti-file-text"></i>
                   </span>

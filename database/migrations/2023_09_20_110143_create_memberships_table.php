@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('MemberName')->nullable();
             $table->bigInteger('MemberShipType')->nullable();
-            $table->string('MemberName')->nullable();
+         
             $table->string('price')->nullable();
             $table->string('Details')->nullable();
             $table->boolean('IsActive')->nullable();

@@ -36,7 +36,9 @@
         <!-- Header Start -->
          @include('Layouts.header')
         <!-- Header End -->
+         <div class="container-fluid">
         @yield('content')
+         </div>
       </div>
  
 

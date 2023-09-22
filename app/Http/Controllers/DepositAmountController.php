@@ -12,7 +12,7 @@ class DepositAmountController extends Controller
      */
     public function index()
     {
-        //
+        return view('Deposit.DepositAmount');
     }
 
     /**

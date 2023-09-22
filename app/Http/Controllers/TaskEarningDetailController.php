@@ -12,7 +12,7 @@ class TaskEarningDetailController extends Controller
      */
     public function index()
     {
-        //
+        return view('Earnings.TaskEarning');
     }
 
     /**
