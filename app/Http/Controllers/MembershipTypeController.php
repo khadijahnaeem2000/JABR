@@ -12,7 +12,7 @@ class MembershipTypeController extends Controller
      */
     public function index()
     {
-        //
+        return view('Membership.MembershipType');
     }
 
     /**

@@ -12,7 +12,7 @@ class DepositHistoryController extends Controller
      */
     public function index()
     {
-        //
+        return view('Deposit.DepositHistory');
     }
 
     /**

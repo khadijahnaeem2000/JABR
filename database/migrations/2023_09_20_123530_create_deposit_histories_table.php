@@ -13,6 +13,9 @@ return new class extends Migration
     {
         Schema::create('deposit_histories', function (Blueprint $table) {
             $table->id();
+              $table->string('DepositeAmount')->nullable();
+                $table->string('DepositeDate')->nullable();
+                  $table->boolean('DepositeStatus')->nullable();
             $table->timestamps();
         });
     }

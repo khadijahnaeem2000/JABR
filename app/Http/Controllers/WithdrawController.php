@@ -12,7 +12,7 @@ class WithdrawController extends Controller
      */
     public function index()
     {
-        //
+        return view('Withdraw.Withdraw');
     }
 
     /**
