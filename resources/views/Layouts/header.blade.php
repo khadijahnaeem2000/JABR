@@ -296,10 +296,10 @@
                         <div class="d-flex align-items-center py-9 mx-7 border-bottom">
                           <img src="{{asset('dist/images/profile/user-1.jpg')}}" class="rounded-circle" width="80" height="80" alt="" />
                           <div class="ms-3">
-                            <h5 class="mb-1 fs-3">Mathew Anderson</h5>
-                            <span class="mb-1 d-block text-dark">Designer</span>
+                            <h5 class="mb-1 fs-3">{{ session('Name') }}</h5>
+                          
                             <p class="mb-0 d-flex text-dark align-items-center gap-2">
-                              <i class="ti ti-mail fs-4"></i> info@modernize.com
+                              <i class="ti ti-mail fs-4"></i> {{ session('Email') }}
                             </p>
                           </div>
                         </div>
@@ -346,7 +346,7 @@
                               </div>
                             </div>
                           </div>
-                          <a href="authentication-login.html" class="btn btn-outline-primary">Log Out</a>
+                          <a href="logout" class="btn btn-outline-primary">Log Out</a>
                         </div>
                       </div>
                     </div>

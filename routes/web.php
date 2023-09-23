@@ -22,6 +22,9 @@ Route::get('/dashboard',[Dashboard::class,'dashboard'])->name('dashboard');
 //Auth
 Route::get('/register',[App\Http\Controllers\Auth\RegisterController::class,'showRegistrationForm']);
 Route::post('/register', [App\Http\Controllers\Auth\RegisterController::class,'register'])->name('register');
+Route::post('/custom-login',[App\Http\Controllers\Auth\RegisterController::class,'loginWithPhoneNumber'])->name('custom.login');
+Route::get('/login',[App\Http\Controllers\Auth\RegisterController::class,'login'])->name('login');
+Route::get('/logout',[App\Http\Controllers\Auth\RegisterController::class,'logout'])->name('logout');
 
 //Earnings
 Route::get('/TaskEarning',[App\Http\Controllers\TaskEarningDetailController::class,'index'])->name('TaskEarning');

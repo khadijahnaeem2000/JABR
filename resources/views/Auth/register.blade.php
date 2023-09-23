@@ -26,20 +26,27 @@
     <div class="preloader">
       <img src="https://demos.adminmart.com/premium/bootstrap/modernize-bootstrap/package/dist/images/logos/favicon.ico" alt="loader" class="lds-ripple img-fluid" />
     </div>
-    <!-- Body Wrapper -->
+
     <div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full" data-sidebar-position="fixed" data-header-position="fixed">
-      <div class="position-relative overflow-hidden radial-gradient min-vh-100 d-flex align-items-center justify-content-center">
-        <div class="d-flex align-items-center justify-content-center w-100">
-          <div class="row justify-content-center w-100">
-            <div class="col-md-12 col-lg-12 col-xxl-8">
-              <div class="card mb-0">
-              <div class="card-body">
-                   <div class="card">
-                  <div class="card-header bg-primary">
-                   <center> <h4 class="mb-0 text-white">Register</h4></center>
-                  </div>
-                
-                    <form method="POST" action="{{ route('register') }}">
+      <div class="position-relative overflow-hidden radial-gradient min-vh-100">
+        <div class="position-relative z-index-5">
+          <div class="row">
+            <div class="col-xl-5 col-xxl-4">
+              <a href="index.html" class="text-nowrap logo-img d-block px-4 py-9 w-100">
+               <h1>JABR</h1>
+              </a>
+              <div class="d-none d-xl-flex align-items-center justify-content-center" style="height: calc(100vh - 80px);">
+                <img src="https://demos.adminmart.com/premium/bootstrap/modernize-bootstrap/package/dist/images/backgrounds/login-security.svg" alt="" class="img-fluid" width="500">
+              </div>
+            </div>
+            <div class="col-xl-6 col-xxl-7">
+              <div class="authentication-login min-vh-100 bg-body row justify-content-center align-items-center p-4">
+                <div class="col-sm-8 col-md-6 col-xl-9">
+                  <h2 class="mb-3 fs-7 fw-bolder">WELCOME TO JABR</h2>
+                  <p class=" mb-9">Register </p>
+              
+               
+                         <form method="POST" action="{{ route('register') }}">
                       @csrf
                     <div>
                       <div class="card-body">
@@ -142,14 +149,13 @@
                                    </select>
                                              <input
                                               type="number"
-                                              id="PhoneNumber" name="PhoneNumber"
+                                             id="phone" name="PhoneNumber"
                                               class="form-control"
                                               placeholder="+9234857901"
                                                 aria-label="Text input with dropdown button"
                                                          />
                             </div>
-                           
-                               <span id="phone-error" class="text-danger"></span>
+                               <span id="phone-availability-message"></span>
                             </div>
                           </div>
                           <!--/span-->
@@ -161,7 +167,7 @@
                                 id="Address"
                                 name="Address"
                                 class="form-control form-control"
-                                placeholder="Brigerton,Street12 California"
+                                placeholder="Brigerton,StreetVI.."
                               />
                                @error('Address')
                                 <span class="invalid-feedback" role="alert">
@@ -172,23 +178,66 @@
                           </div>
                           <!--/span-->
                         </div>
-                        <!--/row-->
-                        <div class="row">
+                          <div class="row pt-3">
                           <div class="col-md-4">
-                            <div class="mb-3 has-success">
-                              <label class="control-label">Role</label>
-                              <select class="form-control custom-select" id="role_id" name="role_id">
-                                @foreach($role as $role)
-                                <option value=""></option>
-                                <option value="{{$role->id}}">{{$role->Role}}</option>
-                             
-                                @endforeach
-                              </select>
-                              <small class="form-control-feedback">
-                                Select your role
-                              </small>
+                            <div class="mb-3">
+                              <label class="control-label">Smartphone</label>
+                              <input
+                                type="text"
+                                id="City"
+                                name="Smartphone"
+                                class="form-control"
+                                placeholder="Samsung"
+                              />
+                               @error('Smartphone')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
                             </div>
                           </div>
+                              <div class="col-md-4">
+                            <div class="mb-3">
+                              <label class="control-label">IpAddress</label>
+                              <input
+                                type="text"
+                                id="City"
+                                name="IpAddress"
+                                class="form-control"
+                                placeholder="1APND65263"
+                              />
+                               @error('IpAddress')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
+                            </div>
+                          </div>
+                              <div class="col-md-4">
+                            <div class="mb-3">
+                              <label class="control-label">DeviceKey</label>
+                              <input
+                                type="text"
+                                id="City"
+                                name="DeviceKey"
+                                class="form-control"
+                                placeholder="3239483493NDF"
+                              />
+                               @error('DeviceKey')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
+                            </div>
+                          </div>
+                       
+                          <!--/span-->
+                      
+                          <!--/span-->
+                        </div>
+                        <!--/row-->
+                        <div class="row">
+                         <input type="text" name="role_id" value="1" hidden>
                           <!--/span-->
                           <div class="col-md-4">
                             <div class="mb-3">
@@ -214,8 +263,8 @@
                         <div class="row">
                           <div class="col-md-1">   
                               <div class="form-group form-check">
-                            <input type="checkbox" class="form-check-input" id="IsActive" name="IsActive" value="1" checked>
-                            <label class="form-check-label" for="IsActive">IsActive</label>
+                            <input type="text" class="form-input" id="IsActive" name="IsActive" value="1"  hidden>
+                            
                         </div>
                           </div>
                     <div class="col-md-9"></div>
@@ -233,12 +282,15 @@
                   </form>
                 </div>
               </div>
-              </div>
             </div>
           </div>
         </div>
+        
       </div>
     </div>
+    
+    <!-- Body Wrapper -->
+   
     
 <script>
     document.addEventListener("DOMContentLoaded", function () {
@@ -322,6 +374,8 @@
         });
     });
 </script>
+
+
     <!-- Import Js Files -->
     <script src="{{asset('dist/libs/jquery/dist/jquery.min.js')}}"></script>
     <script src="{{asset('dist/libs/simplebar/dist/simplebar.min.js')}}"></script>
