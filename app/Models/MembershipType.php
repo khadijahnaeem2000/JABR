@@ -8,4 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class MembershipType extends Model
 {
     use HasFactory;
+    protected $fillable=[
+       
+        'id',
+        'MembershipType',
+         'IsActive',
+     
+    ];
 }

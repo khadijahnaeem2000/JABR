@@ -150,10 +150,10 @@
                 <a class="nav-link" href="app-chat.html">Chat</a>
               </li>
               <li class="nav-item dropdown-hover d-none d-lg-block">
-                <a class="nav-link" href="app-calendar.html">Calendar</a>
+                <a class="nav-link" href="register">Register</a>
               </li>
               <li class="nav-item dropdown-hover d-none d-lg-block">
-                <a class="nav-link" href="app-email.html">Email</a>
+                <a class="nav-link" href="login">Login</a>
               </li>
             </ul>
             <div class="d-block d-lg-none">
@@ -296,11 +296,13 @@
                         <div class="d-flex align-items-center py-9 mx-7 border-bottom">
                           <img src="{{asset('dist/images/profile/user-1.jpg')}}" class="rounded-circle" width="80" height="80" alt="" />
                           <div class="ms-3">
-                            <h5 class="mb-1 fs-3">{{ session('Name') }}</h5>
+                             @if(session('user_name'))
+                            <h5 class="mb-1 fs-3">  {{ session('user_name') }}</h5>
                           
                             <p class="mb-0 d-flex text-dark align-items-center gap-2">
                               <i class="ti ti-mail fs-4"></i> {{ session('Email') }}
                             </p>
+                            @endif
                           </div>
                         </div>
                         <div class="message-body">

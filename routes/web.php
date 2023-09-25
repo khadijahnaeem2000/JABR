@@ -22,7 +22,7 @@ Route::get('/dashboard',[Dashboard::class,'dashboard'])->name('dashboard');
 //Auth
 Route::get('/register',[App\Http\Controllers\Auth\RegisterController::class,'showRegistrationForm']);
 Route::post('/register', [App\Http\Controllers\Auth\RegisterController::class,'register'])->name('register');
-Route::post('/custom-login',[App\Http\Controllers\Auth\RegisterController::class,'loginWithPhoneNumber'])->name('custom.login');
+Route::post('/custom-login',[App\Http\Controllers\Auth\RegisterController::class,'postLogin'])->name('custom.login');
 Route::get('/login',[App\Http\Controllers\Auth\RegisterController::class,'login'])->name('login');
 Route::get('/logout',[App\Http\Controllers\Auth\RegisterController::class,'logout'])->name('logout');
 
@@ -32,7 +32,16 @@ Route::get('/TaskEarning',[App\Http\Controllers\TaskEarningDetailController::cla
 //Membership
 Route::get('/MembershipType',[App\Http\Controllers\MembershipTypeController::class,'index'])->name('MembershipType');
 Route::get('/Membership',[App\Http\Controllers\MembershipController::class,'index'])->name('Membership');
-
+Route::get('/AddMembership',[App\Http\Controllers\MembershipController::class,'create'])->name('AddMembership');
+Route::post('/StoreMembership',[App\Http\Controllers\MembershipController::class,'store'])->name('StoreMembership');
+Route::get('/EditMembership/{id}',[App\Http\Controllers\MembershipController::class,'edit'])->name('EditMembership');
+Route::put('/UpdateMembership/{id}',[App\Http\Controllers\MembershipController::class,'update'])->name('UpdateMembership');
+Route::delete('/DeleteMembership/{id}',[App\Http\Controllers\MembershipController::class,'destroy'])->name('DeleteMembership');
+Route::get('/AddMemberType',[App\Http\Controllers\MembershipTypeController::class,'create'])->name('AddMemberType');
+Route::post('/Type-store',[App\Http\Controllers\MembershipTypeController::class,'store'])->name('Type-store');
+Route::get('/EditMembershipType/{id}',[App\Http\Controllers\MembershipTypeController::class,'edit'])->name('EditMembershipType');
+Route::put('/UpdateMembershipType/{id}',[App\Http\Controllers\MembershipTypeController::class,'update'])->name('UpdateMembershipType');
+Route::delete('/DeleteMembershipType/{id}',[App\Http\Controllers\MembershipTypeController::class,'destroy'])->name('DeleteMembershipType');
 //Deposit
 Route::get('/DepositAmount',[App\Http\Controllers\DepositAmountController::class,'index'])->name('DepositAmount');
 Route::get('/DepositHistory',[App\Http\Controllers\DepositHistoryController::class,'index'])->name('DepositHistory');
@@ -51,4 +60,10 @@ Route::get('/OrderType',[App\Http\Controllers\OrderTypeController::class,'index'
 Route::get('/Contact',[App\Http\Controllers\ContactController::class,'index'])->name('Contact');
 
 //LetterHead
-Route::get('/Letterhead',[App\Http\Controllers\LetterheadController::class,'index'])->name('Letterhead');
+Route::get('/LetterHead',[App\Http\Controllers\LetterHeadController::class,'index'])->name('LetterHead');
+
+//Invite
+Route::get('/Invite',[App\Http\Controllers\InviteController::class,'index'])->name('Invite');
+
+//Referral
+Route::get('/Referral',[App\Http\Controllers\ReferralController::class,'index'])->name('Referral');

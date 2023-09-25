@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\Validator;
 use App\Models\MembershipType;
 use Illuminate\Http\Request;
 
@@ -12,7 +12,8 @@ class MembershipTypeController extends Controller
      */
     public function index()
     {
-        return view('Membership.MembershipType');
+         $type = MembershipType::all();
+        return view('Membership.MembershipType',compact('type'));
     }
 
     /**
@@ -20,7 +21,7 @@ class MembershipTypeController extends Controller
      */
     public function create()
     {
-        //
+        return view('Membership.AddMemberType');
     }
 
     /**
@@ -28,7 +29,13 @@ class MembershipTypeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $Type = new MembershipType();
+        $Type->MembershipType=$request->MembershipType;
+        $Type->IsActive=$request->IsActive;
+
+          
+      $Type->save();
+      return redirect()->to('/MembershipType');
     }
 
     /**
@@ -42,24 +49,57 @@ class MembershipTypeController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(MembershipType $membershipType)
+    public function edit($id)
     {
-        //
+         $type =MembershipType::find($id);
+        return view('Membership.EditMembershipType',compact('type'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, MembershipType $membershipType)
-    {
-        //
+
+
+public function update(Request $request, $id)
+{
+    // Define validation rules
+    $rules = [
+        'MembershipType' => 'required',
+     
+    ];
+
+    // Validate the incoming request data
+    $validator = Validator::make($request->all(), $rules);
+
+    if ($validator->fails()) {
+        // Validation fails, redirect back with validation errors
+        return redirect()->back()->withErrors($validator)->withInput();
     }
+
+    // Find the membership type by ID
+    $membershipType = MembershipType::find($id);
+
+    if (!$membershipType) {
+        // Handle the case where the membership type is not found
+        return redirect()->back()->with('error', 'Membership Type not found');
+    }
+
+    // Update the fields
+    $membershipType->update([
+        'MembershipType' => $request->input('MembershipType'),
+       
+    ]);
+
+   return redirect()->to('/MembershipType');
+
+}
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(MembershipType $membershipType)
-    {
-        //
-    }
+   public function destroy($id, Request $request)
+{
+      $type = MembershipType::findOrFail($id);
+      
+        $type->delete();
+   
+           return redirect()->to('/MembershipType');
+}
 }

@@ -41,7 +41,7 @@
                 <div class="card-body">
                   <a href="index.html" class="text-nowrap logo-img text-center d-block mb-5 w-100">
                   <h1>JABR</h1>
-</a>
+                  </a>
                  <form method="POST" action="{{ route('custom.login') }}">
                   @csrf
                     <div class="mb-3">

@@ -4,6 +4,7 @@
    <div class="card">
                 <div class="border-bottom title-part-padding">
                   <h4 class="card-title mb-0">Membership Type</h4>
+                  <a class="btn btn-primary" style="float:right" href="{{route('AddMemberType')}}">Add Type</a>
                 </div>
                 <div class="card-body">
                  
@@ -20,11 +21,35 @@
                         <th data-field="forks_count" data-sortable="true" data-width="100">
                           Created At
                         </th>
-                      
+                       <th data-field="forks_count" data-sortable="true" data-width="100">
+                          Action
+                        </th>
                       </tr>
                     </thead>
+                    <tbody>
+                      @foreach($type as $type)
+                      <tr>
+                        <td>{{$type->MembershipType}}</td>
+                        <td>{{$type->IsActive}}</td>
+                        <td>{{$type->created_at}}</td>
+                        <td><a href="{{route ('EditMembershipType',$type->id)}}" class="btn btn-secondary">Edit</a>
+                             <a href="#" onclick="deleteEmployee({{ $type->id }})" class="btn btn-danger">Delete</a>
+                            <form  id="employee-edit-action-{{ $type->id }}" action="{{ route('DeleteMembershipType',$type->id) }}" method="post">
+                                @csrf
+                                @method('delete')
+                            </form>
+</td>
+                      </tr>
+                      @endforeach
+                    </tbody>
                   </table>
                 </div>
               </div>
-
+    <script>
+        function deleteEmployee(id) {
+            if (confirm("Are you sure you want to delete?")) {
+                document.getElementById('employee-edit-action-'+id).submit();
+            }
+        }
+    </script>
 @endsection
