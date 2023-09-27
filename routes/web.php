@@ -23,6 +23,7 @@ Route::get('/dashboard',[Dashboard::class,'dashboard'])->name('dashboard');
 Route::get('/register',[App\Http\Controllers\Auth\RegisterController::class,'showRegistrationForm']);
 Route::post('/register', [App\Http\Controllers\Auth\RegisterController::class,'register'])->name('register');
 Route::post('/custom-login',[App\Http\Controllers\Auth\RegisterController::class,'postLogin'])->name('custom.login');
+
 Route::get('/login',[App\Http\Controllers\Auth\RegisterController::class,'login'])->name('login');
 Route::get('/logout',[App\Http\Controllers\Auth\RegisterController::class,'logout'])->name('logout');
 
@@ -36,6 +37,7 @@ Route::get('/AddMembership',[App\Http\Controllers\MembershipController::class,'c
 Route::post('/StoreMembership',[App\Http\Controllers\MembershipController::class,'store'])->name('StoreMembership');
 Route::get('/EditMembership/{id}',[App\Http\Controllers\MembershipController::class,'edit'])->name('EditMembership');
 Route::put('/UpdateMembership/{id}',[App\Http\Controllers\MembershipController::class,'update'])->name('UpdateMembership');
+Route::get('/DetailMembership/{id}',[App\Http\Controllers\MembershipController::class,'show'])->name('DetailMembership');
 Route::delete('/DeleteMembership/{id}',[App\Http\Controllers\MembershipController::class,'destroy'])->name('DeleteMembership');
 Route::get('/AddMemberType',[App\Http\Controllers\MembershipTypeController::class,'create'])->name('AddMemberType');
 Route::post('/Type-store',[App\Http\Controllers\MembershipTypeController::class,'store'])->name('Type-store');
@@ -67,3 +69,12 @@ Route::get('/Invite',[App\Http\Controllers\InviteController::class,'index'])->na
 
 //Referral
 Route::get('/Referral',[App\Http\Controllers\ReferralController::class,'index'])->name('Referral');
+
+Route::post('/check-unique-phone', function (Request $request) {
+    $phoneNumber = $request->input('phone_number');
+
+    // Check if the phone number already exists in the database
+    $user = User::where('PhoneNumber', $phoneNumber)->first();
+
+    return response()->json(['exists' => !!$user]);
+});

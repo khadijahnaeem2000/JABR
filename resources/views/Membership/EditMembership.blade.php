@@ -55,21 +55,106 @@
                           </div>
                           <!--/span-->
                         </div>
-                     
                         <div class="row">
-                          <div class="col-md-12">
+                          <div class="col-md-6">
                             <div class="mb-3">
                               <label>Details</label>
-                              <input type="text" name="Details"   value="{{$membership->Details}}"class="form-control" />
+                              <input type="text" name="Details" value="{{$membership->Details}}" class="form-control" />
                             </div>
                           </div>
                           <!--/span-->
-                         
+                            <div class="col-md-6">
+                            <div class="mb-3">
+                              <label>Daily Task</label>
+                              <input type="text" name="DailyTask" value="{{$membership->DailyTask}}"class="form-control" />
+                            </div>
+                          </div>
                                
                               <input type="text" name="IsActive" value="1" class="form-control" hidden />
                           
                           <!--/span-->
                         </div>
+                          <div class="row">
+                          <div class="col-md-6">
+                            <div class="mb-3">
+                              <label>Per Task Earning</label>
+                              <input type="text" name="PerTaskEarning" value="{{$membership->PerTaskEarning}}" class="form-control" />
+                            </div>
+                          </div>
+                             <div class="col-md-6">
+                            <div class="mb-3">
+                              <label>Refferal Earning</label>
+                              <input type="text" name="RefferalEarning" value="{{$membership->RefferalEarning}}" class="form-control"  />
+                            </div>
+                          </div>
+                          <!--/span-->
+                          <!--/span-->
+                        </div>
+                     <div class="row">
+                    <div class="col-md-6">
+                      <div class="mb-3">
+                        <label>Minimum Withdraw</label>
+                        <input type="text" name="MinimumWithdraw" value="{{$membership->MinimumWithdraw}}" class="form-control" />
+                      </div>
+                    </div>
+                       <div class="col-md-6">
+                      <div class="mb-3">
+                        <label>Minimum Deposit</label>
+                        <input type="text" name="MinimumDeposit" value="{{$membership->MinimumDeposit}}" class="form-control"  />
+                      </div>
+                    </div>
+                    </div>
+                        <div class="row">
+                    <div class="col-md-6">
+                      <div class="mb-3">
+                        <label>Tree Bonus</label>
+                        <input type="text" name="TreeBonus" class="form-control" value="{{$membership->TreeBonus}}"/>
+                      </div>
+                    </div>
+                       <div class="col-md-6">
+                      <div class="mb-3">
+                        <label>Plan Earning Limit</label>
+                        <input type="text" name="PlanEarningLimit" class="form-control" value="{{$membership->PlanEarningLimit}}" />
+                      </div>
+                    </div>
+                    </div>
+                        <div class="row">
+                    <div class="col-md-6">
+                      <div class="mb-3">
+                        <label>Task Comission For Level One</label>
+                        <input type="text" name="TaskComissionForLevelOne" class="form-control"value="{{$membership->TaskComissionForLevelOne}}" />
+                      </div>
+                    </div>
+                       <div class="col-md-6">
+                      <div class="mb-3">
+                        <label>Task Comission For Level Two</label>
+                        <input type="text" name="TaskComissionForLevelTwo" class="form-control" value="{{$membership->TaskComissionForLevelTwo}}" />
+                      </div>
+                    </div>
+                    </div>
+                       <div class="row">
+                    <div class="col-md-6">
+                      <div class="mb-3">
+                        <label>One Dollar Is Equal To</label>
+                        <input type="text" name="OneDollarIsEqualTo" class="form-control"value="{{$membership->OneDollarIsEqualTo}}" />
+                      </div>
+                    </div>
+                       <div class="col-md-6">
+                      <div class="mb-3">
+                        <label>One Cent Is Equal To</label>
+                        <input type="text" name="OneCentIsEqualTo" class="form-control" value="{{$membership->OneCentIsEqualTo}}" />
+                      </div>
+                    </div>
+                    </div>
+                         <div class="row">
+                    <div class="col-md-12">
+                      <div class="mb-3">
+                        <label>Package Validity</label>
+                        <input type="text" name="PackageValidity" class="form-control"value="{{$membership->PackageValidity}}" />
+                      </div>
+                    </div>
+                     
+                    </div>
                
                       <div class="form-actions">
                         <div class="card-body border-top">

@@ -149,13 +149,13 @@
                                    </select>
                                              <input
                                               type="number"
-                                             id="phone" name="PhoneNumber"
+                                             id="" name="PhoneNumber"
                                               class="form-control"
                                               placeholder="+9234857901"
                                                 aria-label="Text input with dropdown button"
                                                          />
                             </div>
-                               <span id="phone-availability-message"></span>
+                               <span id="phone-number-error"></span>
                             </div>
                           </div>
                           <!--/span-->
@@ -389,6 +389,8 @@
     <script src="{{asset('dist/js/custom.js')}}"></script>
     <!-- current page js files -->
     <script src="{{asset('dist/libs/owl.carousel/dist/owl.carousel.min.js')}}"></script>
+
+
   </body>
 
 <!-- Mirrored from demos.adminmart.com/premium/bootstrap/modernize-bootstrap/package/html/dark/authentication-register2.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 21 Sep 2023 14:42:51 GMT -->

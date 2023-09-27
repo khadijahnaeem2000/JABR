@@ -46,7 +46,8 @@
                   @csrf
                     <div class="mb-3">
                       <label for="exampleInputEmail1" class="form-label">PhoneNumber</label>
-                      <input type="number" class="form-control" name="PhoneNumber" id="#">
+                      <input type="number" class="form-control" name="PhoneNumber" name="phone_number" maxlength="10">
+                        <div id="phone_error" style="color: red;"></div>
                     </div>
                     <div class="mb-4">
                       <label for="exampleInputPassword1" class="form-label">Password</label>
@@ -82,6 +83,24 @@
     <script src="{{asset('dist/js/custom.js')}}"></script>
     <!-- current page js files -->
     <script src="{{asset('dist/libs/owl.carousel/dist/owl.carousel.min.js')}}"></script>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const phoneInput = document.getElementById('phone_number');
+            const phoneError = document.getElementById('phone_error');
+
+            phoneInput.addEventListener('input', function () {
+                const phoneNumber = phoneInput.value;
+                const phoneRegex = /^\d{10}$/; // Adjust the regex as per your phone number format
+
+                if (!phoneRegex.test(phoneNumber)) {
+                    phoneError.textContent = 'Phone number is incorrect. Please enter a 10-digit number.';
+                } else {
+                    phoneError.textContent = ''; // Clear the error message if the input is valid
+                }
+            });
+        });
+    </script>
   </body>
 
 <!-- Mirrored from demos.adminmart.com/premium/bootstrap/modernize-bootstrap/package/html/dark/authentication-login2.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 21 Sep 2023 14:42:51 GMT -->

@@ -27,10 +27,13 @@
                          <th data-field="stargazers_count" data-sortable="true" data-width="100">
                          Details
                         </th>
+                       
                         <th data-field="forks_count" data-sortable="true" data-width="100">
                         IsActive
                         </th>
-                      
+                       <th data-field="forks_count" data-sortable="true" data-width="100">
+                        Action
+                        </th>
                       </tr>
                     </thead>
                     <tbody>
@@ -55,6 +58,7 @@
                         <td>
                           {{$member->Details}}
                         </td>
+                      
                         <td>
                           @if($member->IsActive == 1)
                            Active
@@ -64,6 +68,7 @@
                         </td>
                         <td>
                           <a href="{{ route('EditMembership',$member->id)}}" class="btn btn-primary">Edit</a>
+                            <a href="{{ route('DetailMembership',$member->id)}}" class="btn btn-secondary">Detail</a>
                             <a href="#" onclick="deleteEmployee({{ $member->id }})" class="btn btn-danger">Delete</a>
                             <form  id="employee-edit-action-{{ $member->id }}" action="{{ route('DeleteMembership',$member->id) }}" method="post">
                                 @csrf

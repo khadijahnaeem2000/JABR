@@ -11,4 +11,17 @@ class ContactController extends Controller
      
         return view('Contact.Contact');
     }
+    public function create(){
+        return view('Contact.CreateContact');
+    }
+    public function store(){
+         $contact = new Contact();
+        $contact->name=$request->name;
+        $contact->phoneNumber=$request->phoneNumber;
+       $contact->Email=$request->Email;
+         $contact->Text=$request->Text;
+          
+      $contact->save();
+      return redirect()->to('/Contact');
+    }
 }

@@ -35,9 +35,7 @@ class MembershipController extends Controller
          $validator = Validator::make($request->all(),[
             'MemberName' => 'required',
             'MemberShipType' => 'required',
-            'price' => 'required',
-            'Details' => 'required',
-            'IsActive' => 'required',
+    
         ]);
         if ( $validator->passes() ) {
             $member = new Membership();
@@ -46,6 +44,18 @@ class MembershipController extends Controller
             $member->price = $request->price;
             $member->Details = $request->Details;
             $member->IsActive = $request->IsActive;
+            $member->DailyTask = $request->DailyTask;
+            $member->PerTaskEarning = $request->PerTaskEarning;
+            $member->RefferalEarning = $request->RefferalEarning;
+            $member->TreeBonus = $request->TreeBonus;
+            $member->PlanEarningLimit = $request->PlanEarningLimit;
+            $member->MinimumWithdraw = $request->MinimumWithdraw;
+            $member->MinimumDeposit = $request->MinimumDeposit;
+            $member->TaskComissionForLevelOne = $request->TaskComissionForLevelOne;
+            $member->TaskComissionForLevelTwo = $request->TaskComissionForLevelTwo;
+            $member->OneDollarIsEqualTo = $request->OneDollarIsEqualTo;
+            $member->OneCentIsEqualTo = $request->OneCentIsEqualTo;
+            $member->PackageValidity = $request->PackageValidity;
             $member->save();
         //Upload Image
         if ($request->image) {
@@ -67,9 +77,11 @@ class MembershipController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Membership $membership)
+    public function show($id)
     {
-        //
+               $member = Membership::find($id);
+         
+        return view('Membership.DetailMembership',compact('member'));
     }
 
     /**
@@ -101,6 +113,18 @@ class MembershipController extends Controller
             $member->price = $request->price;
             $member->Details = $request->Details;
             $member->IsActive = $request->IsActive;
+             $member->DailyTask = $request->DailyTask;
+            $member->PerTaskEarning = $request->PerTaskEarning;
+            $member->RefferalEarning = $request->RefferalEarning;
+            $member->TreeBonus = $request->TreeBonus;
+            $member->PlanEarningLimit = $request->PlanEarningLimit;
+            $member->MinimumWithdraw = $request->MinimumWithdraw;
+            $member->MinimumDeposit = $request->MinimumDeposit;
+            $member->TaskComissionForLevelOne = $request->TaskComissionForLevelOne;
+            $member->TaskComissionForLevelTwo = $request->TaskComissionForLevelTwo;
+            $member->OneDollarIsEqualTo = $request->OneDollarIsEqualTo;
+            $member->OneCentIsEqualTo = $request->OneCentIsEqualTo;
+            $member->PackageValidity = $request->PackageValidity;
             $member->save();
         //Upload Image
         if ($request->image) {

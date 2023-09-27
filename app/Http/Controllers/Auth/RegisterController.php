@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Auth;
 use App\Models\User;
 use Illuminate\Support\Facades\Validator;
-
+use Illuminate\Support\Facades\Route;
 use App\Models\Role;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -31,6 +31,7 @@ class RegisterController extends Controller
     $validator = Validator::make($request->all(), [
         // Add other validation rules for your fields here
         'Email' => 'required|string|email|max:255|unique:users',
+
     ]);
 
     if ($validator->fails()) {
@@ -92,6 +93,7 @@ public function postLogin(Request $request)
         $request->session()->flush();
       
   
-        return view('Auth.login');
+        return redirect()->to('/login');
     }
+
 }
