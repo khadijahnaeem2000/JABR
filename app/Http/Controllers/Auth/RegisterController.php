@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Auth;
 use App\Models\User;
 use Illuminate\Support\Facades\Validator;
-
+use Illuminate\Support\Facades\Route;
 use App\Models\Role;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -31,6 +31,7 @@ class RegisterController extends Controller
     $validator = Validator::make($request->all(), [
         // Add other validation rules for your fields here
         'Email' => 'required|string|email|max:255|unique:users',
+
     ]);
 
     if ($validator->fails()) {
@@ -61,34 +62,38 @@ class RegisterController extends Controller
     // Perform any additional actions, such as sending a welcome email
     
     // Redirect to a success page or another appropriate route
-   return view('/dashboard')->with('status', 'Registration successful');
+   return view('Layouts.main')->with('status', 'Registration successful');
 }
 
-public function loginWithPhoneNumber(Request $request)
-{
-    // Validate the login request
-    $request->validate([
-        'PhoneNumber' => 'required|string',
-        'password' => 'required|string',
-    ]);
 
-    // Attempt to log in the user using phone number and password
-    if (Auth::attempt(['PhoneNumber' => $request->PhoneNumber, 'password' => $request->password])) {
-        // Authentication passed, redirect to a dashboard or other page
-           $user = Auth::user();
-        session(['Name' => $user->Name ,'Email' => $user->Email]);
-        
+public function postLogin(Request $request)
+{
+    $phoneNumber = $request->input('PhoneNumber');
+    $password = $request->input('password');
+
+    $user = DB::table('users')
+        ->where('PhoneNumber', $phoneNumber)
+        ->where('password', $password)
+        ->first();
+
+    if ($user) {
+     $Name = $user->Name;
+       $Email = $user->Email;
+            // Replace with how you retrieve the user's name
+            session(['user_name' => $Name,'Email' => $Email]);
+        // Authentication successful, redirect to the dashboard
         return view('Layouts.main');
+    } else {
+        // Authentication failed, redirect back with an error message
+        return redirect()->back()->with('error', 'Invalid credentials');
+    }
+}
+
+    public function logout(Request $request) {
+        $request->session()->flush();
+      
+  
+        return redirect()->to('/login');
     }
 
-    // Authentication failed, redirect back with an error message
-    return back()->withErrors(['PhoneNumber' => 'Invalid PhoneNumber number or password']);
-}
-public function logout(Request $request)
-{
-    Auth::logout();
-    $request->session()->forget('Name','Email');
-    return redirect('/login');
-}
-   
 }

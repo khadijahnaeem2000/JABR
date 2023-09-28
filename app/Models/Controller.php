@@ -5,14 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class MembershipType extends Model
+class Controller extends Model
 {
     use HasFactory;
-    protected $fillable=[
-       
-        'id',
-        'MembershipType',
-         'IsActive',
-     
-    ];
 }
