@@ -54,9 +54,6 @@ class RegisterController extends Controller
     $user->password = $request-> password; // Assign plain text password
     $user->role_id = $request-> role_id;
      $user->IsActive = $request-> IsActive;
-     $user->Smartphone = $request-> Smartphone;
-    $user->IpAddress = $request-> IpAddress;
-     $user->DeviceKey = $request-> DeviceKey;
     $user->save();
 
     // Perform any additional actions, such as sending a welcome email

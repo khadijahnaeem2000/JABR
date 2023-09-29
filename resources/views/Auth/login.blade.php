@@ -9,7 +9,7 @@
 <!-- Mirrored from demos.adminmart.com/premium/bootstrap/modernize-bootstrap/package/html/dark/authentication-login2.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 21 Sep 2023 14:42:51 GMT -->
 <head>
     <!-- Title -->
-    <title>JABR</title>
+    <title>JBA</title>
     <!-- Required Meta Tag -->
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -40,7 +40,7 @@
               <div class="card mb-0">
                 <div class="card-body">
                   <a href="index.html" class="text-nowrap logo-img text-center d-block mb-5 w-100">
-                  <h1>JABR</h1>
+                  <h1>JBA</h1>
                   </a>
                  <form method="POST" action="{{ route('custom.login') }}">
                   @csrf
@@ -58,7 +58,7 @@
                       <button  class="btn btn-primary w-100 py-8 mb-4 rounded-2 " >Sign In</button>
                     </div>
                     <div class="d-flex align-items-center justify-content-center">
-                      <p class="fs-4 mb-0 fw-medium">New to JABR?</p>
+                      <p class="fs-4 mb-0 fw-medium">New to JBA?</p>
                       <a class="register" href="register">Create an account</a>
                     </div>
                   </form>
