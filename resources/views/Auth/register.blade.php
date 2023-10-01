@@ -4,7 +4,7 @@
 <!-- Mirrored from demos.adminmart.com/premium/bootstrap/modernize-bootstrap/package/html/dark/authentication-register2.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 21 Sep 2023 14:42:51 GMT -->
 <head>
     <!-- Title -->
-    <title>JABR</title>
+    <title>JBA</title>
     <!-- Required Meta Tag -->
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -33,7 +33,7 @@
           <div class="row">
             <div class="col-xl-5 col-xxl-4">
               <a href="index.html" class="text-nowrap logo-img d-block px-4 py-9 w-100">
-               <h1>JABR</h1>
+               <h1>JBA</h1>
               </a>
               <div class="d-none d-xl-flex align-items-center justify-content-center" style="height: calc(100vh - 80px);">
                 <img src="https://demos.adminmart.com/premium/bootstrap/modernize-bootstrap/package/dist/images/backgrounds/login-security.svg" alt="" class="img-fluid" width="500">
@@ -42,7 +42,7 @@
             <div class="col-xl-6 col-xxl-7">
               <div class="authentication-login min-vh-100 bg-body row justify-content-center align-items-center p-4">
                 <div class="col-sm-8 col-md-6 col-xl-9">
-                  <h2 class="mb-3 fs-7 fw-bolder">WELCOME TO JABR</h2>
+                  <h2 class="mb-3 fs-7 fw-bolder">WELCOME TO JBA</h2>
                   <p class=" mb-9">Register </p>
               
                
@@ -178,70 +178,14 @@
                           </div>
                           <!--/span-->
                         </div>
-                          <div class="row pt-3">
-                          <div class="col-md-4">
-                            <div class="mb-3">
-                              <label class="control-label">Smartphone</label>
-                              <input
-                                type="text"
-                                id="City"
-                                name="Smartphone"
-                                class="form-control"
-                                placeholder="Samsung"
-                              />
-                               @error('Smartphone')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                                @enderror
-                            </div>
-                          </div>
-                              <div class="col-md-4">
-                            <div class="mb-3">
-                              <label class="control-label">IpAddress</label>
-                              <input
-                                type="text"
-                                id="City"
-                                name="IpAddress"
-                                class="form-control"
-                                placeholder="1APND65263"
-                              />
-                               @error('IpAddress')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                                @enderror
-                            </div>
-                          </div>
-                              <div class="col-md-4">
-                            <div class="mb-3">
-                              <label class="control-label">DeviceKey</label>
-                              <input
-                                type="text"
-                                id="City"
-                                name="DeviceKey"
-                                class="form-control"
-                                placeholder="3239483493NDF"
-                              />
-                               @error('DeviceKey')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                                @enderror
-                            </div>
-                          </div>
                        
-                          <!--/span-->
-                      
-                          <!--/span-->
-                        </div>
                         <!--/row-->
                         <div class="row">
                          <input type="text" name="role_id" value="1" hidden>
                           <!--/span-->
                           <div class="col-md-4">
                             <div class="mb-3">
-                              <label class="control-label">Cnic</label>
+                              <label class="control-label">CNIC</label>
                               <input type="number" id="CNIC" name="CNIC" class="form-control"  placeholder="12345-6789012-3"/>
                             </div>
                              @error('CNIC')

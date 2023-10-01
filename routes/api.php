@@ -2,7 +2,9 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\Api\LoginController;
+use App\Http\Controllers\Api\MembershipController;
+use App\Http\Controllers\Api\DepositeController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -14,6 +16,17 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
+
+
+//Auth
+Route::post('login',[LoginController::class,'login']);
+Route::post('signup',[LoginController::class,'SignUp']);
+//Membership
+Route::get('MembershipType',[MembershipController::class,'AllMemberships']);
+Route::post('MembershipsOfType',[MembershipController::class,'Memberships']);
+//deposte
+Route::post('SendDepositeDetails',[DepositeController::class,'SendDepositeDetails']);
+Route::get('DepositePurpose',[DepositeController::class,'DepositePurpose']);
+Route::get('AllBankInformation',[DepositeController::class,'BankDetails']);
+
+
