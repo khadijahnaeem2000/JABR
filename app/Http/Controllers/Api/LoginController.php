@@ -10,9 +10,12 @@ class LoginController extends Controller
 {
    public function login(Request $request)
    {
+       
     $phone=$request->json('telephone');
     $password=$request->json('password');
-    if(empty($phone)&&empty($password))
+    
+    $smartphone=$request->json('smartphone');
+    if(empty($phone)&&empty($password)&&empty($smartphone))
     {
         return response()->json(['status' => 'Unsuccessfull', 'message' => 'telephone or password empty !']);
     }
@@ -24,9 +27,30 @@ class LoginController extends Controller
             $exists=User::where('PhoneNumber',$phone)->where('password',$password)->exists();
             if($exists)
             {
-                $data=User::where('PhoneNumber',$phone)->where('password',$password)->get();
-                return response()->json(['status' => 'Successfull', 'data' => $data]); 
-
+                  
+                $data=User::where('PhoneNumber',$phone)->where('password',$password)->first();
+                 $smart=$data->Smartphone;
+                if(($smart!=NULL))
+                {
+                  if($smart==$smartphone)
+                  {
+                   return response()->json(['status' => 'Successfull', 'data' => $data]);    
+                  }
+                  else{
+                       return response()->json(['status' => 'Unsuccessfull', 'message' => "You can't login in from oner device only one device allowed!"]); 
+                  }
+                }
+                else{
+                    if(($smartphone!=NULL))
+                    {
+                  User::where('PhoneNumber',$phone)->where('password',$password)->update(['Smartphone'=>$smartphone]);
+                   $data=User::where('PhoneNumber',$phone)->where('password',$password)->first();
+                   return response()->json(['status' => 'Successfull', 'data' => $data]);   
+                    }
+                    else{
+                        return response()->json(['status' => 'UnSuccessfull', 'message' => "Provide Smartphone name/model"]);    
+                    }
+                }
             }
             else{
                 return response()->json(['status' => 'Unsuccessfull', 'message' => 'Incorrect Password !']); 
@@ -93,12 +117,7 @@ if (empty($role_id)) {
 if (empty($IsActive)) {
     $missingFields[] = 'IsActive';
 }
-if (empty($Smartphone)) {
-    $missingFields[] = 'Smartphone';
-}
-if (empty($IpAddress)) {
-    $missingFields[] = 'IpAddress';
-}
+
 if (empty($DeviceKey)) {
     $missingFields[] = 'DeviceKey';
 }
@@ -148,3 +167,4 @@ if (!empty($missingFields)) {
    }
 
 }
+?>

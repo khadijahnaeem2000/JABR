@@ -41,7 +41,7 @@
                               <label>Membership Type</label>
                               <select name="MemberShipType" class="form-control" >
                                 @foreach($type as $type)
-                                <option value="{{$type->MembershipType}}">{{$type->MembershipType}}</option>
+                                <option value="{{$type->id}}">{{$type->MembershipType}}</option>
                                 @endforeach
                               </select>
                             </div>
