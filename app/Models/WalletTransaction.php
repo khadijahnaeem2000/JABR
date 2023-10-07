@@ -1,0 +1,32 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+
+class WalletTransaction extends Model
+{
+    use HasFactory;
+     public function user()
+    {
+        return $this->belongsTo(User::class, 'UserId');
+    }
+     public function depositamount()
+    {
+        return $this->belongsTo(DepositAmount::class, 'DepositAmount');
+    }
+      public function wallet()
+    {
+        return $this->belongsTo(Wallet::class, 'WalletId');
+    }
+     protected $fillable=[
+          'id',
+          'UserId',
+            'WalletId',
+              'DepositAmount',
+               'DepositTo',
+                'DepositFrom',
+                'Status',
+    ];
+}

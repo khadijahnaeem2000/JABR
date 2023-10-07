@@ -36,7 +36,7 @@
                 </a>
                 <ul aria-expanded="false" class="collapse first-level">
                   <li class="sidebar-item">
-                    <a href="TaskEarning" class="sidebar-link">
+                    <a href=" {{route('TaskEarning')}}" class="sidebar-link">
                       <div class="round-16 d-flex align-items-center justify-content-center">
                         <i class="ti ti-circle"></i>
                       </div>
@@ -56,7 +56,7 @@
                 </a>
                 <ul aria-expanded="false" class="collapse first-level">
                   <li class="sidebar-item">
-                    <a href="MembershipType" class="sidebar-link">
+                    <a href="{{route('MembershipType')}}" class="sidebar-link">
                       <div class="round-16 d-flex align-items-center justify-content-center">
                         <i class="ti ti-circle"></i>
                       </div>
@@ -82,7 +82,7 @@
                 </a> 
                 <ul aria-expanded="false" class="collapse first-level">
                   <li class="sidebar-item">
-                    <a href="DepositAmount" class="sidebar-link">
+                    <a href="{{url('DepositAmount')}}" class="sidebar-link">
                       <div class="round-16 d-flex align-items-center justify-content-center">
                         <i class="ti ti-circle"></i>
                       </div>
@@ -90,17 +90,17 @@
                     </a>
                   </li>
                   <li class="sidebar-item">
-                    <a href="DepositHistory" class="sidebar-link">
+                    <a href="{{route('DepositePurpose')}} " class="sidebar-link">
                       <div class="round-16 d-flex align-items-center justify-content-center">
                         <i class="ti ti-circle"></i>
                       </div>
-                      <span class="hide-menu">Deposit History</span>
+                      <span class="hide-menu">Deposit prupose</span>
                     </a>
                   </li>
                 </ul>
               </li>
               <li class="sidebar-item">
-                <a class="sidebar-link" href="Invite" aria-expanded="false">
+                <a class="sidebar-link" href="{{route('Invite')}}" aria-expanded="false">
                   <span>
                     <i class="ti ti-zoom-code"></i>
                   </span>
@@ -108,7 +108,7 @@
                 </a>
               </li>
               <li class="sidebar-item">
-                <a class="sidebar-link" href="Referral" aria-expanded="false">
+                <a class="sidebar-link" href="{{route('Referral')}}" aria-expanded="false">
                   <span>
                     <i class="ti ti-star"></i>
                   </span>
@@ -116,7 +116,7 @@
                 </a>
               </li>
                <li class="sidebar-item">
-                <a class="sidebar-link" href="Withdraw" aria-expanded="false">
+                <a class="sidebar-link" href="{{route('Withdraw')}}" aria-expanded="false">
                   <span>
                     <i class="ti ti-alert-circle"></i>
                   </span>
@@ -132,7 +132,7 @@
                 </a>
                 <ul aria-expanded="false" class="collapse first-level">
                   <li class="sidebar-item">
-                    <a href="Task" class="sidebar-link">
+                    <a href="{{route('Task')}}" class="sidebar-link">
                       <div class="round-16 d-flex align-items-center justify-content-center">
                         <i class="ti ti-circle"></i>
                       </div>
@@ -140,7 +140,7 @@
                     </a>
                   </li>
                   <li class="sidebar-item">
-                    <a href="TaskEarning"class="sidebar-link">
+                    <a href="{{route('TaskEarning')}}"class="sidebar-link">
                       <div class="round-16 d-flex align-items-center justify-content-center">
                         <i class="ti ti-circle"></i>
                       </div>
@@ -158,7 +158,7 @@
                 </a>
                 <ul aria-expanded="false" class="collapse first-level">
                   <li class="sidebar-item">
-                    <a href="Order" class="sidebar-link">
+                    <a href="{{route('Order')}}" class="sidebar-link">
                       <div class="round-16 d-flex align-items-center justify-content-center">
                         <i class="ti ti-circle"></i>
                       </div>
@@ -166,7 +166,7 @@
                     </a>
                   </li>
                   <li class="sidebar-item">
-                    <a href="OrderType" class="sidebar-link">
+                    <a href="{{route('OrderType')}}" class="sidebar-link">
                       <div class="round-16 d-flex align-items-center justify-content-center">
                         <i class="ti ti-circle"></i>
                       </div>
@@ -175,8 +175,34 @@
                   </li>
                 </ul>
               </li>
+               <li class="sidebar-item">
+                <a class="sidebar-link has-arrow" href="#" aria-expanded="false">
+                  <span class="d-flex">
+                    <i class="ti ti-shopping-cart"></i>
+                  </span>
+                  <span class="hide-menu">Wallet</span>
+                </a>
+                <ul aria-expanded="false" class="collapse first-level">
+                  <li class="sidebar-item">
+                    <a href="{{route('Wallet')}}" class="sidebar-link">
+                      <div class="round-16 d-flex align-items-center justify-content-center">
+                        <i class="ti ti-circle"></i>
+                      </div>
+                      <span class="hide-menu">Wallet </span>
+                    </a>
+                  </li>
+                  <li class="sidebar-item">
+                    <a href="{{route('WalletTrans')}}" class="sidebar-link">
+                      <div class="round-16 d-flex align-items-center justify-content-center">
+                        <i class="ti ti-circle"></i>
+                      </div>
+                      <span class="hide-menu">Wallet Transaction</span>
+                    </a>
+                  </li>
+                </ul>
+              </li>
               <li class="sidebar-item">
-                <a class="sidebar-link" href="Contact" aria-expanded="false">
+                <a class="sidebar-link" href="{{route('Contact')}}" aria-expanded="false">
                   <span>
                     <i class="ti ti-phone"></i>
                   </span>
@@ -184,7 +210,7 @@
                 </a>
               </li>
                 <li class="sidebar-item">
-                  <a class="sidebar-link" href="LetterHead" aria-expanded="false">
+                  <a class="sidebar-link" href="{{route('LetterHead')}}" aria-expanded="false">
                   <span>
                     <i class="ti ti-file-text"></i>
                   </span>

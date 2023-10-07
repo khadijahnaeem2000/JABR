@@ -26,10 +26,47 @@
                          <th data-field="forks_count" data-sortable="true" data-width="100">
                           Transaction Id
                         </th>
+                         <th data-field="forks_count" data-sortable="true" data-width="100">
+                         Status
+                        </th>
                       </tr>
                     </thead>
+                    <tbody>
+                      @foreach($amount as $amount)
+                      <tr>
+                        @if($amount->DepositPurpose == "")
+                        <td>Null</td>
+                        @else
+                        <td>{{$amount->depositPurpose->DepositePurpose}}</td>
+                        @endif
+                        <td>{{$amount->DepositeAmount}}</td>
+                        <td>{{$amount->DepositAmountDollar}}</td>
+                          <td>  @if($amount->PaymentRecipt != '' && file_exists(public_path().'/Pay/payments/'.$amount->PaymentRecipt))
+                            <img src="{{ url('Pay/payments/'.$amount->PaymentRecipt) }}" alt="" width="40" height="40" class="rounded-circle">
+                            @else
+                            <img src="{{ url('images/no-image.png') }}" alt="" width="40" height="40" class="rounded-circle">
+                            @endif</td>
+                            <td>{{$amount->TransactionID}}</td>
+                              <td>{{$amount->Status}}</td>
+                                   <td>
+                      <a href="{{route ('EditDepositAmount',$amount->id)}}" class="btn btn-secondary">Edit</a>
+                             <a href="#" onclick="deleteEmployee({{ $amount->id }})" class="btn btn-danger">Delete</a>
+                            <form  id="employee-edit-action-{{ $amount->id }}" action="{{ route('DeleteDepositAmount',$amount->id) }}" method="post">
+                                @csrf
+                                @method('delete')
+                            </form>
+                    </td>
+                      </tr>
+                      @endforeach
+                    </tbody>
                   </table>
                 </div>
               </div>
-
+  <script>
+        function deleteEmployee(id) {
+            if (confirm("Are you sure you want to delete?")) {
+                document.getElementById('employee-edit-action-'+id).submit();
+            }
+        }
+    </script>
 @endsection
