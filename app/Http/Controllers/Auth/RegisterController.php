@@ -13,11 +13,20 @@ use Illuminate\Http\Request;
 
 class RegisterController extends Controller
 {
-      public function showRegistrationForm()
-    {
-          $role = Role::all();
-        return view('Auth.register',compact('role'));
+
+    public function showRegistrationForm($referralLink=null)
+{
+    if ($referralLink !== null) {
+        $role = Role::all();
+        return view('Auth.register', compact('role'));
+    } else {
+         $role = Role::all();
+        // Referral link is null, you can redirect or return a different view if needed
+          return view('Auth.register', compact('role'));
+        
     }
+}
+
         public function login()
     {
         
@@ -25,20 +34,22 @@ class RegisterController extends Controller
     }
     public function register(Request $request)
 {
+  
+$existingEmailUser = User::where('Email', $request->Email)->first();
+
+    // Check if the phone number already exists in the database
+    $existingPhoneUser = User::where('PhoneNumber', $request->PhoneNumber)->first();
 
 
-// Validate the form data, including email uniqueness
-    $validator = Validator::make($request->all(), [
-        // Add other validation rules for your fields here
-        'Email' => 'required|string|email|max:255|unique:users',
-
-    ]);
-
-    if ($validator->fails()) {
-        return redirect('/register') // Redirect back to the registration page
-            ->withErrors($validator)
-            ->withInput();
+   if ($existingEmailUser) {
+        // Only the email is in use
+        return redirect()->route('register')->with('email_error', 'Email already in use.');
+    } elseif ($existingPhoneUser) {
+        // Only the phone number is in use
+        return redirect()->route('register')->with('phone_error', 'Phone number already in use.');
     }
+    
+
 
     // Create a new user record with 'role_id' and plain text password
     $user = new User();
@@ -59,7 +70,7 @@ class RegisterController extends Controller
     // Perform any additional actions, such as sending a welcome email
     
     // Redirect to a success page or another appropriate route
-   return view('Layouts.main')->with('status', 'Registration successful');
+   return redirect()->to('Layouts.main');
 }
 
 
@@ -70,21 +81,26 @@ public function postLogin(Request $request)
 
     $user = DB::table('users')
         ->where('PhoneNumber', $phoneNumber)
-        ->where('password', $password)
         ->first();
 
-    if ($user) {
-     $Name = $user->Name;
-       $Email = $user->Email;
-            // Replace with how you retrieve the user's name
-            session(['user_name' => $Name,'Email' => $Email]);
-        // Authentication successful, redirect to the dashboard
-        return view('Layouts.main');
-    } else {
-        // Authentication failed, redirect back with an error message
-        return redirect()->back()->with('error', 'Invalid credentials');
+    if (!$user) {
+        // Phone number is invalid
+        return redirect()->back()->withErrors(['phone_error' => 'Invalid phone number.']);
     }
+
+    // If the phone number is valid, check the password
+    if ($user->password !== $password) {
+        // Password is invalid
+        return redirect()->back()->withErrors(['password_error' => 'Invalid password.']);
+    }
+
+    // Authentication successful
+    $Name = $user->Name;
+    $Email = $user->Email;
+    session(['user_name' => $Name, 'Email' => $Email]);
+    return  redirect()->to('/dashboard');
 }
+
 
     public function logout(Request $request) {
         $request->session()->flush();

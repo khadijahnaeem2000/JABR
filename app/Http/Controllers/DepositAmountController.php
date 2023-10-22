@@ -1,7 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\DepositePurpose;
+use App\Models\User;
 use App\Models\DepositAmount;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -50,7 +51,9 @@ class DepositAmountController extends Controller
     {
         
          $amount =DepositAmount::find($id);
-        return view('Deposit.EditDepositAmount',compact('amount'));
+         $purpose = DepositePurpose::all();
+          $user = User::all();
+        return view('Deposit.EditDepositAmount',compact('amount','purpose','user'));
     }
 
     /**
@@ -58,26 +61,32 @@ class DepositAmountController extends Controller
      */
 public function update(Request $request, $id)
 {
-    $validator = Validator::make($request->all(), [
-        'DepositeAmount' => 'required',
-        'DepositePurpose' => 'required',
-        'DepositAmountDollar' => 'required',
-        'PaymentReciept' => 'required',
-        'TransactionID' => 'required',
-        'Status' => 'required',
-       
-    ]);
 
-    if ($validator->passes()) {
-        $amount = DepositAmount::find($id);
+
+
+
+     
+        $validator = Validator::make($request->all(),[
+            'DepositeAmount' => 'required',
+            'DepositePurpose' => 'required',
+              'user_Id' => 'required',
+            'DepositAmountDollar' => 'required',
+            
+           'TransactionID' => 'required',
+           'Status' => 'required',
+        ]);
+        if ( $validator->passes() ) {
+           $amount = DepositAmount::find($id);
         $amount->DepositeAmount = $request->DepositeAmount;
         $amount->DepositePurpose = $request->DepositePurpose;
+           $amount->user_Id = $request->user_Id;
         $amount->DepositAmountDollar = $request->DepositAmountDollar;
-        $amount->PaymentReciept = $request->PaymentReciept;
+       
         $amount->TransactionID = $request->TransactionID;
         $amount->Status = $request->Status;
-
-           if ($request->PaymentReciept) {
+            $amount->save();
+        //Upload Image
+          if ($request->PaymentReciept) {
             $PaymentReciept = $amount->PaymentReciept;
             $ext = $request->PaymentReciept->getClientOriginalExtension();
             $newFileName = time().'.'.$ext;
@@ -87,11 +96,9 @@ public function update(Request $request, $id)
             $amount->save();
             File::delete(public_path().'/Pay/payments/'.$PaymentReciept);
         }
-        $amount->save();
 
-        // Upload Image logic if needed
-
-        return redirect()->to('/DepositAmount');
+            $request->session()->flash('success','member Updated Successfully! ');
+              return redirect()->to('/DepositAmount');
     } else {
         return redirect()->to("/EditDepositAmount/$id")->withErrors($validator)->withInput();
     }

@@ -21,7 +21,8 @@ class DepositAmount extends Model
         'DepositAmountDollar',
         'PaymentReciept',
         'TransactionID',
-        'IsActive',
+        'Status',
+        'user_Id'
      
     ];
 }

@@ -41,11 +41,14 @@
                         @endif
                         <td>{{$amount->DepositeAmount}}</td>
                         <td>{{$amount->DepositAmountDollar}}</td>
-                          <td>  @if($amount->PaymentRecipt != '' && file_exists(public_path().'/Pay/payments/'.$amount->PaymentRecipt))
-                            <img src="{{ url('Pay/payments/'.$amount->PaymentRecipt) }}" alt="" width="40" height="40" class="rounded-circle">
+                           <td>
+                             @if($amount->PaymentReciept != '' && file_exists(public_path().'/Pay/payments/'.$amount->PaymentReciept))
+                            <img src="{{ url('Pay/payments/'.$amount->PaymentReciept) }}" alt="" width="40" height="40" class="rounded-circle">
                             @else
                             <img src="{{ url('images/no-image.png') }}" alt="" width="40" height="40" class="rounded-circle">
-                            @endif</td>
+                            @endif
+                        </td>
+   
                             <td>{{$amount->TransactionID}}</td>
                               <td>{{$amount->Status}}</td>
                                    <td>

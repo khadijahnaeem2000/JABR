@@ -21,7 +21,7 @@
                          <div class="row">
                           <div class="col-md-6">
                             <div class="mb-3">
-                              <label>User Id</label>
+                              <label>User </label>
                                <select name="UserId" class="form-control" >
                                 @foreach($user as $user)
                                 <option value="{{$user->id}}">{{$user->Name}}</option>
@@ -32,7 +32,7 @@
                              <div class="col-md-6">
                             <div class="mb-3">
                               <label>Amount</label>
-                              <input type="text" name="Amount" class="form-control"  />
+                              <input type="number" name="Amount" class="form-control"  />
                             </div>
                           </div>
                           <!--/span-->
@@ -53,8 +53,8 @@
                           <!--/span-->
                           <div class="col-md-6">
                             <div class="mb-3">
-                              <label>Status</label>
-                              <input type="text" name="price"  class="form-control"  />
+                            
+                              <input type="text" name="Status" value="Active" class="form-control" hidden />
                             </div>
                           </div>
                           <!--/span-->

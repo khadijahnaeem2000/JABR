@@ -20,7 +20,7 @@ Route::get('/', function () {
 
 Route::get('dashboard',[Dashboard::class,'dashboard'])->name('dashboard');
 //Auth
-Route::get('register',[App\Http\Controllers\Auth\RegisterController::class,'showRegistrationForm']);
+Route::get('register/{ReferralLink?}',[App\Http\Controllers\Auth\RegisterController::class,'showRegistrationForm']);
 Route::post('register', [App\Http\Controllers\Auth\RegisterController::class,'register'])->name('register');
 Route::post('custom-login',[App\Http\Controllers\Auth\RegisterController::class,'postLogin'])->name('custom.login');
 

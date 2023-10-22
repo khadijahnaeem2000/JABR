@@ -25,16 +25,14 @@
                               <input type="text" name="MemberName" value="{{$membership->MemberName}}" class="form-control" />
                             </div>
                           </div>
-                             <div class="col-md-6">
+                             <div class="col-md-3">
                             <div class="mb-3">
                               <label>Image</label>
-                              <input type="file" name="image" class="form-control"  />
-                                 
-                        @if($membership->image != '' && file_exists(public_path().'/uploads/membership/'.$membership->image))
-                        <img src="{{ url('uploads/member/'.$membership->image) }}" alt="" width="100" height="100" class="mt-3">
-                        @endif
+                              <input type="file" name="image"id="imageInput" class="form-control"  />
+
                             </div>
                           </div>
+                          <div class="col-md-3">        <img  id="imagePreview"src="{{ url('uploads/member/'.$membership->image) }}" alt="" width="100" height="100" class="mt-3" style="border-radius: 50%;"></div>
                           <!--/span-->
                         
                           <!--/span-->
@@ -43,14 +41,18 @@
                           <div class="col-md-6">
                             <div class="mb-3">
                               <label>Membership Type</label>
-                              <input type="text" name="MemberShipType" value="{{$membership->MemberShipType}}" class="form-control" />
+                              <select name="MemberShipType" class="form-control" >
+                                @foreach($type as $type)
+                                <option value="{{$type->id}}">{{$type->MembershipType}}</option>
+                                @endforeach
+                              </select>
                             </div>
                           </div>
                           <!--/span-->
                           <div class="col-md-6">
                             <div class="mb-3">
                               <label>Price</label>
-                              <input type="text" name="price"  value="{{$membership->price}}" class="form-control"  />
+                              <input type="number" name="price"  value="{{$membership->price}}" class="form-control"  />
                             </div>
                           </div>
                           <!--/span-->
@@ -66,7 +68,7 @@
                             <div class="col-md-6">
                             <div class="mb-3">
                               <label>Daily Task</label>
-                              <input type="text" name="DailyTask" value="{{$membership->DailyTask}}"class="form-control" />
+                              <input type="number" name="DailyTask" value="{{$membership->DailyTask}}"class="form-control" />
                             </div>
                           </div>
                                
@@ -78,13 +80,13 @@
                           <div class="col-md-6">
                             <div class="mb-3">
                               <label>Per Task Earning</label>
-                              <input type="text" name="PerTaskEarning" value="{{$membership->PerTaskEarning}}" class="form-control" />
+                              <input type="number" name="PerTaskEarning" value="{{$membership->PerTaskEarning}}" class="form-control" />
                             </div>
                           </div>
                              <div class="col-md-6">
                             <div class="mb-3">
                               <label>Refferal Earning</label>
-                              <input type="text" name="RefferalEarning" value="{{$membership->RefferalEarning}}" class="form-control"  />
+                              <input type="number" name="RefferalEarning" value="{{$membership->RefferalEarning}}" class="form-control"  />
                             </div>
                           </div>
                           <!--/span-->
@@ -94,13 +96,13 @@
                     <div class="col-md-6">
                       <div class="mb-3">
                         <label>Minimum Withdraw</label>
-                        <input type="text" name="MinimumWithdraw" value="{{$membership->MinimumWithdraw}}" class="form-control" />
+                        <input type="number" name="MinimumWithdraw" value="{{$membership->MinimumWithdraw}}" class="form-control" />
                       </div>
                     </div>
                        <div class="col-md-6">
                       <div class="mb-3">
                         <label>Minimum Deposit</label>
-                        <input type="text" name="MinimumDeposit" value="{{$membership->MinimumDeposit}}" class="form-control"  />
+                        <input type="number" name="MinimumDeposit" value="{{$membership->MinimumDeposit}}" class="form-control"  />
                       </div>
                     </div>
                     </div>
@@ -108,13 +110,13 @@
                     <div class="col-md-6">
                       <div class="mb-3">
                         <label>Tree Bonus</label>
-                        <input type="text" name="TreeBonus" class="form-control" value="{{$membership->TreeBonus}}"/>
+                        <input type="number" name="TreeBonus" class="form-control" value="{{$membership->TreeBonus}}"/>
                       </div>
                     </div>
                        <div class="col-md-6">
                       <div class="mb-3">
                         <label>Plan Earning Limit</label>
-                        <input type="text" name="PlanEarningLimit" class="form-control" value="{{$membership->PlanEarningLimit}}" />
+                        <input type="number" name="PlanEarningLimit" class="form-control" value="{{$membership->PlanEarningLimit}}" />
                       </div>
                     </div>
                     </div>
@@ -136,13 +138,13 @@
                     <div class="col-md-6">
                       <div class="mb-3">
                         <label>One Dollar Is Equal To</label>
-                        <input type="text" name="OneDollarIsEqualTo" class="form-control"value="{{$membership->OneDollarIsEqualTo}}" />
+                        <input type="number" name="OneDollarIsEqualTo" class="form-control"value="{{$membership->OneDollarIsEqualTo}}" />
                       </div>
                     </div>
                        <div class="col-md-6">
                       <div class="mb-3">
                         <label>One Cent Is Equal To</label>
-                        <input type="text" name="OneCentIsEqualTo" class="form-control" value="{{$membership->OneCentIsEqualTo}}" />
+                        <input type="number" name="OneCentIsEqualTo" class="form-control" value="{{$membership->OneCentIsEqualTo}}" />
                       </div>
                     </div>
                     </div>
@@ -150,7 +152,7 @@
                     <div class="col-md-12">
                       <div class="mb-3">
                         <label>Package Validity</label>
-                        <input type="text" name="PackageValidity" class="form-control"value="{{$membership->PackageValidity}}" />
+                        <input type="date" name="PackageValidity" class="form-control"value="{{$membership->PackageValidity}}" />
                       </div>
                     </div>
                      
@@ -178,4 +180,20 @@
                                                 ---------------- -->
               </div>
             </div>
+            <script>
+    // Get references to the file input and image elements
+    const imageInput = document.getElementById('imageInput');
+    const imagePreview = document.getElementById('imagePreview');
+
+    // Add an event listener to the file input field
+    imageInput.addEventListener('change', function () {
+        const file = imageInput.files[0]; // Get the selected file
+
+        if (file) {
+            // Create a URL for the selected file and set it as the src of the image
+            const imageURL = URL.createObjectURL(file);
+            imagePreview.src = imageURL;
+        }
+    });
+</script>
 @endsection

@@ -90,7 +90,8 @@ class MembershipController extends Controller
     public function edit($id)
     {
         $membership = Membership::find($id);
-          return view('Membership.EditMembership',compact('membership'));
+        $type= MembershipType::all();
+          return view('Membership.EditMembership',compact('membership','type'));
     }
 
     /**
@@ -102,7 +103,7 @@ class MembershipController extends Controller
         $validator = Validator::make($request->all(),[
             'MemberName' => 'required',
             'MemberShipType' => 'required',
-            'price' => 'required',
+ 'price' => 'required',
             'Details' => 'required',
             'IsActive' => 'required',
         ]);
