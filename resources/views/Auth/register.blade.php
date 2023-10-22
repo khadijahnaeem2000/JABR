@@ -333,7 +333,42 @@
     <script src="{{asset('dist/js/custom.js')}}"></script>
     <!-- current page js files -->
     <script src="{{asset('dist/libs/owl.carousel/dist/owl.carousel.min.js')}}"></script>
+<script>
+    $(document).ready(function () {
+      
+        const phoneNumberInput = $('#PhoneNumber');
+        const phoneNumberError = $('#phone-number-error');
 
+     
+
+        phoneNumberInput.blur(function () {
+            const phoneNumber = phoneNumberInput.val();
+
+            if (phoneNumber.trim() === '') {
+                return;
+            }
+
+            $.ajax({
+                url: '{{ route('register') }}', // Create a new route for phone number validation
+                method: 'POST',
+                data: {
+                    _token: '{{ csrf_token() }}',
+                    phoneNumber: phoneNumber,
+                },
+                success: function (response) {
+                    if (response.isUnique) {
+                        phoneNumberError.text('');
+                    } else {
+                        phoneNumberError.text('This phone number is already in use.');
+                    }
+                },
+                error: function () {
+                    // Handle AJAX error
+                },
+            });
+        });
+    });
+</script>
 
   </body>
 
