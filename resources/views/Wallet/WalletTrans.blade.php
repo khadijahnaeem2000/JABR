@@ -19,7 +19,7 @@
                           Deposit Amount
                         </th>
                         <th data-field="forks_count" data-sortable="true" data-width="100">
-                          Wallet Id
+                          Wallet 
                         </th>
                           <th data-field="forks_count" data-sortable="true" data-width="100">
                           Deposit From
@@ -38,26 +38,33 @@
                     <tbody>
                       @foreach($trans as $trans)
                       <tr>
-                       @if($trans->UserId == "")
-                        <td>Null</td>
-                        @else
-                        <td>{{$trans->user->Name}}</td>
-                        @endif
+                       @if($trans->UserId)
+            <td>{{ $trans->user->Name }}</td>
+        @else
+            <td>Null</td>
+        @endif
                         
-                          @if($trans->DepositAmount == "")
-                        <td>Null</td>
+                          @if($trans->DepositAmount )
+                            <td>{{$trans->depositamount->DepositeAmount}}</td>
+                        
                         @else
-                        <td>{{$trans->depositamount->DepositeAmount}}</td>
+                      <td>Null</td>
                         @endif
 
-                         @if($trans->WalletId == "")
-                        <td>Null</td>
-                        @else
-                        <td>{{$trans->wallet->id}}</td>
-                        @endif
+                    <td>
+            @if ($trans->WalletId)
+                @if ($trans->wallet->UserId)
+                    {{ $trans->wallet->user->Name }}
+                @else
+                    Null
+                @endif
+            @else
+                Null
+            @endif
+        </td>
                        <td>{{$trans->DepositFrom}}</td>
                         <td>{{$trans->DepositTo}}</td>
-                       <td>{{$trans->WalletId}}</td>
+                    
 
                          <td>{{$trans->Status}}</td>
                         <td><a href="{{route ('EditWalletTrans',$trans->id)}}" class="btn btn-secondary">Edit</a>

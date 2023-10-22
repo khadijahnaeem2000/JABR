@@ -50,7 +50,7 @@
                           <div class="col-md-6">
                             <div class="mb-3">
                               <label>Price</label>
-                              <input type="text" name="price"  class="form-control"  />
+                              <input type="number" name="price"  class="form-control"  />
                             </div>
                           </div>
                           <!--/span-->
@@ -67,7 +67,7 @@
                             <div class="col-md-6">
                             <div class="mb-3">
                               <label>Daily Task</label>
-                              <input type="text" name="DailyTask" class="form-control" />
+                              <input type="number" name="DailyTask" class="form-control" />
                             </div>
                           </div>
                                
@@ -79,13 +79,13 @@
                           <div class="col-md-6">
                             <div class="mb-3">
                               <label>Per Task Earning</label>
-                              <input type="text" name="PerTaskEarning" class="form-control" />
+                              <input type="number" name="PerTaskEarning" class="form-control" />
                             </div>
                           </div>
                              <div class="col-md-6">
                             <div class="mb-3">
                               <label>Refferal Earning</label>
-                              <input type="text" name="RefferalEarning" class="form-control"  />
+                              <input type="number" name="RefferalEarning" class="form-control"  />
                             </div>
                           </div>
                           <!--/span-->
@@ -95,13 +95,13 @@
                     <div class="col-md-6">
                       <div class="mb-3">
                         <label>Minimum Withdraw</label>
-                        <input type="text" name="MinimumWithdraw" class="form-control" />
+                        <input type="number" name="MinimumWithdraw" class="form-control" />
                       </div>
                     </div>
                        <div class="col-md-6">
                       <div class="mb-3">
                         <label>Minimum Deposit</label>
-                        <input type="text" name="MinimumDeposit" class="form-control"  />
+                        <input type="number" name="MinimumDeposit" class="form-control"  />
                       </div>
                     </div>
                     </div>
@@ -109,13 +109,13 @@
                     <div class="col-md-6">
                       <div class="mb-3">
                         <label>Tree Bonus</label>
-                        <input type="text" name="TreeBonus" class="form-control" />
+                        <input type="number" name="TreeBonus" class="form-control" />
                       </div>
                     </div>
                        <div class="col-md-6">
                       <div class="mb-3">
                         <label>Plan Earning Limit</label>
-                        <input type="text" name="PlanEarningLimit" class="form-control"  />
+                        <input type="number" name="PlanEarningLimit" class="form-control"  />
                       </div>
                     </div>
                     </div>
@@ -137,7 +137,7 @@
                     <div class="col-md-6">
                       <div class="mb-3">
                         <label>One Dollar Is Equal To</label>
-                        <input type="text" name="OneDollarIsEqualTo" class="form-control" />
+                        <input type="number" name="OneDollarIsEqualTo" class="form-control" />
                       </div>
                     </div>
                        <div class="col-md-6">
@@ -151,7 +151,7 @@
                     <div class="col-md-12">
                       <div class="mb-3">
                         <label>Package Validity</label>
-                        <input type="text" name="PackageValidity" class="form-control" />
+                        <input type="date" name="PackageValidity" class="form-control" />
                       </div>
                     </div>
                      

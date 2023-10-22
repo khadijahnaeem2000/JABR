@@ -32,18 +32,18 @@
                     <tbody>
                       @foreach($wallet as $wallet)
                       <tr>
-                         @if($wallet->UserId == "")
-                        <td>Null</td>
-                        @else
+                         @if($wallet->UserId)
                         <td>{{$wallet->user->Name}}</td>
+                        @else
+                        <td>Null</td>
                         @endif
                        
                         
                       
-                        @if($wallet->DepositePurpose == "")
-                        <td>Null</td>
-                        @else
+                        @if($wallet->DepositPurpose )
                         <td>{{$wallet->depositPurpose->DepositePurpose}}</td>
+                        @else
+                        <td>Null</td>
                         @endif
                         <td>{{$wallet->Amount}}</td>
                          <td>{{$wallet->Status}}</td>

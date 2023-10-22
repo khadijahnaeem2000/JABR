@@ -62,6 +62,7 @@
                                  name="Name"
                                 class="form-control"
                                 placeholder="John"
+                                required
                               />
                             @error('Name')
                                 <span class="invalid-feedback" role="alert">
@@ -80,6 +81,7 @@
                                  name="LastName"
                                 class="form-control form-control"
                                 placeholder="Doe"
+                                required
                               />
                                @error('LastName')
                                 <span class="invalid-feedback" role="alert">
@@ -99,8 +101,14 @@
                                 id="Email" name="Email"
                                 class="form-control"
                                 placeholder="Johndoe@example.com"
+                                required
                               />
-                              <span id="email-error" class="text-danger"></span>
+ 
+     @if(session('email_error'))
+    <div >
+        <p style="color: red;">{{ session('email_error') }}</p>
+    </div>
+@endif
                             </div>
                           </div>
                           <!--/span-->
@@ -110,7 +118,8 @@
                               <input
                                id="password" type="password" name="password"
                                 class="form-control form-control"
-                                placeholder=""
+                                placeholder="*****"
+                                required
                               />
                               @error('password')
                                 <span class="invalid-feedback" role="alert">
@@ -131,6 +140,7 @@
                                 name="City"
                                 class="form-control"
                                 placeholder="California"
+                                required
                               />
                                @error('City')
                                 <span class="invalid-feedback" role="alert">
@@ -141,21 +151,23 @@
                           </div>
                           <div class="col-md-4">
                             <div class="mb-3">
-                              <label class="control-label">Phone Number</label>
+                              <label class="control-label">Phone Number(+92)</label>
                                 <div class="input-group">
-                                  <select class="form-control custom-select" id="countryCode" name="countryCode">
-                                   <option value="+1">+1 (USA)</option>
-                                     <!-- Add more country code options here -->
-                                   </select>
+                                 
                                              <input
-                                              type="number"
+                                              type="text"
                                              id="" name="PhoneNumber"
                                               class="form-control"
                                               placeholder="+9234857901"
                                                 aria-label="Text input with dropdown button"
                                                          />
+                                                           @if(session('phone_error'))
+    <div >
+        <p style="color: red;">{{ session('phone_error') }}</p>
+    </div>
+@endif
                             </div>
-                               <span id="phone-number-error"></span>
+                              
                             </div>
                           </div>
                           <!--/span-->
@@ -168,6 +180,7 @@
                                 name="Address"
                                 class="form-control form-control"
                                 placeholder="Brigerton,StreetVI.."
+                                required
                               />
                                @error('Address')
                                 <span class="invalid-feedback" role="alert">
@@ -186,7 +199,7 @@
                           <div class="col-md-4">
                             <div class="mb-3">
                               <label class="control-label">CNIC</label>
-                              <input type="number" id="CNIC" name="CNIC" class="form-control"  placeholder="12345-6789012-3"/>
+                              <input type="number"  maxlength="13"id="CNIC" name="CNIC" class="form-control" required placeholder="12345-6789012-3"/>
                             </div>
                              @error('CNIC')
                                 <span class="invalid-feedback" role="alert">
@@ -197,7 +210,7 @@
                               <div class="col-md-4">
                             <div class="mb-3">
                               <label class="control-label">Bank Account</label>
-                              <input type="text" class="form-control"  id="BankAccount" placeholder="DNER80343435" name="BankAccount" />
+                              <input type="text" class="form-control" maxlength="12"  id="BankAccount"required placeholder="DNER80343435" name="BankAccount" />
                                <span id="bank-account-error" class="text-danger"></span>
                             </div>
                           </div>
@@ -212,6 +225,7 @@
                         </div>
                           </div>
                     <div class="col-md-9"></div>
+
                          <div class="col-md-2 ">
                               <button type="submit" class="btn btn-primary">
                             {{ __('Register') }}

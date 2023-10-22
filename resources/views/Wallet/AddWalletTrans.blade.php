@@ -21,7 +21,7 @@
                          <div class="row">
                           <div class="col-md-6">
                             <div class="mb-3">
-                              <label>User Id</label>
+                              <label>User </label>
                                <select name="UserId" class="form-control" >
                                 @foreach($user as $user)
                                 <option value="{{$user->id}}">{{$user->Name}}</option>
@@ -31,7 +31,7 @@
                           </div>
                              <div class="col-md-6">
                             <div class="mb-3">
-                              <label>Wallet Id</label>
+                              <label>Wallet </label>
                               <select name="DepositPurpose" class="form-control" >
                                 @foreach($wallet as $wallet)
                                 <option value="{{$wallet->id}}">{{$wallet->user->Name}}</option>
@@ -57,8 +57,8 @@
                           <!--/span-->
                           <div class="col-md-6">
                             <div class="mb-3">
-                              <label>Status</label>
-                              <input type="text" name="Status"  class="form-control"  />
+                           
+                              <input type="text" name="Status" value="Active" hidden class="form-control"  />
                             </div>
                           </div>
                           <!--/span-->

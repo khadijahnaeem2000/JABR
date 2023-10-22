@@ -11,10 +11,14 @@ use Illuminate\Support\Facades\Validator;
 
 class WalletTransactionController extends Controller
 {
+     public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
   public function index(){
         $trans = WalletTransaction::all();
-      
-        return view('Wallet.WalletTrans',compact('trans'));
+      $wallets = Wallet::with('user')->get();
+        return view('Wallet.WalletTrans',compact('trans','wallets'));
     }
 
 

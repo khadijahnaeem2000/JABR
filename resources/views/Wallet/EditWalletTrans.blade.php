@@ -58,7 +58,16 @@
                           <div class="col-md-6">
                             <div class="mb-3">
                               <label>Status</label>
-                              <input type="text" name="Status"  value="{{$trans->Status}}" class="form-control"  />
+                            
+                                   <select name="Status"  class="form-control" >
+                           
+                                   
+                                <option value="Not Active"  >Not Active</option>
+                         
+                                 <option value="Active"  >Active</option>
+                                 
+                              
+                              </select>
                             </div>
                           </div>
                           <!--/span-->

@@ -47,11 +47,20 @@
                     <div class="mb-3">
                       <label for="exampleInputEmail1" class="form-label">PhoneNumber</label>
                       <input type="number" class="form-control" name="PhoneNumber" name="phone_number" maxlength="10">
-                        <div id="phone_error" style="color: red;"></div>
+    @if($errors->has('phone_error'))
+    <div >
+        <p style="color: red;">{{ $errors->first('phone_error') }}</p>
+    </div>
+@endif
                     </div>
                     <div class="mb-4">
                       <label for="exampleInputPassword1" class="form-label">Password</label>
                       <input type="password"  name="password" class="form-control" id="exampleInputPassword1">
+     @if($errors->has('password_error'))
+    <div >
+        <p style="color: red;">{{ $errors->first('password_error') }}</p>
+    </div>
+@endif
                     </div>
                  
                       <a class="text-primary fw-medium" href="authentication-forgot-password.html">Forgot Password ?</a>

@@ -30,7 +30,11 @@
                       @foreach($type as $type)
                       <tr>
                         <td>{{$type->MembershipType}}</td>
-                        <td>{{$type->IsActive}}</td>
+                        @if($type->IsActive==1)
+                        <td>Active</td>
+                        @else
+                        <td>Not Active</td>
+                        @endif
                         <td>{{$type->created_at}}</td>
                         <td><a href="{{route ('EditMembershipType',$type->id)}}" class="btn btn-secondary">Edit</a>
                              <a href="#" onclick="deleteEmployee({{ $type->id }})" class="btn btn-danger">Delete</a>
