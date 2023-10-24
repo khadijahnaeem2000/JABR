@@ -47,48 +47,53 @@
                           <div class="col-md-6">
                             <div class="mb-3">
                               <label>Deposit Amount</label>
-                              <select name="DepositAmount" class="form-control" >
-                                @foreach($amount as $amount)
-                                <option value="{{$amount->id}}">{{$amount->DepositeAmount}}</option>
+                     <input type="number" name="DepositAmount" value="{{$wallet->DepositAmount}}"class="form-control"  />
+                            </div>
+                          </div>
+                          <!--/span-->
+                       
+                     
+                     <div class="col-md-6">
+                            <div class="mb-3">
+                              <label>Deposit To</label>
+                     
+                                    <select name="DepositTo" class="form-control" >
+                                @foreach($purpose as $purpose)
+                                <option value="{{$purpose->id}}">{{$purpose->DepositePurpose}}</option>
                                 @endforeach
                               </select>
                             </div>
                           </div>
-                          <!--/span-->
-                          <div class="col-md-6">
+                       </div>
+    <div class="row">
+                          
+                           <div class="col-md-6">
                             <div class="mb-3">
-                              <label>Status</label>
-                            
-                                   <select name="Status"  class="form-control" >
+                              <label>Deposit From</label>
                            
-                                   
-                                <option value="Not Active"  >Not Active</option>
-                         
-                                 <option value="Active"  >Active</option>
-                                 
-                              
+                                   <select name="DepositFrom" class="form-control" >
+                                @foreach($amount as $amount)
+                                <option value="{{$amount->id}}">{{$amount->DepositePurpose}}</option>
+                                @endforeach
                               </select>
                             </div>
                           </div>
-                          <!--/span-->
-                        </div>
-                     
-                    <div class="row">
-                          <div class="col-md-6">
+                            <div class="col-md-6">
                             <div class="mb-3">
-                              <label>Deposit To</label>
-                              <input type="date" name="DepositTo" value="{{$trans->DepositTo}}"  class="form-control"  />
+
+                               <input type="text" hidden name="Status" value="pending"class="form-control"  />
+                                
                             </div>
                           </div>
-                          <!--/span-->
-                          <div class="col-md-6">
-                            <div class="mb-3">
-                              <label>Deposit From</label>
-                              <input type="date" name="DepositFrom" value="{{$trans->DepositFrom}}"  class="form-control"  />
-                            </div>
-                          </div>
+                         </div>
                           <!--/span-->
                         </div>
+                          <!--/span-->
+                      
+
+                          <!--/span-->
+                        </div>
+                        
                       <div class="form-actions">
                         <div class="card-body border-top">
                           <button

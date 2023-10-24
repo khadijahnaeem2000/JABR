@@ -18,6 +18,7 @@
                   
                       <hr />
                       <div class="card-body">
+                           <a href="{{route('DepositAmount')}}" class="btn btn-secondary" style="float:right">Back</a>
                          <div class="row">
                           <div class="col-md-6">
                             <div class="mb-3">
