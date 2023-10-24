@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Api;
 use Illuminate\Validation\ValidationException;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\WalletTransaction;
+use App\Models\Wallet;
 
 class WalletController extends Controller
 {
@@ -11,39 +13,65 @@ class WalletController extends Controller
 
 public function store(Request $request)
 {
-    $data = $request->validate([
-        'UserId' => 'nullable',
-        'DepositPurpose' => 'nullable',
-        'Amount' => 'nullable',
-        'Status' => 'nullable',
-    ]);
+   $userid=$request->json('userId');
+   $transferfrom=$reqyest->json('transferFrom');
+   $amount=$request->json('amount');
+   $transferTo=$request->json('TransferTo');
 
-    // Check if any required field is missing
-    if (empty($data['UserId']) || empty($data['DepositPurpose']) || empty($data['Amount'])) {
-        return response()->json(['message' => 'Required field(s) missing.'], 400); // 400 Bad Request
-    }
+   $missingFields = [];
 
-    return Wallet::create($data);
-      return response()->json(['message' => 'Successfull,WE wil review your Wallet']);
+if (empty($userid)) {
+    $missingFields[] = 'UserId';
+}
+if (empty($transferfrom)) {
+    $missingFields[] = 'TransferFrom';
+}
+if (empty($amount)) {
+    $missingFields[] = 'amount';
+}
+if (empty($transferTo)) {
+    $missingFields[] = 'TransferTo';
 }
 
-public function update(Request $request, Wallet $wallet)
+// If any fields are missing, return a response
+if (!empty($missingFields)) {
+    return response()->json(['status' => 'Unsuccessful', 'message' => 'The following fields are empty: ' . implode(', ', $missingFields)]);
+}
+
+$wallet=Wallet::where('userId',$userid)->where('DepositPurpose',$transferfrom)->whereNotNull('amount')->exists();
+if($wallet)
 {
-    $data = $request->validate([
-        'UserId' => 'nullable',
-        'DepositPurpose' => 'nullable',
-        'Amount' => 'nullable',
-        'Status' => 'nullable',
-    ]);
+    $wallet=Wallet::where('userId',$userid)->where('DepositPurpose',$transferfrom)->whereNotNull('amount')->select('amount')->first();
+   
+    if($amount>$wallet)
+    {
+        return response()->json(['status' => 'Unsuccessful', 'message' => 'amount is greater than what you have in you wallet !']);
 
-    // Check if any required field is missing
-    if (empty($data['UserId']) && empty($data['DepositPurpose']) && empty($data['Amount'])) {
-        return response()->json(['message' => 'No fields to update.'], 400); // 400 Bad Request
     }
+   $trans=new  WalletTransaction();
+   $trans->userId=$userid;
+   $trans->DepositFrom=$transferfrom;
+   $trans->DepositeTO=$transferTo;
+   $trans->DepositAmount=$amount;
+   $trans->status="pending";
+   $trans->save();
+   return response()->json(['status' => 'Successful', 'message' => 'staus is pending willbe approved soon']);
 
-    $wallet->update($data);
+}
+else{
+    return response()->json(['status' => 'Unsuccessful', 'message' => 'you have no wallet ! first make deposite !']);
+}
 
-    return response()->json(['message' => 'Successfully updated. We will review your Wallet']);
+
+}
+
+public function wallettransaction()
+{
+  $userid=$request->json('userId');
+  $transaction= WalletTransaction::where('userId',$userid)->get();
+  return response()->json(['status' => 'Successful', 'message' => 'staus is pending willbe approved soon']);
+
+
 }
 
 }
