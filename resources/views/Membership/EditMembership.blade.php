@@ -18,6 +18,7 @@
                   
                       <hr />
                       <div class="card-body">
+                           <a href="{{route('Membership')}}" class="btn btn-secondary" style="float:right">Back</a>
                          <div class="row">
                           <div class="col-md-6">
                             <div class="mb-3">
@@ -152,7 +153,7 @@
                     <div class="col-md-12">
                       <div class="mb-3">
                         <label>Package Validity</label>
-                        <input type="date" name="PackageValidity" class="form-control"value="{{$membership->PackageValidity}}" />
+                        <input type="month" name="PackageValidity" class="form-control"value="{{$membership->PackageValidity}}" />
                       </div>
                     </div>
                      

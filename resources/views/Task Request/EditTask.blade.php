@@ -8,36 +8,28 @@
                                                 ---------------- -->
                 <div class="card">
                   <div class="card-header bg-primary">
-                    <h4 class="mb-0 text-white">Add Wallet Transaction</h4>
+                    <h4 class="mb-0 text-white">Edit Task</h4>
                     
                   </div>
                   
-                  <form action="{{route('StoreWalletTrans')}}" method="post"  >
+                  <form action="{{route('UpdateTask',$task->id)}}" method="post"  enctype="multipart/form-data">
                     @csrf
-                   
+                        @method('put')
                   
                       <hr />
                       <div class="card-body">
+                         <a href="{{route('Task')}}" class="btn btn-secondary" style="float:right">Back</a>
                          <div class="row">
                           <div class="col-md-6">
                             <div class="mb-3">
-                              <label>User </label>
-                               <select name="UserId" class="form-control" >
-                                @foreach($user as $user)
-                                <option value="{{$user->id}}">{{$user->Name}}</option>
-                                @endforeach
-                              </select>
+                              <label>Task Name</label>
+                              <input type="text" name="TaskName" value="{{$task->TaskName}}" class="form-control" />
                             </div>
                           </div>
                              <div class="col-md-6">
                             <div class="mb-3">
-                              <label>Wallet </label>
-                              <select name="WalletId" class="form-control" >
-                                @foreach($wallet as $wallet)
-                              
-                                <option value="{{$wallet->id}}">{{$wallet->user->Name}}</option>
-                                @endforeach
-                              </select>
+                              <label>Description</label>
+                              <input type="text" name="Description" value="{{$task->Description}}" class="form-control"  />
                             </div>
                           </div>
                           <!--/span-->
@@ -47,29 +39,10 @@
                         <div class="row">
                           <div class="col-md-6">
                             <div class="mb-3">
-                              <label>Deposit Amount</label>
-                               <input type="number" name="DepositAmount" value=""class="form-control"  />
-                        
-                            </div>
-                          </div>
-                          <!--/span-->
-                          <div class="col-md-6">
-                            <div class="mb-3">
-                           
-                              <input type="text" name="Status" value="pending" hidden class="form-control"  />
-                            </div>
-                          </div>
-                          <!--/span-->
-                        </div>
-                     
-                    <div class="row">
-                          <div class="col-md-6">
-                            <div class="mb-3">
-                              <label>Deposit To</label>
-                     
-                                    <select name="DepositTo" class="form-control" >
-                                @foreach($purpose as $purpose)
-                                <option value="{{$purpose->id}}">{{$purpose->DepositePurpose}}</option>
+                              <label>Membership Type</label>
+                              <select name="MembershipTypeId" class="form-control" >
+                                @foreach($type as $type)
+                                <option value="{{$type->id}}">{{$type->MembershipType}}</option>
                                 @endforeach
                               </select>
                             </div>
@@ -77,17 +50,60 @@
                           <!--/span-->
                           <div class="col-md-6">
                             <div class="mb-3">
-                              <label>Deposit From</label>
-                           
-                                   <select name="DepositFrom" class="form-control" >
-                                @foreach($amount as $amount)
-                                <option value="{{$amount->id}}">{{$amount->DepositePurpose}}</option>
+                              <label>Link</label>
+                              <input type="text" name="Link" value="{{$task->Link}}"  class="form-control"  />
+                            </div>
+                          </div>
+                          <!--/span-->
+                        </div>
+                     
+                        <div class="row">
+                          <div class="col-md-6">
+                            <div class="mb-3">
+                              <label>Amount</label>
+                              <input type="number" name="Amount" value="{{$task->Amount}}" class="form-control" />
+                            </div>
+                          </div>
+                          <!--/span-->
+                            <div class="col-md-6">
+                            <div class="mb-3">
+                              <label>Level</label>
+                              <select name="Level" class="form-control" >
+                            
+                                <option value="Level One">Level One</option>
+                             <option value="Level Two">Level Two</option>
+                              </select>
+                            </div>
+                          </div>
+                               
+                              <input type="text" name="Status" value="Active" class="form-control" hidden />
+                          
+                          <!--/span-->
+                        </div>
+                          <div class="row">
+                          <div class="col-md-6">
+                            <div class="mb-3">
+                              <label>Commission</label>
+                              <input type="number" name="Commission" value="{{$task->Commission}}" class="form-control" />
+                            </div>
+                          </div>
+                             <div class="col-md-6">
+                            <div class="mb-3">
+                              <label>Membership</label>
+                          <select name="MembershipId" class="form-control" >
+                                @foreach($member as $member)
+                                <option value="{{$member->id}}" @if($task->id == $member->id) selected @endif>{{$member->MemberName}}</option>
                                 @endforeach
                               </select>
                             </div>
                           </div>
                           <!--/span-->
+                          <!--/span-->
                         </div>
+               
+                  
+                     
+                    </div>
                       <div class="form-actions">
                         <div class="card-body border-top">
                           <button

@@ -70,7 +70,7 @@ $existingEmailUser = User::where('Email', $request->Email)->first();
     // Perform any additional actions, such as sending a welcome email
     
     // Redirect to a success page or another appropriate route
-   return redirect()->to('Layouts.main');
+   return view('Layouts.main')->with('status', 'Registration successful');
 }
 
 

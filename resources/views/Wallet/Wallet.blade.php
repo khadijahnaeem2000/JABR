@@ -32,7 +32,7 @@
                     <tbody>
                       @foreach($wallet as $wallet)
                       <tr>
-                         @if($wallet->UserId)
+                         @if( $wallet &&$wallet->user)
                         <td>{{$wallet->user->Name}}</td>
                         @else
                         <td>Null</td>
@@ -40,11 +40,13 @@
                        
                         
                       
-                        @if($wallet->DepositPurpose )
+                        @if($wallet  && $wallet->depositPurpose )
                         <td>{{$wallet->depositPurpose->DepositePurpose}}</td>
                         @else
                         <td>Null</td>
                         @endif
+   
+
                         <td>{{$wallet->Amount}}</td>
                          <td>{{$wallet->Status}}</td>
                         <td><a href="{{route ('EditWallet',$wallet->id)}}" class="btn btn-secondary">Edit</a>

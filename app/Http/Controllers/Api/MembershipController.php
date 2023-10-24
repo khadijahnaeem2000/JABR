@@ -20,7 +20,7 @@ class MembershipController extends Controller
     public function Memberships(Request $request)
     {
         
-        $id=$request->json('id');
+        $id=$request->json('type');
         $data=Membership::where('MemberShipType',$id)->get();
         return response()->json(['status' => 'Successfull', 'data' => $data]); 
     }

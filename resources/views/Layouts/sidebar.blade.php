@@ -147,6 +147,14 @@
                       <span class="hide-menu">Task Earning Detail</span>
                     </a>
                   </li>
+                   <li class="sidebar-item">
+                    <a href="{{route('UploadTask')}}"class="sidebar-link">
+                      <div class="round-16 d-flex align-items-center justify-content-center">
+                        <i class="ti ti-circle"></i>
+                      </div>
+                      <span class="hide-menu">Upload Task</span>
+                    </a>
+                  </li>
                 </ul>
               </li>
                <li class="sidebar-item">
