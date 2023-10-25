@@ -4,6 +4,7 @@
    <div class="card">
                 <div class="border-bottom title-part-padding">
                   <h4 class="card-title mb-0">Wallet Transaction</h4>
+      
 <a class="btn btn-primary" style="float:right" href="{{route('AddWalletTrans')}}">Add Wallet Transaction</a>
                 </div>
                 <div class="card-body">
@@ -38,21 +39,19 @@
                     <tbody>
                       @foreach($trans as $trans)
                       <tr>
-                       @if($trans->UserId)
+                       @if( $trans && $trans->user)
             <td>{{ $trans->user->Name }}</td>
         @else
             <td>Null</td>
         @endif
                         
-                          @if($trans->DepositAmount )
-                            <td>{{$trans->depositamount->DepositeAmount}}</td>
                         
-                        @else
-                      <td>Null</td>
-                        @endif
+                            <td>{{$trans->DepositAmount}}</td>
+                        
+                      
 
                     <td>
-            @if ($trans->WalletId)
+            @if ($trans && $trans->wallet)
                 @if ($trans->wallet->UserId)
                     {{ $trans->wallet->user->Name }}
                 @else
@@ -62,11 +61,34 @@
                 Null
             @endif
         </td>
-                       <td>{{$trans->DepositFrom}}</td>
-                        <td>{{$trans->DepositTo}}</td>
-                    
+                       <td>
+                        @if($trans && $trans->To)
+                       {{$trans->To->DepositePurpose}}
+                      @else
+                      null
+                      @endif
+                      </td>
+                        <td>
+                          @if($trans && $trans->To)
+                          {{$trans->To->DepositePurpose}}
+                        @else
+                        null
+                        @endif
+                        </td>
+                    <td>@if ($trans->Status == 'pending')
 
-                         <td>{{$trans->Status}}</td>
+        <form action="{{ route('approvedWallet', ['trans' => $trans->id]) }}" method="POST">
+            @csrf
+            @method('PUT') {{-- Use the appropriate HTTP method, e.g., PUT or POST --}}
+            
+            {{-- Add your form fields here, e.g., input fields or other form elements --}}
+            
+            <button type="submit" class="btn btn-danger" >Pending</button>
+        </form>
+
+    @else
+     {{$trans->Status}}
+@endif</td>
                         <td><a href="{{route ('EditWalletTrans',$trans->id)}}" class="btn btn-secondary">Edit</a>
                              <a href="#" onclick="deleteEmployee({{ $trans->id }})" class="btn btn-danger">Delete</a>
                             <form  id="employee-edit-action-{{ $trans->id }}" action="{{ route('DeleteWalletTrans',$trans->id) }}" method="post">
@@ -74,12 +96,22 @@
                                 @method('delete')
                             </form>
                        </td>
+                     
                       </tr>
                       @endforeach
                     </tbody>
+                                @if(session('success'))
+   
+        <p style="color: green;">{{ session('success') }}</p>
+  
+@elseif(session('error'))
+        <p style="color: red;">{{ session('error') }}</p>
+
+@endif
                   </table>
                 </div>
               </div>
+              
     <script>
         function deleteEmployee(id) {
             if (confirm("Are you sure you want to delete?")) {

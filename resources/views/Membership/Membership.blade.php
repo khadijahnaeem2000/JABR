@@ -50,7 +50,12 @@
                             @endif
                         </td>
                         <td>
-                          {{$member->MemberShipType}}
+                          @if($member && $member->type)
+    {{$member->type->MembershipType}}
+@else
+    null
+@endif
+
                         </td>
                         <td>
                           {{$member->price}}

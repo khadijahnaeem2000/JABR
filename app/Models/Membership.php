@@ -8,4 +8,18 @@ use Illuminate\Database\Eloquent\Model;
 class Membership extends Model
 {
     use HasFactory;
+          public function type()
+    {
+        return $this->belongsTo(MembershipType::class, 'MemberShipType');
+    }
+    protected $fillable = [
+   'id',
+   'MemberName',
+    'MemberShipType',
+         
+   'price',
+   'Details',
+    'IsActive',
+          
+    ];
 }

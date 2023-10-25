@@ -12,13 +12,15 @@ class WalletTransaction extends Model
     {
         return $this->belongsTo(User::class, 'UserId');
     }
-     public function depositamount()
-    {
-        return $this->belongsTo(DepositAmount::class, 'DepositAmount');
-    }
+    
       public function wallet()
     {
         return $this->belongsTo(Wallet::class, 'WalletId');
+    }
+       
+      public function To()
+    {
+        return $this->belongsTo(DepositePurpose::class, 'DepositTo');
     }
      protected $fillable=[
           'id',

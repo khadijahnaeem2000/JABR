@@ -151,7 +151,7 @@
                     <div class="col-md-12">
                       <div class="mb-3">
                         <label>Package Validity</label>
-                        <input type="date" name="PackageValidity" class="form-control" />
+                        <input type="month" name="PackageValidity" class="form-control" />
                       </div>
                     </div>
                      

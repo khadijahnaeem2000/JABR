@@ -15,7 +15,7 @@ use App\Http\Controllers\TaskEarningDetailController;
 */
 // layouts
 Route::get('/', function () {
-    return view('Layouts.main');
+    return view('Auth.register');
 });
 
 Route::get('dashboard',[Dashboard::class,'dashboard'])->name('dashboard');
@@ -69,13 +69,24 @@ Route::get('AddWalletTrans',[App\Http\Controllers\WalletTransactionController::c
 Route::post('StoreWalletTrans',[App\Http\Controllers\WalletTransactionController::class,'store'])->name('StoreWalletTrans');
 Route::get('EditWalletTrans/{id}',[App\Http\Controllers\WalletTransactionController::class,'edit'])->name('EditWalletTrans');
 Route::put('UpdateWalletTrans/{id}',[App\Http\Controllers\WalletTransactionController::class,'update'])->name('UpdateWalletTrans');
-Route::delete('DeleteWalletTrans/{id}',[App\Http\Controllers\WalletTransactionController::class,'destroy'])->name('DeleteWalletTrans');
+Route::get('UploadTask',[App\Http\Controllers\UploadTaskController::class,'index'])->name('UploadTask');
+Route::delete('DeleteWalletTrans/{id}',[App\Http\Controllers\UploadTaskController::class,'destroy'])->name('DeleteWalletTrans');
+
+Route::put('/approvedWallet/{trans}',[App\Http\Controllers\WalletTransactionController::class,'approvedWallet'])->name('approvedWallet');
+
 //Withdraw
 Route::get('Withdraw',[App\Http\Controllers\WithdrawController::class,'index'])->name('Withdraw');
 
 //Task Request
 Route::get('Task',[App\Http\Controllers\TaskController::class,'index'])->name('Task');
+Route::get('AddTask',[App\Http\Controllers\TaskController::class,'create'])->name('AddTask');
+Route::post('StoreTask',[App\Http\Controllers\TaskController::class,'store'])->name('StoreTask');
+Route::get('EditTask/{id}',[App\Http\Controllers\TaskController::class,'edit'])->name('EditTask');
+Route::put('UpdateTask/{id}',[App\Http\Controllers\TaskController::class,'update'])->name('UpdateTask');
+Route::delete('DeleteTask/{id}',[App\Http\Controllers\TaskController::class,'destroy'])->name('DeleteTask');
+Route::delete('DeleteUploadTask/{id}',[App\Http\Controllers\UploadTaskController::class,'destroy'])->name('DeleteUploadTask');
 
+Route::put('/approvedTask/{upload}',[App\Http\Controllers\UploadTaskController::class,'approvedTask'])->name('approvedTask');
 //Order
 Route::get('Order',[App\Http\Controllers\OrderController::class,'index'])->name('Order');
 Route::get('OrderType',[App\Http\Controllers\OrderTypeController::class,'index'])->name('OrderType');

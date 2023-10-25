@@ -5,6 +5,12 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\LoginController;
 use App\Http\Controllers\Api\MembershipController;
 use App\Http\Controllers\Api\DepositeController;
+use App\Http\Controllers\Api\WalletController;
+use App\Http\Controllers\Api\TaskController;
+use App\Http\Controllers\Api\UploadTaskController;
+use App\Http\Controllers\Api\UserController;
+use App\Http\Controllers\Api\RefferalLinkController;
+use App\Http\Controllers\Api\InviteFriend;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -29,4 +35,18 @@ Route::post('SendDepositeDetails',[DepositeController::class,'SendDepositeDetail
 Route::get('DepositePurpose',[DepositeController::class,'DepositePurpose']);
 Route::get('AllBankInformation',[DepositeController::class,'BankDetails']);
 
+//Users
+Route::post('AllUsers',[UserController::class,'AllUsers']);
 
+//Task
+Route::post('AllTask',[TaskController::class,'AllTask']);
+Route::post('UploadTask',[UploadTaskController::class,'UploadTask']);
+Route::post('AllUploadTask',[UploadTaskController::class,'AllUploadTask']);
+
+//Refferal Link
+Route::post('AllRefferalLink',[RefferalLinkController::class,'AllRefferalLink']);
+
+
+//Invite Friend 
+
+Route::post('generateReferralCode',[InviteFriend::class,'generateReferralCode']);
