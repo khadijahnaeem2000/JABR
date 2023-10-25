@@ -49,8 +49,9 @@ class UploadTaskController extends Controller
 public function AllUploadTask(Request $request)
 {
     $UserId = $request->json('UserId');
-    
-    $data = UploadTask::where('Status', 'Active')
+    $user = UploadTask::where('UserId', $UserId)->exists();
+    if($user){
+  $data = UploadTask::where('Status', 'Active')
                 ->where('UserId', $UserId)
                 ->select('id', 'TaskId', 'UserId', 'Image', 'Status')
                 ->get();
@@ -72,6 +73,11 @@ public function AllUploadTask(Request $request)
     }
 
     return response()->json(['status' => 'Successful', 'data' => $dataWithTaskNames]);
+    }
+    else{
+         return response()->json(['error' => 'Unsuccessful user doesnot exsit']);
+    }
+  
 }
 
 }
