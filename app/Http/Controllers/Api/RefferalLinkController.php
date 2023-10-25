@@ -11,7 +11,11 @@ class RefferalLinkController extends Controller
     public function AllRefferalLink(Request $request)
 {
     $UserId = $request->json('UserId');
-    
+
+    $user = RefferalLink::where('UserId', $UserId)->exists();
+
+    if($user){
+ 
     $data = RefferalLink::where('UserId', $UserId)
                 ->select('id', 'RefferalId', 'UserId', 'RefferalCode','JoinDate', 'Status')
                 ->get();
@@ -33,5 +37,9 @@ class RefferalLinkController extends Controller
     }
 
     return response()->json(['status' => 'Successful', 'data' => $dataWithRefferalNames]);
+    }
+   else{
+     return response()->json(['error' => 'Unsuccessful user doesnot exist']);
+   }
 }
 }

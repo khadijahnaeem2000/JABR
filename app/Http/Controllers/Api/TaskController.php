@@ -11,13 +11,20 @@ class TaskController extends Controller
    public function AllTask(Request $request)
 {
     $MembershipId = $request->json('MembershipId');
-    
-    $data = Task::where('Status', 'Active')
-                ->where('MembershipId', $MembershipId)
-                ->select('id', 'MembershipId', 'Description', 'Link', 'Amount', 'Level', 'Commission', 'MembershipTypeId', 'Status', 'TaskName')
-                ->get();
+    $member = Task::where('MembershipId', $MembershipId)->exists();
+    if($member){
 
-    return response()->json(['status' => 'Successful', 'data' => $data]);
+        $data = Task::where('Status', 'Active')
+                    ->where('MembershipId', $MembershipId)
+                    ->select('id', 'MembershipId', 'Description', 'Link', 'Amount', 'Level', 'Commission', 'MembershipTypeId', 'Status', 'TaskName')
+                    ->get();
+    
+        return response()->json(['status' => 'Successful', 'data' => $data]);
+    }
+    else{
+         return response()->json(['error' => 'Unsuccessful member doesnot exist']);
+    }
+    
 }
 
 }
