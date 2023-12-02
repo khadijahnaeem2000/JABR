@@ -90,7 +90,7 @@ class LetterHeadController extends Controller
         ]);
         if ( $validator->passes() ) {
             $letter = LetterHead::find($id);
-             $letter->letterName = $request->letterName;
+             $letter->Name = $request->Name;
             $letter->Address = $request->Address;
             $letter->ContactInformation = $request->ContactInformation;
             $letter->LegalInformation = $request->LegalInformation;

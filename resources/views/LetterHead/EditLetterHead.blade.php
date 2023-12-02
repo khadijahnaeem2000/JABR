@@ -15,7 +15,7 @@
                   <form action="{{route('UpdateLetterHead',$letter->id)}}" method="post"  enctype="multipart/form-data">
                     @csrf
                    
-                  
+                  @method('put')
                       <hr />
                       <div class="card-body">
                          <div class="row">
@@ -39,30 +39,32 @@
                           <div class="col-md-6">
                             <div class="mb-3">
                               <label>Contact Information</label>
-                            <input type="text" name="ContactInformation" value="{" class="form-control"  />
+                            <input type="text" name="ContactInformation" value="{{$letter->ContactInformation}}" class="form-control"  />
                             </div>
                           </div>
                           <!--/span-->
-                          <div class="col-md-6">
+                          <div class="col-md-3">
                             <div class="mb-3">
                               <label>Letter Head</label>
                               <input type="file" name="Image"  class="form-control"  />
                             </div>
                           </div>
+                             <div class="col-md-3">        <img  id="imagePreview"src="{{ url('uploads/letter/'.$letter->Image) }}" alt="" width="100" height="100" class="mt-3" style="border-radius: 50%;"></div>
+                          <!--/span-->
                           <!--/span-->
                         </div>
                               <div class="row">
                           <div class="col-md-6">
                             <div class="mb-3">
                               <label>Additional Information</label>
-                            <input type="text" name="Additional Information" class="form-control"  />
+                            <input type="text" name="AdditionalInformation" value="{{$letter->AdditionalInformation}}"class="form-control"  />
                             </div>
                           </div>
                           <!--/span-->
                           <div class="col-md-6">
                             <div class="mb-3">
                               <label>Legal Information</label>
-                              <input type="text" name="LegalInformation"  class="form-control"  />
+                              <input type="text" name="LegalInformation" value="{{$letter->LegalInformation}}" class="form-control"  />
                             </div>
                           </div>
                           <!--/span-->

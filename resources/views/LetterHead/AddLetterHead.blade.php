@@ -55,7 +55,7 @@
                           <div class="col-md-6">
                             <div class="mb-3">
                               <label>Additional Information</label>
-                            <input type="text" name="Additional Information" class="form-control"  />
+                            <input type="text" name="AdditionalInformation" class="form-control"  />
                             </div>
                           </div>
                           <!--/span-->

@@ -4,7 +4,7 @@
    <div class="card">
                 <div class="border-bottom title-part-padding">
                   <h4 class="card-title mb-0">Letter Head</h4>
-                   <a class="btn btn-primary" style="float:right" href="{{route('AddLetterHead')}}">Add Bank Information</a>
+                   <a class="btn btn-primary" style="float:right" href="{{route('AddLetterHead')}}">Add LetterHead</a>
                 </div>
                 <div class="card-body">
                  
@@ -43,7 +43,12 @@
                         </td>
                      
                         <td>
-                        {{$letter->Image}}
+                      
+                         @if($letter->Image != '' && file_exists(public_path().'/uploads/letter/'.$letter->Image))
+                            <img src="{{ url('uploads/letter/'.$letter->Image) }}" alt="" width="40" height="40" class="rounded-circle">
+                            @else
+                            <img src="{{ url('images/no-image.png') }}" alt="" width="40" height="40" class="rounded-circle">
+                            @endif
                         </td>
                         <td>
                     {{$letter->Address}}
