@@ -199,7 +199,7 @@
                           <div class="col-md-4">
                             <div class="mb-3">
                               <label class="control-label">CNIC</label>
-                              <input type="number"  maxlength="13"id="CNIC" name="CNIC" class="form-control" required placeholder="12345-6789012-3"/>
+                              <input type="text"  maxlength="13" id="CNIC" name="CNIC" class="form-control" required placeholder="12345-6789012-3"/>
                             </div>
                              @error('CNIC')
                                 <span class="invalid-feedback" role="alert">

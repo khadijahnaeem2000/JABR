@@ -1,8 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
+use Illuminate\Support\Facades\Auth;
 use App\Models\MembershipType;
 use App\Models\Membership;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
@@ -12,10 +14,16 @@ class MembershipController extends Controller
      * Display a listing of the resource.
      */
     public function index()
-    {
+    {  $user = $this->customAuthenticationLogic();
+
+        if ($user) {
          $member = Membership::all();
-         
+            
         return view('Membership.Membership',compact('member'));
+        }
+        else{
+            return view('Auth.login');
+        }
     }
 
     /**
@@ -156,5 +164,21 @@ class MembershipController extends Controller
         $member->delete();
       
         return redirect()->to('/Membership');
+    }
+        private function customAuthenticationLogic()
+    {
+        // Implement your custom authentication logic here using your DB queries
+        // For example:
+        
+        $email = session('Email') ;
+    
+        // Get the email from the request or session
+        // Get the password from the request or session
+
+        // Query your database to authenticate the user
+        $user = DB::table('users')
+            ->where('Email', $email)->first();
+
+        return $user;
     }
 }

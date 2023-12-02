@@ -7,6 +7,7 @@ use App\Models\DepositAmount;
 use App\Models\User;
 use App\Models\Wallet;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 
 class WalletTransactionController extends Controller
@@ -16,9 +17,16 @@ class WalletTransactionController extends Controller
         return $this->belongsTo(User::class, 'user_id');
     }
   public function index(){
+    $user = $this->customAuthenticationLogic();
+
+        if ($user) {
         $trans = WalletTransaction::all();
       $wallets = Wallet::with('user')->get();
         return view('Wallet.WalletTrans',compact('trans','wallets'));
+        }
+        else{
+return view('Auth.login');
+        }
     }
 
 
@@ -134,8 +142,8 @@ public function approvedWallet(Request $request, WalletTransaction $trans)
     // Check if the user ID and deposit purpose exist in the wallet table
 $wallet = Wallet::where('UserId', $trans->UserId)->first();
 
-$wallet = Wallet::where('DepositFrom', $trans->DepositFrom)->first();
-    if ( Wallet::where('UserId', $trans->UserId)->where('DepositFrom', $trans->DepositFrom)->exists()) {
+$wallet = Wallet::where('DepositPurpose', $trans->DepositPurpose)->first();
+    if ( Wallet::where('UserId', $trans->UserId)->where('DepositPurpose', $trans->DepositPurpose)->exists()) {
       
      
         // Calculate the new amount
@@ -161,5 +169,21 @@ $wallet = Wallet::where('DepositFrom', $trans->DepositFrom)->first();
         return redirect()->back()->with('error', 'Wallet has been made');
     }
 }
+       private function customAuthenticationLogic()
+    {
+        // Implement your custom authentication logic here using your DB queries
+        // For example:
+        
+        $email = session('Email') ;
+    
+        // Get the email from the request or session
+        // Get the password from the request or session
+
+        // Query your database to authenticate the user
+        $user = DB::table('users')
+            ->where('Email', $email)->first();
+
+        return $user;
+    }
 
 }

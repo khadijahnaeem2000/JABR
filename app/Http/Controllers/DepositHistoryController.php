@@ -1,9 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\Auth;
 use App\Models\DepositHistory;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class DepositHistoryController extends Controller
 {
@@ -11,8 +12,14 @@ class DepositHistoryController extends Controller
      * Display a listing of the resource.
      */
     public function index()
-    {
+    {  $user = $this->customAuthenticationLogic();
+
+        if ($user) {
         return view('Deposit.DepositHistory');
+         }
+         else{
+            return view('Auth.login');
+         }
     }
 
     /**
@@ -61,5 +68,21 @@ class DepositHistoryController extends Controller
     public function destroy(DepositHistory $depositHistory)
     {
         //
+    }
+        private function customAuthenticationLogic()
+    {
+        // Implement your custom authentication logic here using your DB queries
+        // For example:
+        
+        $email = session('Email') ;
+    
+        // Get the email from the request or session
+        // Get the password from the request or session
+
+        // Query your database to authenticate the user
+        $user = DB::table('users')
+            ->where('Email', $email)->first();
+
+        return $user;
     }
 }

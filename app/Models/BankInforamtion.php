@@ -8,4 +8,14 @@ use Illuminate\Database\Eloquent\Model;
 class BankInforamtion extends Model
 {
     use HasFactory;
+           public function deposite()
+    {
+        return $this->belongsTo(DepositePurpose::class, 'DepositePurpose');
+    }
+    protected $fillable =[
+        'BankName',
+        'AccountTitle',
+        'AccountNumber',
+        'DepositePurpose'
+    ];
 }
