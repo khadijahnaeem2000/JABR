@@ -14,7 +14,7 @@ class WalletController extends Controller
 public function store(Request $request)
 {
    $userid=$request->json('userId');
-   $transferfrom=$reqyest->json('transferFrom');
+   $transferfrom=$request->json('transferFrom');
    $amount=$request->json('amount');
    $transferTo=$request->json('TransferTo');
 
@@ -43,7 +43,7 @@ if($wallet)
 {
     $wallet=Wallet::where('userId',$userid)->where('DepositPurpose',$transferfrom)->whereNotNull('amount')->select('amount')->first();
    
-    if($amount>$wallet)
+    if($amount>$wallet->amount)
     {
         return response()->json(['status' => 'Unsuccessful', 'message' => 'amount is greater than what you have in you wallet !']);
 
@@ -65,10 +65,10 @@ else{
 
 }
 
-public function wallettransaction()
+public function wallettransaction(Request $request)
 {
-  $userid=$request->json('userId');
-  $transaction= WalletTransaction::where('userId',$userid)->get();
+  $UserId=$request->json('UserId');
+  $transaction= WalletTransaction::where('UserId',$UserId)->get();
   return response()->json(['status' => 'Successful', 'message' => 'staus is pending willbe approved soon']);
 
 

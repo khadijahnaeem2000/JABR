@@ -35,6 +35,10 @@ Route::post('SendDepositeDetails',[DepositeController::class,'SendDepositeDetail
 Route::get('DepositePurpose',[DepositeController::class,'DepositePurpose']);
 Route::get('AllBankInformation',[DepositeController::class,'BankDetails']);
 
+//wallet
+Route::post('Wallet',[WalletController::class,'store']);
+Route::post('wallettransaction',[WalletController::class,'wallettransaction']);
+
 //Users
 Route::post('AllUsers',[UserController::class,'AllUsers']);
 

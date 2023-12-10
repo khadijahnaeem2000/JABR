@@ -38,7 +38,7 @@ class UploadTaskController extends Controller
             $save= new UploadTask();
             $save->TaskId=$TaskId;
             $save->UserId=$UserId;
-                $save->Status=$Status;
+                $save->Status='pending';
           
             $save->save();
             return response()->json(['message' => 'Successfull,WE wil review your tasks']);
@@ -51,7 +51,7 @@ public function AllUploadTask(Request $request)
     $UserId = $request->json('UserId');
     $user = UploadTask::where('UserId', $UserId)->exists();
     if($user){
-  $data = UploadTask::where('Status', 'Active')
+  $data = UploadTask::where('Status', 'apporoved')
                 ->where('UserId', $UserId)
                 ->select('id', 'TaskId', 'UserId', 'Image', 'Status')
                 ->get();

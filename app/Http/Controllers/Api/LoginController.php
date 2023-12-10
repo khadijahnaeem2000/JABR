@@ -66,7 +66,7 @@ class LoginController extends Controller
    public function SignUp(Request $request)
    {
 
-    $Name = $request->json('Name');
+ $Name = $request->json('Name');
 $LastName = $request->json('LastName');
 $PhoneNumber = $request->json('PhoneNumber'); // Corrected field name
 $CNIC = $request->json('CNIC'); // Corrected field name

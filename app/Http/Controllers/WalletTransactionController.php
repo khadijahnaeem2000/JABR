@@ -134,8 +134,8 @@ public function approvedWallet(Request $request, WalletTransaction $trans)
     // Check if the user ID and deposit purpose exist in the wallet table
 $wallet = Wallet::where('UserId', $trans->UserId)->first();
 
-$wallet = Wallet::where('DepositFrom', $trans->DepositFrom)->first();
-    if ( Wallet::where('UserId', $trans->UserId)->where('DepositFrom', $trans->DepositFrom)->exists()) {
+$wallet = Wallet::where('DepositPurpose', $trans->DepositPurpose)->first();
+    if ( Wallet::where('UserId', $trans->UserId)->where('DepositPurpose', $trans->DepositPurpose)->exists()) {
       
      
         // Calculate the new amount
