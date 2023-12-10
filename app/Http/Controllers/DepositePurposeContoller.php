@@ -3,14 +3,23 @@
 namespace App\Http\Controllers;
 use App\Models\DepositePurpose;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class DepositePurposeContoller extends Controller
 {
     public function index(){
+         $user = $this->customAuthenticationLogic();
+
+        if ($user) {
         $purpose = DepositePurpose::all();
      
         return view('Deposit.DepositPurpose',compact('purpose'));
+         }
+         else{
+            return view('Auth.login');
+         }
     }
 
 
@@ -97,4 +106,20 @@ public function update(Request $request, $id)
    
            return redirect()->to('DepositePurpose');
 }
+    private function customAuthenticationLogic()
+    {
+        // Implement your custom authentication logic here using your DB queries
+        // For example:
+        
+        $email = session('Email') ;
+    
+        // Get the email from the request or session
+        // Get the password from the request or session
+
+        // Query your database to authenticate the user
+        $user = DB::table('users')
+            ->where('Email', $email)->first();
+
+        return $user;
+    }
 }

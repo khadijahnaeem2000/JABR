@@ -27,7 +27,7 @@
                   <span class="hide-menu">Dashboard</span>
                 </a>
               </li>
-              <li class="sidebar-item">
+              <!-- <li class="sidebar-item">
                 <a class="sidebar-link has-arrow" href="#" aria-expanded="false">
                   <span class="d-flex">
                     <i class="ti ti-currency-dollar"></i>
@@ -45,7 +45,7 @@
                   </li>
              
                 </ul>
-              </li>
+              </li> -->
               
               <li class="sidebar-item">
                 <a class="sidebar-link has-arrow" href="#" aria-expanded="false">
@@ -183,7 +183,7 @@
                   </li>
                 </ul>
               </li>
-               <li class="sidebar-item">
+               <!-- <li class="sidebar-item">
                 <a class="sidebar-link has-arrow" href="#" aria-expanded="false">
                   <span class="d-flex">
                     <i class="ti ti-shopping-cart"></i>
@@ -208,7 +208,7 @@
                     </a>
                   </li>
                 </ul>
-              </li>
+              </li> -->
               <li class="sidebar-item">
                 <a class="sidebar-link" href="{{route('Contact')}}" aria-expanded="false">
                   <span>
@@ -225,8 +225,24 @@
                   <span class="hide-menu">LetterHead</span>
                 </a>
               </li>
+                      <li class="sidebar-item">
+                  <a class="sidebar-link" href="{{route('BankInfo')}}" aria-expanded="false">
+                  <span>
+                    <i class="ti ti-file-text"></i>
+                  </span>
+                  <span class="hide-menu">Bank Information</span>
+                </a>
+              </li>
+                     <li class="sidebar-item">
+                  <a class="sidebar-link" href="{{route('Role')}}" aria-expanded="false">
+                  <span>
+                    <i class="ti ti-file-text"></i>
+                  </span>
+                  <span class="hide-menu">Role</span>
+                </a>
+              </li>
             </ul>
-            <div class="unlimited-access hide-menu bg-light-primary position-relative my-7 rounded">
+            <!-- <div class="unlimited-access hide-menu bg-light-primary position-relative my-7 rounded">
               <div class="d-flex">
                 <div class="unlimited-access-title">
                   <h6 class="fw-semibold fs-4 mb-6 text-dark w-85">Unlimited Access</h6>
@@ -236,9 +252,9 @@
                   <img src="{{asset('dist/images/backgrounds/rocket.png')}}" alt="" class="img-fluid">
                 </div>
               </div>
-            </div>
+            </div> -->
           </nav>
-          <div class="fixed-profile p-3 bg-light-secondary rounded sidebar-ad mt-3">
+          <!-- <div class="fixed-profile p-3 bg-light-secondary rounded sidebar-ad mt-3">
             <div class="hstack gap-3">
               <div class="john-img">
                 <img src="{{asset('dist/images/profile/user-1.jpg')}}" class="rounded-circle" width="40" height="40" alt="">
@@ -251,7 +267,7 @@
                 <i class="ti ti-power fs-6"></i>
               </button>
             </div>
-          </div>  
+          </div>   -->
           <!-- End Sidebar navigation -->
         </div>
         <!-- End Sidebar scroll-->

@@ -15,6 +15,7 @@ class Kernel extends HttpKernel
      */
     protected $middleware = [
         // \App\Http\Middleware\TrustHosts::class,
+        
         \App\Http\Middleware\TrustProxies::class,
         \Illuminate\Http\Middleware\HandleCors::class,
         \App\Http\Middleware\PreventRequestsDuringMaintenance::class,
@@ -65,4 +66,18 @@ class Kernel extends HttpKernel
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
     ];
+protected $routeMiddleware = [
+
+    'role' => \App\Http\Middleware\RoleMiddleware::class,
+    'checkUserRole' => \App\Http\Middleware\CheckUserRole::class,
+   'membershipRole' => \App\Http\Middleware\MembershipRole::class,
+      'depositRole' => \App\Http\Middleware\DepositRole::class,
+         'walletRole' => \App\Http\Middleware\WalletRole::class,
+         'withdrawRole' => \App\Http\Middleware\WithdrawRole::class,
+              'orderRole' => \App\Http\Middleware\OrderRole::class,
+     'bankRole' => \App\Http\Middleware\BankRole::class,
+     'contactRole' => \App\Http\Middleware\ContactRole::class,
+     'letterRole' => \App\Http\Middleware\LetterRole::class,
+      'extraRole' => \App\Http\Middleware\extraRole::class,
+];
 }

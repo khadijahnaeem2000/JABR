@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\DB;
 use App\Models\UploadTask;
 use App\Models\Wallet;
 use Illuminate\Http\Request;
@@ -13,8 +13,15 @@ class UploadTaskController extends Controller
      */
     public function index()
     {
+        $user = $this->customAuthenticationLogic();
+
+        if ($user) {
         $upload = UploadTask::all();
         return view('Task Request.UploadTask',compact('upload'));
+        }
+        else{
+            return view('Auth.login');
+        }
     }
 
     /**
@@ -101,4 +108,20 @@ $wallet = Wallet::where('DepositPurpose', $upload->DepositPurpose)->first();
         return redirect()->back()->with('error', 'Wallet has been made');
     }
 }
+       private function customAuthenticationLogic()
+    {
+        // Implement your custom authentication logic here using your DB queries
+        // For example:
+        
+        $email = session('Email') ;
+    
+        // Get the email from the request or session
+        // Get the password from the request or session
+
+        // Query your database to authenticate the user
+        $user = DB::table('users')
+            ->where('Email', $email)->first();
+
+        return $user;
+    }
 }

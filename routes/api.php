@@ -40,15 +40,15 @@ Route::post('Wallet',[WalletController::class,'store']);
 Route::post('wallettransaction',[WalletController::class,'wallettransaction']);
 
 //Users
-Route::post('AllUsers',[UserController::class,'AllUsers']);
+Route::get('AllUsers',[UserController::class,'AllUsers']);
 
 //Task
-Route::post('AllTask',[TaskController::class,'AllTask']);
+Route::get('AllTask',[TaskController::class,'AllTask']);
 Route::post('UploadTask',[UploadTaskController::class,'UploadTask']);
-Route::post('AllUploadTask',[UploadTaskController::class,'AllUploadTask']);
+Route::get('AllUploadTask',[UploadTaskController::class,'AllUploadTask']);
 
 //Refferal Link
-Route::post('AllRefferalLink',[RefferalLinkController::class,'AllRefferalLink']);
+Route::get('AllRefferalLink',[RefferalLinkController::class,'AllRefferalLink']);
 
 
 //Invite Friend 
