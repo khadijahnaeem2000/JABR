@@ -28,7 +28,7 @@ class User extends Authenticatable
     'City',
     'Email',
     'password', // Assign plain text password
-    'role_id',
+    'role_Id',
      'IsActive',
     ];
 

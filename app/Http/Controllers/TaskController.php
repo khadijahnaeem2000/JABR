@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\DB;
 use App\Models\Task;
 use App\Models\MembershipType;
 use App\Models\Membership;
@@ -15,8 +15,15 @@ class TaskController extends Controller
      */
     public function index()
     {
+      $user = $this->customAuthenticationLogic();
+
+        if ($user) {
         $task = Task::all();
         return view('Task Request.Task',compact('task'));
+        }
+        else{
+          return view('Auth.login');
+        }
     }
 
     /**
@@ -129,5 +136,21 @@ class TaskController extends Controller
         $trans->delete();
    
            return redirect()->to('/Task');
+    }
+           private function customAuthenticationLogic()
+    {
+        // Implement your custom authentication logic here using your DB queries
+        // For example:
+        
+        $email = session('Email') ;
+    
+        // Get the email from the request or session
+        // Get the password from the request or session
+
+        // Query your database to authenticate the user
+        $user = DB::table('users')
+            ->where('Email', $email)->first();
+
+        return $user;
     }
 }

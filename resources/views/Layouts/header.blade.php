@@ -6,14 +6,14 @@
                   <i class="ti ti-menu-2"></i>
                 </a>
               </li>
-              <li class="nav-item d-none d-lg-block">
+              <!-- <li class="nav-item d-none d-lg-block">
                 <a class="nav-link nav-icon-hover" href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#exampleModal">
                   <i class="ti ti-search"></i>
                 </a>
-              </li>
+              </li> -->
             </ul>
             <ul class="navbar-nav quick-links d-none d-lg-flex">
-              <li class="nav-item dropdown hover-dd d-none d-lg-block">
+              <!-- <li class="nav-item dropdown hover-dd d-none d-lg-block">
                 <a class="nav-link" href="javascript:void(0)" data-bs-toggle="dropdown">Apps<span class="mt-1"><i class="ti ti-chevron-down"></i></span></a>
                 <div class="dropdown-menu dropdown-menu-nav dropdown-menu-animate-up py-0">
                   <div class="row">
@@ -148,7 +148,7 @@
               </li>
               <li class="nav-item dropdown-hover d-none d-lg-block">
                 <a class="nav-link" href="app-chat.html">Chat</a>
-              </li>
+              </li> -->
               <li class="nav-item dropdown-hover d-none d-lg-block">
                 <a class="nav-link" href="{{route('register')}}">Register</a>
                                          @if(session('register_error'))
@@ -161,9 +161,9 @@
                 <a class="nav-link" href="{{route('login')}}">Login</a>
               </li>
             </ul>
-            <div class="d-block d-lg-none">
+            <!-- <div class="d-block d-lg-none">
               <img src="https://demos.adminmart.com/premium/bootstrap/modernize-bootstrap/package/dist/images/logos/light-logo.svg" width="180" alt="" />
-            </div>
+            </div> -->
             <button class="navbar-toggler p-0 border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
               <span class="p-2">
                 <i class="ti ti-dots fs-7"></i>
@@ -175,7 +175,7 @@
                   <i class="ti ti-align-justified fs-7"></i>
                 </a>
                 <ul class="navbar-nav flex-row ms-auto align-items-center justify-content-center">
-                  <li class="nav-item dropdown">
+                  <!-- <li class="nav-item dropdown">
                     <a class="nav-link nav-icon-hover" href="javascript:void(0)" id="drop2" data-bs-toggle="dropdown" aria-expanded="false">
                       <img src="https://demos.adminmart.com/premium/bootstrap/modernize-bootstrap/package/dist/images/svgs/icon-flag-en.svg" alt="" class="rounded-circle object-fit-cover round-20">
                     </a>
@@ -284,7 +284,7 @@
                         <button class="btn btn-outline-primary w-100"> See All Notifications </button>
                       </div>
                     </div>
-                  </li>
+                  </li> -->
                   <li class="nav-item dropdown">
                     <a class="nav-link pe-0" href="javascript:void(0)" id="drop1" data-bs-toggle="dropdown" aria-expanded="false">
                       <div class="d-flex align-items-center">
@@ -310,7 +310,7 @@
                             @endif
                           </div>
                         </div>
-                        <div class="message-body">
+                        <!-- <div class="message-body">
                           <a href="page-user-profile.html" class="py-8 px-7 mt-8 d-flex align-items-center">
                             <span class="d-flex align-items-center justify-content-center bg-light rounded-1 p-6">
                               <img src="https://demos.adminmart.com/premium/bootstrap/modernize-bootstrap/package/dist/images/svgs/icon-account.svg" alt="" width="24" height="24">
@@ -338,9 +338,9 @@
                               <span class="d-block text-dark">To-do and Daily Tasks</span>
                             </div>
                           </a>
-                        </div>
+                        </div> -->
                         <div class="d-grid py-4 px-7 pt-8">
-                          <div class="upgrade-plan bg-light-primary position-relative overflow-hidden rounded-4 p-4 mb-9">
+                          <!-- <div class="upgrade-plan bg-light-primary position-relative overflow-hidden rounded-4 p-4 mb-9">
                             <div class="row">
                               <div class="col-6">
                                 <h5 class="fs-4 mb-3 w-50 fw-semibold text-dark">Unlimited Access</h5>
@@ -352,7 +352,7 @@
                                 </div>
                               </div>
                             </div>
-                          </div>
+                          </div> -->
                           <a href="logout" class="btn btn-outline-primary">Log Out</a>
                         </div>
                       </div>

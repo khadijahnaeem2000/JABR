@@ -1,8 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\Auth;
 use App\Models\OrderType;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 
 class OrderTypeController extends Controller
@@ -11,8 +12,15 @@ class OrderTypeController extends Controller
      * Display a listing of the resource.
      */
     public function index()
-    {
-        return view('Order.OrderType');
+    {       $user = $this->customAuthenticationLogic();
+
+        if ($user) {
+            // User is authenticated, show the dashboard
+            return view('Order.OrderType');
+        } else {
+            // User is not authenticated, handle it as you see fit (e.g., redirect to login)
+            return redirect()->route('login');
+        }
     }
 
     /**
@@ -61,5 +69,22 @@ class OrderTypeController extends Controller
     public function destroy(OrderType $orderType)
     {
         //
+    }
+
+    private function customAuthenticationLogic()
+    {
+        // Implement your custom authentication logic here using your DB queries
+        // For example:
+        
+        $email = session('Email') ;
+    
+        // Get the email from the request or session
+        // Get the password from the request or session
+
+        // Query your database to authenticate the user
+        $user = DB::table('users')
+            ->where('Email', $email)->first();
+
+        return $user;
     }
 }
