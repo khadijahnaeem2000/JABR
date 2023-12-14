@@ -43,6 +43,10 @@ class Dashboard extends Controller
                 $task= Task::count();
                   $wallet= Wallet::count();
          $yearlyTasks = $this->getYearlyTasks();
+
+
+
+         
         return view('Layouts.main',compact('totalusers','yearlyTasks','membership','depositAmount','letterHead','task','wallet','role','userRegistrations','taskCompletionPercentage','todayDate', 'tasksThisMonth', 'totalTasks','memberCompletionPercentage', 'memeberThisMonth', 'totalmember'));
     }
       private function getYearlyTasks()

@@ -99,14 +99,7 @@
                   </li>
                 </ul>
               </li>
-              <li class="sidebar-item">
-                <a class="sidebar-link" href="{{route('Invite')}}" aria-expanded="false">
-                  <span>
-                    <i class="ti ti-zoom-code"></i>
-                  </span>
-                  <span class="hide-menu">Invite Link</span>
-                </a>
-              </li>
+            
               <li class="sidebar-item">
                 <a class="sidebar-link" href="{{route('Referral')}}" aria-expanded="false">
                   <span>

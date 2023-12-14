@@ -68,9 +68,9 @@
                                 placeholder="John"
                                 required
                               />
-   @if($errors->has('password_error'))
+ @if(session('email_error'))
     <div >
-        <p style="color: red;">{{ $errors->first('password_error') }}</p>
+        <p style="color: red;">{{ session('email_error') }}</p>
     </div>
 @endif
                             </div>
@@ -90,12 +90,13 @@
                                 placeholder="*******"
                                 required
                               />
- 
-     @if(session('email_error'))
+                                @if($errors->has('password_error'))
     <div >
-        <p style="color: red;">{{ session('email_error') }}</p>
+        <p style="color: red;">{{ $errors->first('password_error') }}</p>
     </div>
 @endif
+ 
+    
                             </div>
                           </div>
                           <!--/span-->
@@ -103,7 +104,8 @@
                           </div>
                     <div class="col-md-9"></div>
 
-                      <a class="text-primary fw-medium" href="authentication-forgot-password.html">Forgot Password ?</a>
+                      <a class="text-primary fw-medium" href="authentication-forgot-password.html">No Registered ? <a class="text-secondary fw-medium" href="{{route('register')}}">Sign Up</a> </a>
+                      <br><br>
                       <button  class="btn btn-primary w-100 py-8 mb-4 rounded-2 " >Sign In</button>
                        
                         </div>
