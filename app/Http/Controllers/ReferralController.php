@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
-
+use App\Models\RefferalLink;
 class ReferralController extends Controller
 {
      public function index()
@@ -11,7 +11,8 @@ class ReferralController extends Controller
      $user = $this->customAuthenticationLogic();
 
         if ($user) {
-        return view('Referral.Referral');
+            $referal = RefferalLink::all();
+        return view('Referral.Referral',compact('referal'));
         }
         else{
             return view('Auth.login');

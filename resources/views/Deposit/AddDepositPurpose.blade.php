@@ -18,7 +18,7 @@
                   
                       <hr />
                       <div class="card-body">
-                         <a href="DepositePurpose" class="btn btn-secondary" style="float:right">Back</a>
+                         <a href="{{route('DepositePurpose')}}" class="btn btn-secondary" style="float:right">Back</a>
                         <div class="row">
                           <div class="col-md-6">
                             <div class="mb-3">

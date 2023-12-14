@@ -15,7 +15,7 @@ use App\Http\Controllers\TaskEarningDetailController;
 */
 // layouts
 Route::get('/', function () {
-    return view('Auth.register');
+    return view('Auth.login');
 });
 
 Route::get('dashboard',[Dashboard::class,'dashboard'])->name('dashboard');
