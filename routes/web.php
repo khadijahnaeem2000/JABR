@@ -19,6 +19,11 @@ Route::get('/', function () {
 });
 
 Route::get('dashboard',[Dashboard::class,'dashboard'])->name('dashboard');
+Route::get('users',[Dashboard::class,'users'])->name('users');
+Route::get('EditUser/{id}',[Dashboard::class,'edit'])->name('EditUser');
+Route::put('UpdateUser/{id}',[Dashboard::class,'update'])->name('UpdateUser');
+Route::delete('DeleteUser/{id}',[Dashboard::class,'destroy'])->name('DeleteUser');
+
 Route::get('access',[App\Http\Controllers\Controller::class,'access'])->name('access');
 //Auth
 Route::get('register/{ReferralLink?}',[App\Http\Controllers\Auth\RegisterController::class,'showRegistrationForm']);
@@ -33,6 +38,7 @@ Route::get('TaskEarning',[App\Http\Controllers\TaskEarningDetailController::clas
 
 //Membership
 Route::group(['middleware' => ['membershipRole']], function () {
+    
 Route::get('MembershipType',[App\Http\Controllers\MembershipTypeController::class,'index'])->name('MembershipType');
 Route::get('Membership',[App\Http\Controllers\MembershipController::class,'index'])->name('Membership');
 Route::get('AddMembership',[App\Http\Controllers\MembershipController::class,'create'])->name('AddMembership');

@@ -9,6 +9,8 @@ use App\Models\DepositePurpose;
 use App\Models\Role;
 use App\Models\Membership;
 use App\Models\LetterHead;
+
+use Illuminate\Support\Facades\Validator;
 use App\Models\Task;
 use Carbon\Carbon;
 use App\Models\Wallet;
@@ -72,5 +74,63 @@ class Dashboard extends Controller
             ->where('Email', $email)->first();
 
         return $user;
+    }
+
+    public function users(){
+        $user =  User::all();
+        return view('Users.user', compact('user'));
+
+    }
+
+      public function edit($id)
+    {
+         $user =User::find($id);
+        return view('Users.Edituser',compact('user'));
+    }
+
+
+
+public function update(Request $request, $id)
+{
+    // Define validation rules
+    $rules = [
+        'Name' => 'required',
+     
+    ];
+
+    // Validate the incoming request data
+    $validator = Validator::make($request->all(), $rules);
+
+    if ($validator->fails()) {
+        // Validation fails, redirect back with validation errors
+        return redirect()->back()->withErrors($validator)->withInput();
+    }
+
+    // Find the membership type by ID
+    $user = User::find($id);
+
+    if (!$user) {
+        // Handle the case where the membership type is not found
+        return redirect()->back()->with('error', 'user not found');
+    }
+
+    // Update the fields
+    $user->update([
+        'Name' => $request->input('Name'),
+        'role_Id' => $request->input('role_Id'),
+       
+    ]);
+
+   return redirect()->to('/users');
+
+}
+
+   public function destroy($id,User $user)
+    {
+        $user = User::findOrFail($id);
+    
+        $user->delete();
+      
+        return redirect()->to('/users');
     }
 }
