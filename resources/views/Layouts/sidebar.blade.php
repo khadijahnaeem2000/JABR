@@ -234,6 +234,14 @@
                   <span class="hide-menu">Role</span>
                 </a>
               </li>
+                   <li class="sidebar-item">
+                  <a class="sidebar-link" href="{{route('users')}}" aria-expanded="false">
+                  <span>
+                    <i class="ti ti-file-text"></i>
+                  </span>
+                  <span class="hide-menu">Users</span>
+                </a>
+              </li>
             </ul>
             <!-- <div class="unlimited-access hide-menu bg-light-primary position-relative my-7 rounded">
               <div class="d-flex">

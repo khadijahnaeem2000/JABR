@@ -18,7 +18,7 @@ public function handle($request, Closure $next)
         return $next($request);
     } elseif ($user && $user->role_Id === 2) {
         // Agents can access the 'AddTask' and 'Task' routes
-        if ($request->routeIs('AddTask') || $request->routeIs('Task')|| $request->routeIs('StoreTask')) {
+        if ($request->routeIs('AddTask') || $request->routeIs('Task')|| $request->routeIs('StoreTask')||$request->routeIs('Order') ||$request->routeIs('OrderType') ) {
             return $next($request);
         } else {
             return redirect('access');
