@@ -21,7 +21,7 @@ class DepositRole
         return $next($request);
     } elseif ($user && $user->role_Id === 2) {
         // Agents can access the 'AddTask' and 'Task' routes
-        if ($request->routeIs('DepositAmount') || $request->routeIs('DepositHistory')|| $request->routeIs('DepositePurpose')|| $request->routeIs('AddDepositePurpose')|| $request->routeIs('StoreDepositePurpose')) {
+        if ($request->routeIs('DepositAmount') || $request->routeIs('DepositHistory')) {
             return $next($request);
         } else {
             return redirect('access');

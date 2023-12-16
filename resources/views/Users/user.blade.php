@@ -4,6 +4,7 @@
    <div class="card">
                 <div class="border-bottom title-part-padding">
                   <h4 class="card-title mb-0">Users</h4>
+                     <a class="btn btn-primary" style="float:right" href="{{route('Addusers')}}">Add User</a>
           
                 </div>
                 <div class="card-body">

@@ -81,6 +81,13 @@ class Dashboard extends Controller
         return view('Users.user', compact('user'));
 
     }
+    
+
+    public function Addusers(){
+    
+        return view('Users.Adduser');
+
+    }
 
       public function edit($id)
     {
@@ -116,8 +123,17 @@ public function update(Request $request, $id)
 
     // Update the fields
     $user->update([
-        'Name' => $request->input('Name'),
-        'role_Id' => $request->input('role_Id'),
+    'Name' => $request->input('Name'),
+    'role_Id' => $request->input('role_Id'),
+    'LastName' => $request->input('LastName'),
+    'PhoneNumber' => $request->input('PhoneNumber'),
+    'CNIC' => $request->input('CNIC'),
+    'Address' => $request->input('Address'),
+    'BankAccount' => $request->input('BankAccount'),
+    'City' => $request->input('City'),
+    'Email' => $request->input('Email'),
+    'password' => $request->input('password'), // Assign plain text password
+    
        
     ]);
 
@@ -128,9 +144,9 @@ public function update(Request $request, $id)
    public function destroy($id,User $user)
     {
         $user = User::findOrFail($id);
-    
-        $user->delete();
+       $user->delete();
       
         return redirect()->to('/users');
-    }
+    } 
+    
 }
