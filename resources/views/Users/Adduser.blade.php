@@ -1,5 +1,3 @@
-
-
  @extends('dashboard')
 @section('content')
 
@@ -19,9 +17,8 @@
                    
                   </div>
                   
-                  <form action="{{route('UpdateUser',$user->id)}}" method="post">
+                  <form action="{{route('Userregister')}}" method="post">
                     @csrf
-                      @method('put')
                     <div>
                   
                       <hr />
@@ -37,7 +34,7 @@
                                  id="Name"
                                  name="Name"
                                 class="form-control"
-                                value="{{$user->Name }}"
+                                placeholder="John"
                                 required
                               />
                             @error('Name')
@@ -56,7 +53,7 @@
                                 id="LastName"
                                  name="LastName"
                                 class="form-control form-control"
-                                value="{{$user->LastName }}"
+                                placeholder="Doe"
                                 required
                               />
                                @error('LastName')
@@ -76,8 +73,7 @@
                                 type="email"
                                 id="Email" name="Email"
                                 class="form-control"
-                                value="{{$user->Email}}"
-                            
+                                placeholder="Johndoe@example.com"
                                 required
                               />
  
@@ -95,8 +91,7 @@
                               <input
                                id="password" type="password" name="password"
                                 class="form-control form-control"
-                                value="{{$user->password }}"
-                               
+                                placeholder="*****"
                                 required
                               />
                               @error('password')
@@ -118,7 +113,7 @@
                                 id="City"
                                 name="City"
                                 class="form-control"
-                                value="{{$user->City}}"
+                                placeholder="California"
                                 required
                               />
                                @error('City')
@@ -137,7 +132,7 @@
                                               type="text"
                                              id="" name="PhoneNumber"
                                               class="form-control"
-                                              value="{{$user->PhoneNumber}}"
+                                              placeholder="+9234857901"
                                                 aria-label="Text input with dropdown button"
                                                          />
                                                            @if(session('phone_error'))
@@ -158,7 +153,7 @@
                                 id="Address"
                                 name="Address"
                                 class="form-control form-control"
-                                value="{{$user->Address}}"
+                                placeholder="Brigerton,StreetVI.."
                                 required
                               />
                                @error('Address')
@@ -171,12 +166,12 @@
                           <!--/span-->
                         </div>
                         <div class="row">
-                  
+                      
                           <!--/span-->
                           <div class="col-md-4">
                             <div class="mb-3">
                               <label class="control-label">CNIC</label>
-                              <input type="text"  maxlength="13" id="CNIC" name="CNIC" class="form-control" required value="{{$user->CNIC}}"/>
+                              <input type="text"  maxlength="13" id="CNIC" name="CNIC" class="form-control" required placeholder="12345-6789012-3"/>
                             </div>
                              @error('CNIC')
                                 <span class="invalid-feedback" role="alert">
@@ -187,7 +182,7 @@
                               <div class="col-md-4">
                             <div class="mb-3">
                               <label class="control-label">Bank Account</label>
-                              <input type="text" class="form-control" maxlength="12"  id="BankAccount"required value="{{$user->BankAccount}}" name="BankAccount" />
+                              <input type="text" class="form-control" maxlength="12"  id="BankAccount"required placeholder="DNER80343435" name="BankAccount" />
                                <span id="bank-account-error" class="text-danger"></span>
                             </div>
                           </div>

@@ -20,11 +20,9 @@ class LetterRole
         return $next($request);
     } elseif ($user && $user->role_Id === 2) {
         // Agents can access the 'AddTask' and 'Task' routes
-        if ($request->routeIs('LetterHead') ||$request->routeIs('AddLetterHead')  ||$request->routeIs('StoreLetterHead')   ) {
-            return $next($request);
-        } else {
+       
         return redirect('access');
-        }
+        
     } elseif ($user && $user->role_id === 3) {
         // Normal users have no access to any page
         return redirect('access');

@@ -22,7 +22,18 @@ class WalletRole
         return $next($request);
     } elseif ($user && $user->role_Id === 2) {
         // Agents can access the 'AddTask' and 'Task' routes
-        if ($request->routeIs('Wallet') || $request->routeIs('AddWallet')|| $request->routeIs('StoreWallet')|| $request->routeIs('WalletTrans')|| $request->routeIs('AddWalletTrans')|| $request->routeIs('StoreWalletTrans')) {
+        if ($request->routeIs('Wallet') || $request->routeIs('AddWallet')|| $request->routeIs('StoreWallet')|| $request->routeIs('WalletTrans')|| $request->routeIs('AddWalletTrans')|| $request->routeIs('StoreWalletTrans')
+        || $request->routeIs('EditWallet')
+        || $request->routeIs('UpdateWallet')
+        || $request->routeIs('DeleteWallet')
+        || $request->routeIs('WalletTrans')
+        || $request->routeIs('AddWalletTrans')
+        || $request->routeIs('StoreWalletTrans')|| $request->routeIs('EditWalletTrans')|| $request->routeIs('UpdateWalletTrans')|| $request->routeIs('DeleteWalletTrans')|| $request->routeIs('approvedWallet')
+        )
+
+
+        
+        {
             return $next($request);
         } else {
            return redirect('access');

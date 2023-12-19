@@ -18,7 +18,7 @@ public function handle($request, Closure $next)
         return $next($request);
     } elseif ($user && $user->role_Id === 2) {
         // Agents can access the 'AddTask' and 'Task' routes
-        if ($request->routeIs('AddTask') || $request->routeIs('Task')|| $request->routeIs('StoreTask')||$request->routeIs('Order') ||$request->routeIs('OrderType') ) {
+        if ($request->routeIs('AddTask') || $request->routeIs('Task') || $request->routeIs('TaskEarning')|| $request->routeIs('StoreTask')||$request->routeIs('EditTask') ||$request->routeIs('UpdateTask') ||$request->routeIs('DeleteTask') ||$request->routeIs('DeleteUploadTask')||$request->routeIs('approvedTask')) {
             return $next($request);
         } else {
             return redirect('access');
@@ -27,6 +27,7 @@ public function handle($request, Closure $next)
         // Normal users have no access to any page
         return redirect('access');
     }
+
 
     return abort(401, 'Unauthorized');
 }

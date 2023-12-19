@@ -19,10 +19,7 @@ Route::get('/', function () {
 });
 
 Route::get('dashboard',[Dashboard::class,'dashboard'])->name('dashboard');
-Route::get('users',[Dashboard::class,'users'])->name('users');
-Route::get('EditUser/{id}',[Dashboard::class,'edit'])->name('EditUser');
-Route::put('UpdateUser/{id}',[Dashboard::class,'update'])->name('UpdateUser');
-Route::delete('DeleteUser/{id}',[Dashboard::class,'destroy'])->name('DeleteUser');
+
 
 Route::get('access',[App\Http\Controllers\Controller::class,'access'])->name('access');
 //Auth
@@ -34,10 +31,16 @@ Route::get('login',[App\Http\Controllers\Auth\RegisterController::class,'login']
 Route::get('logout',[App\Http\Controllers\Auth\RegisterController::class,'logout'])->name('logout');
 
 //Earnings
-Route::get('TaskEarning',[App\Http\Controllers\TaskEarningDetailController::class,'index'])->name('TaskEarning');
+
 
 //Membership
 Route::group(['middleware' => ['membershipRole']], function () {
+    Route::get('users',[Dashboard::class,'users'])->name('users');
+Route::get('Addusers',[Dashboard::class,'Addusers'])->name('Addusers');
+Route::get('EditUser/{id}',[Dashboard::class,'edit'])->name('EditUser');
+Route::put('UpdateUser/{id}',[Dashboard::class,'update'])->name('UpdateUser');
+Route::delete('DeleteUser/{id}',[Dashboard::class,'destroy'])->name('DeleteUser');
+Route::post('Userregister', [App\Http\Controllers\Auth\RegisterController::class,'Userregister'])->name('Userregister');
     
 Route::get('MembershipType',[App\Http\Controllers\MembershipTypeController::class,'index'])->name('MembershipType');
 Route::get('Membership',[App\Http\Controllers\MembershipController::class,'index'])->name('Membership');
@@ -90,6 +93,7 @@ Route::get('Withdraw',[App\Http\Controllers\WithdrawController::class,'index'])-
 });
 //Task Request
 Route::group(['middleware' => ['checkUserRole']], function () {
+    Route::get('TaskEarning',[App\Http\Controllers\TaskEarningDetailController::class,'index'])->name('TaskEarning');
 Route::get('Task',[App\Http\Controllers\TaskController::class,'index'])->name('Task');
 Route::get('AddTask',[App\Http\Controllers\TaskController::class,'create'])->name('AddTask');
 Route::post('StoreTask',[App\Http\Controllers\TaskController::class,'store'])->name('StoreTask');

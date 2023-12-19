@@ -20,12 +20,9 @@ class MembershipRole
         // Admins have access to all pages
         return $next($request);
     } elseif ($user && $user->role_Id === 2) {
-        // Agents can access the 'AddTask' and 'Task' routes
-        if ($request->routeIs('MembershipType') || $request->routeIs('Membership')|| $request->routeIs('AddMembership')|| $request->routeIs('StoreMembership')|| $request->routeIs('AddMemberType')|| $request->routeIs('Type-store')) {
-            return $next($request);
-        } else {
+    
             return redirect('access');
-        }
+        
     } elseif ($user && $user->role_id === 3) {
         // Normal users have no access to any page
         return redirect('access');
