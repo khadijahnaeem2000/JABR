@@ -109,5 +109,46 @@ public function postLogin(Request $request)
   
         return redirect()->to('/login');
     }
+   public function Userregister(Request $request)
+{
+  
+$existingEmailUser = User::where('Email', $request->Email)->first();
+
+    // Check if the phone number already exists in the database
+    $existingPhoneUser = User::where('PhoneNumber', $request->PhoneNumber)->first();
+
+
+   if ($existingEmailUser) {
+        // Only the email is in use
+        return redirect()->route('register')->with('email_error', 'Email already in use.');
+    } elseif ($existingPhoneUser) {
+        // Only the phone number is in use
+        return redirect()->route('register')->with('phone_error', 'Phone number already in use.');
+    }
+    
+
+
+    // Create a new user record with 'role_id' and plain text password
+    $user = new User();
+    //$user->Name = $req'Name'];
+     $user->Name = $request->Name;
+    $user->LastName = $request->LastName;
+    $user->PhoneNumber = $request-> PhoneNumber;
+    $user->CNIC = $request-> CNIC;
+    $user->Address = $request-> Address;
+    $user->BankAccount = $request-> BankAccount;
+    $user->City = $request-> City;
+    $user->Email = $request-> Email;
+    $user->password = $request-> password; // Assign plain text password
+    $user->role_id = $request-> role_id;
+     $user->IsActive = $request-> IsActive;
+    $user->save();
+
+    // Perform any additional actions, such as sending a welcome email
+    
+    // Redirect to a success page or another appropriate route
+return redirect()->route('users')->with('status', 'Registration successful');
+
+}
 
 }
