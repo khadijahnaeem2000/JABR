@@ -11,6 +11,7 @@ use App\Http\Controllers\Api\UploadTaskController;
 use App\Http\Controllers\Api\UserController;
 use App\Http\Controllers\Api\RefferalLinkController;
 use App\Http\Controllers\Api\InviteFriend;
+use App\Http\Controllers\Api\UploadCnicController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -37,6 +38,7 @@ Route::get('AllBankInformation',[DepositeController::class,'BankDetails']);
 
 //Users
 Route::get('AllUsers',[UserController::class,'AllUsers']);
+Route::post('UploadCnic',[UploadCnicController::class,'UploadCnic']);
 
 //Task
 Route::get('AllTask',[TaskController::class,'AllTask']);
