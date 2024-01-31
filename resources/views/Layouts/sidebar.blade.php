@@ -150,7 +150,7 @@
                   </li>
                 </ul>
               </li>
-               <li class="sidebar-item">
+               <!-- <li class="sidebar-item">
                 <a class="sidebar-link has-arrow" href="#" aria-expanded="false">
                   <span class="d-flex">
                     <i class="ti ti-shopping-cart"></i>
@@ -175,8 +175,8 @@
                     </a>
                   </li>
                 </ul>
-              </li>
-               <!-- <li class="sidebar-item">
+              </li> -->
+               <li class="sidebar-item">
                 <a class="sidebar-link has-arrow" href="#" aria-expanded="false">
                   <span class="d-flex">
                     <i class="ti ti-shopping-cart"></i>
@@ -201,7 +201,7 @@
                     </a>
                   </li>
                 </ul>
-              </li> -->
+              </li>
               <li class="sidebar-item">
                 <a class="sidebar-link" href="{{route('Contact')}}" aria-expanded="false">
                   <span>

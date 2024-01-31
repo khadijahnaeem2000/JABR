@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\Membership;
 use Illuminate\Support\Facades\Validator;
 class LoginController extends Controller
 {
@@ -159,6 +160,10 @@ if (!empty($missingFields)) {
     $user->Smartphone = $Smartphone;
     $user->IpAddress = $IpAddress;
     $user->DeviceKey = $DeviceKey;
+    $oldestMembership = Membership::orderBy('id')->first();
+
+    // Assign the membership ID to the user
+    $user->membership_id = $oldestMembership->id;
     $user->save();
   
 

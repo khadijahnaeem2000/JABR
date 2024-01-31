@@ -11,7 +11,12 @@
                     <h4 class="mb-0 text-white">Add Task</h4>
                     
                   </div>
-                  
+                  @if(session('error'))
+    <div class="alert alert-danger">
+        {{ session('error') }}
+    </div>
+@endif
+
                   <form action="{{route('StoreTask')}}" method="post"  enctype="multipart/form-data">
                     @csrf
                    
@@ -36,18 +41,9 @@
                           <!--/span-->
                         </div>
                         <div class="row">
-                          <div class="col-md-6">
-                            <div class="mb-3">
-                              <label>Membership Type</label>
-                              <select name="MembershipTypeId" class="form-control" >
-                                @foreach($type as $type)
-                                <option value="{{$type->id}}">{{$type->MembershipType}}</option>
-                                @endforeach
-                              </select>
-                            </div>
-                          </div>
+                      
                           <!--/span-->
-                          <div class="col-md-6">
+                          <div class="col-md-12">
                             <div class="mb-3">
                               <label>Link</label>
                               <input type="text" name="Link"  class="form-control"  />

@@ -67,8 +67,6 @@ public function AllUploadTask(Request $request)
         $task->TaskName = $taskName;
 
         // Remove the 'TaskId' field from the result if needed
-     
-
         $dataWithTaskNames[] = $task;
     }
 

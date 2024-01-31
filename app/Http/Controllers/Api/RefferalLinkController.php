@@ -8,38 +8,43 @@ use Illuminate\Http\Request;
 
 class RefferalLinkController extends Controller
 {
-    public function AllRefferalLink(Request $request)
-{
-    $UserId = $request->json('UserId');
-
-    $user = RefferalLink::where('UserId', $UserId)->exists();
-
-    if($user){
- 
-    $data = RefferalLink::where('UserId', $UserId)
-                ->select('id', 'RefferalId', 'UserId', 'RefferalCode','JoinDate', 'Status')
-                ->get();
-
-    // Initialize an empty array to store the data with task names
-    $dataWithRefferalNames = [];
-
-    foreach ($data as $refferal) {
-        // Retrieve the task name based on the TaskId
-        $refferalName = User::where('id', $refferal->RefferalId)->value('Name');
-
-        // Append the task name to the data
-        $refferal->Name = $refferalName;
-
-        // Remove the 'UserId' field from the result if needed
-        unset($refferal->RefferalId);
-
-        $dataWithRefferalNames[] = $refferal;
+    public function generateReferralCode(Request $request)
+    {
+        try {
+            $UserId = $request->json('UserId');
+    
+            if ($UserId === null) {
+                return response()->json(['error' => 'UserId is missing or null in the request'], 400);
+            }
+    
+            $User = User::where('id', $UserId)->first();
+    
+            if ($User) {
+                // Generate a random 12-digit code
+                $randomCode = str_pad(mt_rand(1, 999999999999), 12, '0', STR_PAD_LEFT);
+                $url = 'JBA/register/' . $randomCode;
+    
+                // Check if the generated code already exists in the referral link table
+                $existingCode = RefferalLink::where('RefferalCode', $randomCode)->first();
+    
+                if ($existingCode) {
+                    // If the code already exists, generate a new one
+                    return $this->generateReferralCode($request);
+                }
+    
+                // Insert the new code into the referral link table
+                RefferalLink::create([
+                    'UserId' => $UserId,
+                    'RefferalCode' => $randomCode,
+                ]);
+    
+                return response()->json(['status' => 'Successful', 'code' => $randomCode, 'UserId' => $UserId, 'url' => $url]);
+            } else {
+                return response()->json(['error' => 'User not found'], 404);
+            }
+        } catch (\Exception $e) {
+            // Handle unexpected errors
+            return response()->json(['error' => 'Internal Server Error'], 500);
+        }
     }
-
-    return response()->json(['status' => 'Successful', 'data' => $dataWithRefferalNames]);
-    }
-   else{
-     return response()->json(['error' => 'Unsuccessful user doesnot exist']);
-   }
-}
 }
