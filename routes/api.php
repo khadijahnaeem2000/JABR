@@ -12,6 +12,8 @@ use App\Http\Controllers\Api\UserController;
 use App\Http\Controllers\Api\RefferalLinkController;
 use App\Http\Controllers\Api\InviteFriend;
 use App\Http\Controllers\Api\UploadCnicController;
+use App\Http\Controllers\Api\UploadBFormController;
+use App\Http\Controllers\Api\UploadCnicController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -25,30 +27,38 @@ use App\Http\Controllers\Api\UploadCnicController;
 
 
 
-//Auth
+
 Route::post('login',[LoginController::class,'login']);
 Route::post('signup',[LoginController::class,'SignUp']);
 //Membership
 Route::get('MembershipType',[MembershipController::class,'AllMemberships']);
-Route::post('MembershipsOfType',[MembershipController::class,'Memberships']);
+Route::get('MembershipsOfType/Typeid/{type}', [MembershipController::class, 'Memberships']);
+Route::post('updateMembershipId',[MembershipController::class,'updateMembershipId']);
 //deposte
 Route::post('SendDepositeDetails',[DepositeController::class,'SendDepositeDetails']);
 Route::get('DepositePurpose',[DepositeController::class,'DepositePurpose']);
 Route::get('AllBankInformation',[DepositeController::class,'BankDetails']);
 
+//wallet
+Route::post('Wallet',[WalletController::class,'store']);
+Route::get('wallettransaction/UserId/{UserId}',[WalletController::class,'wallettransaction']);
+
 //Users
-Route::get('AllUsers',[UserController::class,'AllUsers']);
+Route::get('AllUsers/id/{id}',[UserController::class,'AllUsers']);
+Route::post('UploadCnic',[UploadCnicController::class,'uploadCnic']);
+Route::post('UploadBform',[UploadBFormController::class,'uploadBform']);
 Route::post('UploadCnic',[UploadCnicController::class,'UploadCnic']);
 
 //Task
-Route::get('AllTask',[TaskController::class,'AllTask']);
+Route::get('AllTask/{id}',[TaskController::class,'AllTask']);
 Route::post('UploadTask',[UploadTaskController::class,'UploadTask']);
-Route::get('AllUploadTask',[UploadTaskController::class,'AllUploadTask']);
+Route::get('AllUploadTask/UserId/{UserId}',[UploadTaskController::class,'AllUploadTask']);
 
 //Refferal Link
-Route::get('AllRefferalLink',[RefferalLinkController::class,'AllRefferalLink']);
+Route::get('AllRefferalLink/id/{id}',[RefferalLinkController::class,'AllRefferalLink']);
 
 
 //Invite Friend 
 
-Route::post('generateReferralCode',[InviteFriend::class,'generateReferralCode']);
+Route::get('generateReferralCode/UserId/{UserId}', [InviteFriend::class, 'generateReferralCode']);
+

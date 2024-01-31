@@ -41,21 +41,46 @@ class TaskController extends Controller
      */
     public function store(Request $request)
     {
-        
-        $task = new Task();
-        $task->Description=$request->Description;
-       $task->Link=$request->Link;
-       $task->Amount=$request->Amount;
-       $task->Level=$request->Level;
-       $task->Commission=$request->Commission;
-       $task->MembershipTypeId=$request->MembershipTypeId;
- $task->MembershipId=$request->MembershipId;
-  $task->Status=$request->Status;
-   $task->TaskName=$request->TaskName;
-
+        try {
           
-      $task->save();
-      return redirect()->to('/Task');
+            
+    
+            // Retrieve the membership ID from the request
+            $membershipId = $request->MembershipId;
+    
+            // Retrieve the membership's daily_tasks limit
+            $dailyTasksLimit = Membership::where('id', $membershipId)->value('DailyTask');
+       
+            // Check if the user has already added the maximum allowed tasks for the specified membership today
+            $existingTasksCount = Task::where('MembershipId', $membershipId)
+                ->whereDate('created_at', Carbon::today())
+                ->count();
+    
+            if ($existingTasksCount >= $dailyTasksLimit) {
+                // If the user has reached the daily tasks limit, return an error response
+                return redirect()->back()->with('error', "You can only add $dailyTasksLimit tasks to this membership daily.");
+            }
+    
+            // Create a new task
+            $task = new Task();
+            $task->Description = $request->Description;
+            $task->Link = $request->Link;
+            $task->Amount = $request->Amount;
+            $task->Level = $request->Level;
+            $task->Commission = $request->Commission;
+            $task->MembershipTypeId = $request->MembershipTypeId;
+            $task->MembershipId = $request->MembershipId;
+            $task->Status = $request->Status;
+            $task->TaskName = $request->TaskName;
+    
+            // Save the task
+            $task->save();
+    
+            return redirect()->to('/Task')->with('success', 'Task added successfully.');
+        } catch (\Exception $e) {
+            // Handle unexpected errors
+            return redirect()->back()->with('error', 'An error occurred while adding the task.');
+        }
     }
 
     /**

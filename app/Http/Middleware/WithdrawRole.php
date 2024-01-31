@@ -25,7 +25,7 @@ class WithdrawRole
         } else {
             return abort(403, 'Forbidden');
         }
-    } elseif ($user && $user->role_id === 3) {
+    } elseif ($user && $user->role_Id  === 3) {
         // Normal users have no access to any page
         return abort(403, 'Access Denied');
     }

@@ -8,43 +8,40 @@ use App\Models\RefferalLink;
 use App\Models\User;
 class InviteFriend extends Controller
 {
-     public function generateReferralCode(Request $request)
+    public function generateReferralCode(Request $request, $UserId)
     {
-        $UserId = $request->json('UserId');
-         $User =User::where('id', $UserId)->first();
+        try {
+            // Use the $UserId from the route parameter
+            $User = User::where('id', $UserId)->first();
 
+            if ($User) {
+                // Generate a random 12-digit code
+                $randomCode = str_pad(mt_rand(1, 999999999999), 12, '0', STR_PAD_LEFT);
+                $url = 'JBA/register/' . $randomCode;
 
-         if($User){
-    $existingUser =RefferalLink::where('UserId', $UserId)->first();
-        if( $existingUser){
+                // Check if the generated code already exists in the referral link table
+                $existingCode = RefferalLink::where('RefferalCode', $randomCode)->first();
 
-            return response()->json(['error' => 'Unsuccessful User id already exist']);
-     }
-   // Generate a random 12-digit code
-      else{
-  $randomCode = str_pad(mt_rand(1, 999999999999), 12, '0', STR_PAD_LEFT);
-         $url = 'JBA/register/' . $randomCode;
-        // Check if the generated code already exists in the referral link table
-        $existingCode = RefferalLink::where('RefferalCode', $randomCode)->first();
-        
-        if ($existingCode) {
-            // If the code already exists, generate a new one
-            return $this->generateReferralCode($request);
+                if ($existingCode) {
+                    // If the code already exists, generate a new one
+                    return $this->generateReferralCode($request, $UserId);
+                }
+
+                // Insert the new code into the referral link table
+                RefferalLink::create([
+                    'UserId' => $UserId,
+                    'RefferalCode' => $randomCode,
+                ]);
+
+                return response()->json(['status' => 'Successful', 'code' => $randomCode, 'UserId' => $UserId, 'url' => $url]);
+            } else {
+                return response()->json(['error' => 'Unsuccessful: User does not exist'], 404);
+            }
+        } catch (\Exception $e) {
+            // Handle unexpected errors
+            return response()->json(['error' => 'Internal Server Error'], 500);
         }
-        
-        // If the code doesn't exist, insert it into the referral link table
-        RefferalLink::create([
-            'UserId' => $UserId,
-            'RefferalCode' => $randomCode,
-        ]);
-
-        return response()->json(['status' => 'Successful', 'code' => $randomCode,"UserId"=>$UserId,'url' => $url]);
-   
-      } 
-         }
-     else{
-          return response()->json(['error' => 'Unsuccessful User doesnot exist']);
     }
-    }
+    
    
 }

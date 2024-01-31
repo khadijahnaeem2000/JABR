@@ -27,8 +27,8 @@
       <img src="https://demos.adminmart.com/premium/bootstrap/modernize-bootstrap/package/dist/images/logos/favicon.ico" alt="loader" class="lds-ripple img-fluid" />
     </div>
 
-    <div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full" data-sidebar-position="fixed" data-header-position="fixed">
-      <div class="position-relative overflow-hidden radial-gradient min-vh-100">
+    <div >
+      <div class="position-relative overflow-hidden radial-gradient min-vh-50">
         <div class="position-relative z-index-5">
           <div class="row">
             <div class="col-xl-5 col-xxl-4">

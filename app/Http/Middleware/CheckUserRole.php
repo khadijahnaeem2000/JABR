@@ -23,7 +23,7 @@ public function handle($request, Closure $next)
         } else {
             return redirect('access');
         }
-    } elseif ($user && $user->role_id === 3) {
+    } elseif ($user && $user->role_Id === 3) {
         // Normal users have no access to any page
         return redirect('access');
     }
