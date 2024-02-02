@@ -9,7 +9,7 @@ use App\Models\DepositePurpose;
 use App\Models\Role;
 use App\Models\Membership;
 use App\Models\LetterHead;
-
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Validator;
 use App\Models\Task;
 use Carbon\Carbon;
@@ -137,7 +137,57 @@ public function update(Request $request, $id)
        
     ]);
 
-   return redirect()->to('/users');
+    if ($request->hasFile('cnic_img')) {
+        // ... (existing code for cnic_img)
+            $newFile = $request->file('cnic_img');
+    $newFileName = $newFile->getClientOriginalName();
+
+    $oldImage = $user->cnic_img;
+
+    $newFile->move(public_path('/uploads/CNIC/'), $newFileName);
+    
+
+    $user->cnic_img = $newFileName;
+    $user->save();
+
+    if ($oldImage) {
+        File::delete(public_path('/uploads/CNIC/' . $oldImage));
+    } else {
+        $request->session()->flash('success', 'User updated successfully!');
+        return redirect()->to('/users');
+    }
+    } elseif ($request->hasFile('bform')) {
+        // ... (existing code for bform)
+                $newFile = $request->file('bform');
+    $newFileName = $newFile->getClientOriginalName();
+
+    $oldImage = $user->bform;
+
+    $newFile->move(public_path('/uploads/BForm/'), $newFileName);
+    
+
+    $user->bform = $newFileName;
+    $user->save();
+
+    if ($oldImage) {
+        File::delete(public_path('/uploads/BForm/' . $oldImage));
+    } else {
+        $request->session()->flash('success', 'User updated successfully!');
+        return redirect()->to('/users');
+    }
+    }
+
+    // If neither cnic_img nor bform is uploaded, redirect to /users
+    $request->session()->flash('success', 'User updated successfully!');
+    return redirect()->to('/users');
+
+
+
+
+    
+ 
+
+
 
 }
 

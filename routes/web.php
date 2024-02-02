@@ -25,6 +25,8 @@ Route::get('access',[App\Http\Controllers\Controller::class,'access'])->name('ac
 //Auth
 Route::get('register/{ReferralLink?}',[App\Http\Controllers\Auth\RegisterController::class,'showRegistrationForm']);
 Route::post('register', [App\Http\Controllers\Auth\RegisterController::class,'register'])->name('register');
+Route::get('profile', [App\Http\Controllers\Auth\RegisterController::class,'profile'])->name('profile');
+Route::put('UpdateProfile/{id}',[App\Http\Controllers\Auth\RegisterController::class,'UpdateProfile'])->name('UpdateProfile');
 Route::post('custom-login',[App\Http\Controllers\Auth\RegisterController::class,'postLogin'])->name('custom.login');
 
 Route::get('login',[App\Http\Controllers\Auth\RegisterController::class,'login'])->name('login');

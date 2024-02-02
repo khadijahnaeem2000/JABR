@@ -19,14 +19,16 @@
                    
                   </div>
                   
-                  <form action="{{route('UpdateUser',$user->id)}}" method="post">
+                  <form action="{{route('UpdateUser',$user->id)}}" method="post" enctype="multipart/form-data">
                     @csrf
                       @method('put')
                     <div>
                   
                       <hr />
                       <div class="card-body">
-                         <a href="{{route('users')}}" class="btn btn-secondary" style="float:right">Back</a>
+                        <div class="row">
+                          <div class="col-md-12"> <a href="{{route('users')}}" class="btn btn-secondary" style="float:right">Back</a></div>
+                        </div>
                     
                      <div class="row ">
                           <div class="col-md-6">
@@ -38,7 +40,7 @@
                                  name="Name"
                                 class="form-control"
                                 value="{{$user->Name }}"
-                                required
+                                
                               />
                             @error('Name')
                                 <span class="invalid-feedback" role="alert">
@@ -57,7 +59,7 @@
                                  name="LastName"
                                 class="form-control form-control"
                                 value="{{$user->LastName }}"
-                                required
+                                
                               />
                                @error('LastName')
                                 <span class="invalid-feedback" role="alert">
@@ -78,7 +80,7 @@
                                 class="form-control"
                                 value="{{$user->Email}}"
                             
-                                required
+                                
                               />
  
      @if(session('email_error'))
@@ -97,7 +99,7 @@
                                 class="form-control form-control"
                                 value="{{$user->password }}"
                                
-                                required
+                                
                               />
                               @error('password')
                                 <span class="invalid-feedback" role="alert">
@@ -119,7 +121,7 @@
                                 name="City"
                                 class="form-control"
                                 value="{{$user->City}}"
-                                required
+                                
                               />
                                @error('City')
                                 <span class="invalid-feedback" role="alert">
@@ -159,7 +161,7 @@
                                 name="Address"
                                 class="form-control form-control"
                                 value="{{$user->Address}}"
-                                required
+                                
                               />
                                @error('Address')
                                 <span class="invalid-feedback" role="alert">
@@ -176,7 +178,7 @@
                           <div class="col-md-4">
                             <div class="mb-3">
                               <label class="control-label">CNIC</label>
-                              <input type="text"  maxlength="13" id="CNIC" name="CNIC" class="form-control" required value="{{$user->CNIC}}"/>
+                              <input type="text"  maxlength="13" id="CNIC" name="CNIC" class="form-control"  value="{{$user->CNIC}}"/>
                             </div>
                              @error('CNIC')
                                 <span class="invalid-feedback" role="alert">
@@ -187,7 +189,7 @@
                               <div class="col-md-4">
                             <div class="mb-3">
                               <label class="control-label">Bank Account</label>
-                              <input type="text" class="form-control" maxlength="12"  id="BankAccount"required value="{{$user->BankAccount}}" name="BankAccount" />
+                              <input type="text" class="form-control" maxlength="12"  id="BankAccount" value="{{$user->BankAccount}}" name="BankAccount" />
                                <span id="bank-account-error" class="text-danger"></span>
                             </div>
                           </div>
@@ -206,8 +208,44 @@
                           </div>
                           <!--/span-->
                         </div>
+                          <div class="row">
+                  
+                          <!--/span-->
+                          <div class="col-md-4">
+                            <div class="mb-3">
+                              <label class="control-label">cnic</label>
+                              <input type="file"   id="cnic" name="cnic" class="form-control"  value="{{$user->cnic_img}}"/>
+                            </div>
+                             @error('CNIC')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                              @enderror
+                          </div>
+
+                          
+                              <div class="col-md-4">
+                            <div class="mb-3">
+                              <label class="control-label">Bank Name</label>
+                              <input type="text" class="form-control"  id="BankName" value="{{$user->BankName}}" name="BankName" />
+                               <span id="bank-account-error" class="text-danger"></span>
+                            </div>
+                          </div>
+
+
+                             <div class="col-md-4">
+                            <div class="mb-3">
+                              <label class="control-label">Bform</label>
+                              <input type="file" class="form-control"  id="bform" value="{{$user->bform}}" name="bform" />
+                               <span id="bank-account-error" class="text-danger"></span>
+                            </div>
+                          </div>
+
+
+                      </div>
                       </div>
                       
+
                       <div class="form-actions">
                         <div class="card-body border-top">
                           <button

@@ -23,7 +23,7 @@ class UploadBFormController extends Controller
         $bformFileName = time() . '_' . $bformFile->getClientOriginalName();
 
         // Move the file to the public folder
-        $bformFile->move(public_path('uploads'), $bformFileName);
+        $bformFile->move(public_path('uploads/BForm'), $bformFileName);
 
         // Get the user ID from the request
         $id = $request->input('id');
@@ -34,7 +34,7 @@ class UploadBFormController extends Controller
 
         if ($user) {
             // Update the Bform column with the path to the uploaded image
-            $user->Bform = 'uploads/' . $bformFileName;
+            $user->Bform = 'uploads/BForm' . $bformFileName;
         
             $user->save();
 

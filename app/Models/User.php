@@ -18,6 +18,10 @@ class User extends Authenticatable
      * @var array<int, string>
      */
       protected $table = "users";
+          public function member()
+    {
+        return $this->belongsTo(Membership::class, 'membership_id');
+    }
     protected $fillable = [
            'Name',
             'LastName',
@@ -30,6 +34,7 @@ class User extends Authenticatable
     'password', // Assign plain text password
     'role_Id',
      'IsActive',
+     'membership_id'
     ];
 
     /**

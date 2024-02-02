@@ -13,6 +13,7 @@ use App\Http\Controllers\Api\RefferalLinkController;
 use App\Http\Controllers\Api\InviteFriend;
 use App\Http\Controllers\Api\UploadCnicController;
 use App\Http\Controllers\Api\UploadBFormController;
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -46,6 +47,7 @@ Route::get('wallettransaction/UserId/{UserId}',[WalletController::class,'wallett
 Route::get('AllUsers/id/{id}',[UserController::class,'AllUsers']);
 Route::post('UploadCnic',[UploadCnicController::class,'uploadCnic']);
 Route::post('UploadBform',[UploadBFormController::class,'uploadBform']);
+Route::post('UploadCnic',[UploadCnicController::class,'UploadCnic']);
 
 //Task
 Route::get('AllTask/{id}',[TaskController::class,'AllTask']);

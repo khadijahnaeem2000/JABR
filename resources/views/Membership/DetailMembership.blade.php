@@ -33,7 +33,7 @@
                   <div class="position-relative " style="top:20px">
                     <div class="d-flex align-items-center justify-content-between mb-7">
                       <div class="d-flex">
-                        <div class="p-6 bg-light-primary rounded me-6 d-flex align-items-center justify-content-center">
+                        <div class="p-6 bg-light-danger rounded me-6 d-flex align-items-center justify-content-center">
                           <i class="ti ti-grid-dots text-primary fs-6"></i>
                         </div>
                         <div>
@@ -48,7 +48,7 @@
                   <div class="position-relative " style="top:20px">
                     <div class="d-flex align-items-center justify-content-between mb-7">
                       <div class="d-flex">
-                        <div class="p-6 bg-light-primary rounded me-6 d-flex align-items-center justify-content-center">
+                        <div class="p-6 bg-light-secondary rounded me-6 d-flex align-items-center justify-content-center">
                           <i class="ti ti-grid-dots text-primary fs-6"></i>
                         </div>
                         <div>
@@ -63,7 +63,7 @@
                   <div class="position-relative " style="top:20px">
                     <div class="d-flex align-items-center justify-content-between mb-7">
                       <div class="d-flex">
-                        <div class="p-6 bg-light-primary rounded me-6 d-flex align-items-center justify-content-center">
+                        <div class="p-6 bg-light-success rounded me-6 d-flex align-items-center justify-content-center">
                           <i class="ti ti-grid-dots text-primary fs-6"></i>
                         </div>
                         <div>
@@ -78,7 +78,7 @@
                   <div class="position-relative " style="top:20px">
                     <div class="d-flex align-items-center justify-content-between mb-7">
                       <div class="d-flex">
-                        <div class="p-6 bg-light-primary rounded me-6 d-flex align-items-center justify-content-center">
+                        <div class="p-6 bg-light-warning rounded me-6 d-flex align-items-center justify-content-center">
                           <i class="ti ti-grid-dots text-primary fs-6"></i>
                         </div>
                         <div>
@@ -93,7 +93,7 @@
                   <div class="position-relative " style="top:20px">
                     <div class="d-flex align-items-center justify-content-between mb-7">
                       <div class="d-flex">
-                        <div class="p-6 bg-light-primary rounded me-6 d-flex align-items-center justify-content-center">
+                        <div class="p-6 bg-light-info rounded me-6 d-flex align-items-center justify-content-center">
                           <i class="ti ti-grid-dots text-primary fs-6"></i>
                         </div>
                         <div>
@@ -108,7 +108,7 @@
                   <div class="position-relative " style="top:20px">
                     <div class="d-flex align-items-center justify-content-between mb-7">
                       <div class="d-flex">
-                        <div class="p-6 bg-light-primary rounded me-6 d-flex align-items-center justify-content-center">
+                        <div class="p-6 bg-light-dark rounded me-6 d-flex align-items-center justify-content-center">
                           <i class="ti ti-grid-dots text-primary fs-6"></i>
                         </div>
                         <div>
@@ -123,7 +123,7 @@
                   <div class="position-relative " style="top:20px">
                     <div class="d-flex align-items-center justify-content-between mb-7">
                       <div class="d-flex">
-                        <div class="p-6 bg-light-primary rounded me-6 d-flex align-items-center justify-content-center">
+                        <div class="p-6 bg-light-muted rounded me-6 d-flex align-items-center justify-content-center">
                           <i class="ti ti-grid-dots text-primary fs-6"></i>
                         </div>
                         <div>
@@ -153,7 +153,7 @@
                   <div class="position-relative " style="top:20px">
                     <div class="d-flex align-items-center justify-content-between mb-7">
                       <div class="d-flex">
-                        <div class="p-6 bg-light-primary rounded me-6 d-flex align-items-center justify-content-center">
+                        <div class="p-6 bg-light-warning rounded me-6 d-flex align-items-center justify-content-center">
                           <i class="ti ti-grid-dots text-primary fs-6"></i>
                         </div>
                         <div>
@@ -168,7 +168,7 @@
                   <div class="position-relative " style="top:20px">
                     <div class="d-flex align-items-center justify-content-between mb-7">
                       <div class="d-flex">
-                        <div class="p-6 bg-light-primary rounded me-6 d-flex align-items-center justify-content-center">
+                        <div class="p-6 bg-light-danger rounded me-6 d-flex align-items-center justify-content-center">
                           <i class="ti ti-grid-dots text-primary fs-6"></i>
                         </div>
                         <div>
@@ -183,7 +183,7 @@
                   <div class="position-relative " style="top:20px">
                     <div class="d-flex align-items-center justify-content-between mb-7">
                       <div class="d-flex">
-                        <div class="p-6 bg-light-primary rounded me-6 d-flex align-items-center justify-content-center">
+                        <div class="p-6 bg-light-info rounded me-6 d-flex align-items-center justify-content-center">
                           <i class="ti ti-grid-dots text-primary fs-6"></i>
                         </div>
                         <div>
@@ -198,7 +198,7 @@
                   <div class="position-relative " style="top:20px">
                     <div class="d-flex align-items-center justify-content-between mb-7">
                       <div class="d-flex">
-                        <div class="p-6 bg-light-primary rounded me-6 d-flex align-items-center justify-content-center">
+                        <div class="p-6 bg-light-success rounded me-6 d-flex align-items-center justify-content-center">
                           <i class="ti ti-grid-dots text-primary fs-6"></i>
                         </div>
                         <div>
@@ -213,7 +213,7 @@
                   <div class="position-relative " style="top:20px">
                     <div class="d-flex align-items-center justify-content-between mb-7">
                       <div class="d-flex">
-                        <div class="p-6 bg-light-primary rounded me-6 d-flex align-items-center justify-content-center">
+                        <div class="p-6 bg-light-warning rounded me-6 d-flex align-items-center justify-content-center">
                           <i class="ti ti-grid-dots text-primary fs-6"></i>
                         </div>
                         <div>
@@ -243,7 +243,7 @@
                   <div class="position-relative " style="top:20px">
                     <div class="d-flex align-items-center justify-content-between mb-7">
                       <div class="d-flex">
-                        <div class="p-6 bg-light-primary rounded me-6 d-flex align-items-center justify-content-center">
+                        <div class="p-6 bg-light-warning rounded me-6 d-flex align-items-center justify-content-center">
                           <i class="ti ti-grid-dots text-primary fs-6"></i>
                         </div>
                         <div>

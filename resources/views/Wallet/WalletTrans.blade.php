@@ -50,17 +50,18 @@
                         
                       
 
-                    <td>
-            @if ($trans && $trans->wallet)
-                @if ($trans->wallet->UserId)
-                    {{ $trans->wallet->user->Name }}
-                @else
-                    Null
-                @endif
-            @else
-                Null
-            @endif
-        </td>
+               <td>
+    @if ($trans && $trans->wallet)
+        @if ($trans->wallet->user)
+            {{ $trans->wallet->user->Name ?? 'Null' }}
+        @else
+            User is null
+        @endif
+    @else
+        Trans or wallet is null
+    @endif
+</td>
+
                        <td>
                         @if($trans && $trans->To)
                        {{$trans->To->DepositePurpose}}
