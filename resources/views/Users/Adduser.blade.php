@@ -23,7 +23,11 @@
                   
                       <hr />
                       <div class="card-body">
-                         <a href="{{route('users')}}" class="btn btn-secondary" style="float:right">Back</a>
+                        <div class="row">
+                          <div class="col-md-12">
+                             <a href="{{route('users')}}" class="btn btn-secondary" style="float:right">Back</a>
+                          </div>
+                        </div>
                     
                      <div class="row ">
                           <div class="col-md-6">

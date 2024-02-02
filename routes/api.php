@@ -13,7 +13,7 @@ use App\Http\Controllers\Api\RefferalLinkController;
 use App\Http\Controllers\Api\InviteFriend;
 use App\Http\Controllers\Api\UploadCnicController;
 use App\Http\Controllers\Api\UploadBFormController;
-use App\Http\Controllers\Api\UploadCnicController;
+
 /*
 |--------------------------------------------------------------------------
 | API Routes

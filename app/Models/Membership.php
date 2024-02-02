@@ -13,6 +13,7 @@ class Membership extends Model
         return $this->belongsTo(MembershipType::class, 'MemberShipType');
     }
     protected $fillable = [
+        
    'id',
    'MemberName',
     'MemberShipType',

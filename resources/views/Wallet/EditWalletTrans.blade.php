@@ -33,9 +33,12 @@
                             <div class="mb-3">
                               <label>Wallet Id</label>
                               <select name="WalletId" class="form-control" >
-                                @foreach($wallet as $wallet)
-                                <option value="{{$wallet->id}}">{{$wallet->user->Name}}</option>
-                                @endforeach
+                              @foreach($wallet as $wallet)
+    <option value="{{ $wallet->id }}">
+        {{ $wallet->user ? $wallet->user->Name : 'Null' }}
+    </option>
+@endforeach
+
                               </select>
                             </div>
                           </div>

@@ -122,6 +122,9 @@ if (empty($IsActive)) {
 if (empty($DeviceKey)) {
     $missingFields[] = 'DeviceKey';
 }
+if (empty($DeviceKey)) {
+    $missingFields[] = 'BankName';
+}
 
 // If any fields are missing, return a response
 if (!empty($missingFields)) {
@@ -160,6 +163,7 @@ if (!empty($missingFields)) {
     $user->Smartphone = $Smartphone;
     $user->IpAddress = $IpAddress;
     $user->DeviceKey = $DeviceKey;
+        $user->BankName = $BankName;
     $oldestMembership = Membership::orderBy('id')->first();
 
     // Assign the membership ID to the user

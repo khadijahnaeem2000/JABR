@@ -8,8 +8,12 @@ use App\Models\Role;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
-use Session;
+use App\Models\Membership;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
+
+use Illuminate\Support\Facades\Cookie;
 
 class RegisterController extends Controller
 {
@@ -60,11 +64,16 @@ $existingEmailUser = User::where('Email', $request->Email)->first();
     $user->CNIC = $request-> CNIC;
     $user->Address = $request-> Address;
     $user->BankAccount = $request-> BankAccount;
+       $user->BankName = $request-> BankName;
     $user->City = $request-> City;
     $user->Email = $request-> Email;
     $user->password = $request-> password; // Assign plain text password
     $user->role_id = $request-> role_id;
      $user->IsActive = $request-> IsActive;
+       $oldestMembership = Membership::orderBy('id')->first();
+    if ($oldestMembership) {
+        $user->membership_id = $oldestMembership->id;
+    }
     $user->save();
 
     // Perform any additional actions, such as sending a welcome email
@@ -99,6 +108,18 @@ public function postLogin(Request $request)
     $Name = $user->Name;
     $Email = $user->Email;
     session(['user_name' => $Name, 'Email' => $Email]);
+    // Inside your login logic
+// Retrieve user data;
+// Inside your login logic
+// Retrieve user data;
+$userIdentifier = $user->id;
+
+// Set the cookie
+Session::put('user_identifier', $userIdentifier);
+// Retrieve the cookie
+
+ // This should now display the user identifier retrieved from the cookie
+
     return  redirect()->to('/dashboard');
 }
 
@@ -109,46 +130,140 @@ public function postLogin(Request $request)
   
         return redirect()->to('/login');
     }
-   public function Userregister(Request $request)
+
+
+public function Userregister(Request $request)
 {
-  
-$existingEmailUser = User::where('Email', $request->Email)->first();
+    // Check if the email already exists in the database
+    $existingEmailUser = User::where('Email', $request->Email)->first();
 
     // Check if the phone number already exists in the database
     $existingPhoneUser = User::where('PhoneNumber', $request->PhoneNumber)->first();
 
-
-   if ($existingEmailUser) {
-        // Only the email is in use
+    if ($existingEmailUser) {
+        // Email is already in use
         return redirect()->route('register')->with('email_error', 'Email already in use.');
     } elseif ($existingPhoneUser) {
-        // Only the phone number is in use
+        // Phone number is already in use
         return redirect()->route('register')->with('phone_error', 'Phone number already in use.');
     }
-    
 
-
-    // Create a new user record with 'role_id' and plain text password
+    // Create a new user record
     $user = new User();
-    //$user->Name = $req'Name'];
-     $user->Name = $request->Name;
+    $user->Name = $request->Name;
     $user->LastName = $request->LastName;
-    $user->PhoneNumber = $request-> PhoneNumber;
-    $user->CNIC = $request-> CNIC;
-    $user->Address = $request-> Address;
-    $user->BankAccount = $request-> BankAccount;
-    $user->City = $request-> City;
-    $user->Email = $request-> Email;
-    $user->password = $request-> password; // Assign plain text password
-    $user->role_id = $request-> role_id;
-     $user->IsActive = $request-> IsActive;
+    $user->PhoneNumber = $request->PhoneNumber;
+    $user->CNIC = $request->CNIC;
+    $user->Address = $request->Address;
+    $user->BankAccount = $request->BankAccount;
+    $user->City = $request->City;
+    $user->Email = $request->Email;
+    $user->password = $request->password; // Make sure to hash the password before saving (consider using Hash facade)
+    $user->role_id = $request->role_id;
+    $user->IsActive = $request->IsActive;
+
+    // Set membership_id based on the oldest membership
+    $oldestMembership = Membership::orderBy('id')->first();
+    if ($oldestMembership) {
+        $user->membership_id = $oldestMembership->id;
+    }
+
     $user->save();
 
-    // Perform any additional actions, such as sending a welcome email
-    
     // Redirect to a success page or another appropriate route
-return redirect()->route('users')->with('status', 'Registration successful');
+    return redirect()->route('users')->with('status', 'Registration successful');
+}
+public function profile(Request $request){
+    // Retrieve user data from the session
+  $userIdentifier = Session::get('user_identifier');
 
+
+
+ $user = User::where('id', $userIdentifier)->first();
+ 
+
+    return view('Auth.profile',compact('user'));
 }
 
+public function updateProfile(Request $request,$id){
+     $validator = Validator::make($request->all(),[
+            'Name' => 'required',
+            'LastName' => 'required',
+           'PhoneNumber' => 'required',
+           'CNIC' => 'required',
+           'Address' => 'required',
+           'BankAccount' => 'required',
+           'City' => 'required',
+           'Email' => 'required',
+           'password' => 'required',
+           'RefferalLink' => 'required',
+           'BankName' => 'required',
+           
+
+        ]);
+       
+            $user = User::find($id);
+             $user->Name = $request->Name;
+            $user->LastName = $request->LastName;
+            $user->PhoneNumber = $request->PhoneNumber;
+            $user->CNIC = $request->CNIC;
+            $user->Address = $request->Address;
+             $user->BankAccount = $request->BankAccount;
+            $user->City = $request->City;
+            $user->Email = $request->Email;
+            $user->password = $request->password;
+          $user->RefferalLink = $request->RefferalLink;
+             $user->BankName = $request->BankName;
+            $user->save();
+
+         if ($request->hasFile('cnic_img')) {
+    $newFile = $request->file('cnic_img');
+    $newFileName = $newFile->getClientOriginalName();
+
+    $oldImage = $user->cnic_img;
+
+    $newFile->move(public_path('/uploads/CNIC/'), $newFileName);
+    
+
+    $user->cnic_img = $newFileName;
+    $user->save();
+
+    if ($oldImage) {
+        File::delete(public_path('/uploads/CNIC/' . $oldImage));
+    } else {
+        $request->session()->flash('success', 'User updated successfully!');
+        return redirect()->to('/profile');
+    }
+} 
+elseif($request->hasFile('bform')){
+        $newFile = $request->file('bform');
+    $newFileName = $newFile->getClientOriginalName();
+
+    $oldImage = $user->bform;
+
+    $newFile->move(public_path('/uploads/BForm/'), $newFileName);
+    
+
+    $user->bform = $newFileName;
+    $user->save();
+
+    if ($oldImage) {
+        File::delete(public_path('/uploads/BForm/' . $oldImage));
+    } else {
+        $request->session()->flash('success', 'User updated successfully!');
+        return redirect()->to('/profile');
+    }
 }
+
+else {
+    return redirect()->to('/profile');
+}
+
+        //Upload Image
+   
+
+   
+       
+    }
+}
+

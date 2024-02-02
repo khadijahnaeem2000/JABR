@@ -150,15 +150,11 @@
                 <a class="nav-link" href="app-chat.html">Chat</a>
               </li> -->
               <li class="nav-item dropdown-hover d-none d-lg-block">
-                <a class="nav-link" href="{{route('register')}}">Register</a>
-                                         @if(session('register_error'))
-    <div >
-        <p style="color: red;">{{ session('register_error') }}</p>
-    </div>
-@endif
+                <a class="nav-link" href="{{route('dashboard')}}">Dashboard</a>
+         
               </li>
               <li class="nav-item dropdown-hover d-none d-lg-block">
-                <a class="nav-link" href="{{route('login')}}">Login</a>
+                <a class="nav-link" href="{{route('profile')}}">My Profile</a>
               </li>
             </ul>
             <!-- <div class="d-block d-lg-none">

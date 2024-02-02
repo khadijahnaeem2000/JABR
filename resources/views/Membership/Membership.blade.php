@@ -14,18 +14,18 @@
                     data-sort-order="desc" class="table">
                     <thead>
                       <tr>
-                        <th data-field="name" data-sortable="true">Membership Name</th>
                         <th data-field="stargazers_count" data-sortable="true" data-width="100">
                           Image
                         </th>
+                        <th data-field="name" data-sortable="true">Membership Name</th>
                           <th data-field="stargazers_count" data-sortable="true" data-width="100">
                           Membership Type
                         </th>
                          <th data-field="stargazers_count" data-sortable="true" data-width="100">
-                          Price
+                          Created At
                         </th>
                          <th data-field="stargazers_count" data-sortable="true" data-width="100">
-                         Details
+                         Updated At
                         </th>
                        
                         <th data-field="forks_count" data-sortable="true" data-width="100">
@@ -40,14 +40,14 @@
                       @foreach($member as $member)
                       <tr>
                         <td>
-                        {{$member->MemberName}}
-                        </td>
-                        <td>
                              @if($member->image != '' && file_exists(public_path().'/uploads/member/'.$member->image))
                             <img src="{{ url('uploads/member/'.$member->image) }}" alt="" width="40" height="40" class="rounded-circle">
                             @else
                             <img src="{{ url('images/no-image.png') }}" alt="" width="40" height="40" class="rounded-circle">
                             @endif
+                        </td>
+                        <td>
+                        {{$member->MemberName}}
                         </td>
                         <td>
                           @if($member && $member->type)
@@ -58,10 +58,10 @@
 
                         </td>
                         <td>
-                          {{$member->price}}
+                          {{$member->created_at}}
                         </td>
                         <td>
-                          {{$member->Details}}
+                          {{$member->updated_at}}
                         </td>
                       
                         <td>
