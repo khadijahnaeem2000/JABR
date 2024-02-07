@@ -20,7 +20,7 @@ class WithdrawRole
         return $next($request);
     } elseif ($user && $user->role_Id === 2) {
         // Agents can access the 'AddTask' and 'Task' routes
-        if ($request->routeIs('Withdraw')) {
+        if ($request->routeIs('Withdraw')|| $request->routeIs('approvedWithDraw')) {
             return $next($request);
         } else {
             return abort(403, 'Forbidden');

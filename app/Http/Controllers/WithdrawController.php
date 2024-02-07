@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use Illuminate\Support\Facades\DB;
+use App\Models\Wallet;
 use App\Models\Withdraw;
 use Illuminate\Http\Request;
 
@@ -12,10 +13,13 @@ class WithdrawController extends Controller
      */
     public function index()
     {
+
         $user = $this->customAuthenticationLogic();
 
         if ($user) {
-        return view('Withdraw.Withdraw');
+             $with = Withdraw::all();
+    
+        return view('Withdraw.Withdraw',compact('with'));
         }
         else{
             return view('Auth.login');
@@ -61,13 +65,51 @@ class WithdrawController extends Controller
     {
         //
     }
+public function approvedWithDraw(Request $request, Withdraw $with)
+{
+    // Retrieve the wallet and deposit purpose
+    $wallet = Wallet::where('UserId', $with->UserId)->first();
+    
+    $deposit_purpose = Wallet::where('DepositPurpose', $with->depositepurpose)->first();
+   
+    
+    // Check if both wallet and deposit purpose exist
+    if (Wallet::where('UserId', $with->UserId)->where('DepositPurpose', $with->depositepurpose)->exists()) {
+        $depositTransaction = $with->WithdrawAmount;
+
+        // Check if withdrawal amount is less than or equal to the wallet amount
+        if ($depositTransaction <= $wallet->Amount) {
+            // Calculate the new amount
+            $updatedAmount = $wallet->Amount - $depositTransaction;
+
+            // Update the wallet table with the new amount
+            $wallet->update(['Amount' => $updatedAmount]);
+
+            // Update the status of the transaction
+            $with->Status = "approved";
+            $with->save();
+
+            // Redirect or return a response as needed
+            return redirect()->back()->with('success', 'Wallet updated successfully');
+        } else {
+            return redirect()->back()->with('error', 'Withdrawal amount is greater than wallet amount');
+        }
+    } else {
+        return redirect()->back()->with('error', 'Wallet or deposit purpose does not exist');
+    }
+}
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Withdraw $withdraw)
+    public function destroy($id,Withdraw $withdraw)
     {
-        //
+        
+                $with = Withdraw::findOrFail($id);
+      
+        $with->delete();
+   
+           return redirect()->to('/Withdraw');
     }
            private function customAuthenticationLogic()
     {

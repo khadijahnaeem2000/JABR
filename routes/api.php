@@ -13,7 +13,7 @@ use App\Http\Controllers\Api\RefferalLinkController;
 use App\Http\Controllers\Api\InviteFriend;
 use App\Http\Controllers\Api\UploadCnicController;
 use App\Http\Controllers\Api\UploadBFormController;
-
+use App\Http\Controllers\Api\WithdrawController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -61,4 +61,7 @@ Route::get('AllRefferalLink/id/{id}',[RefferalLinkController::class,'AllRefferal
 //Invite Friend 
 
 Route::get('generateReferralCode/UserId/{UserId}', [InviteFriend::class, 'generateReferralCode']);
+
+//withdraw
+Route::post('Withdraw',[WithdrawController::class,'WithdrawAmount']);
 

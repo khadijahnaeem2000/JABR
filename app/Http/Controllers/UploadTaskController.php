@@ -79,10 +79,11 @@ class UploadTaskController extends Controller
 {
     // Check if the user ID and deposit purpose exist in the wallet table
 $wallet = Wallet::where('UserId', $upload->UserId)->first();
+$deposite_purpose='7';
 
-$wallet = Wallet::where('DepositPurpose', $upload->DepositPurpose)->first();
+$wallet = Wallet::where('DepositPurpose', $deposite_purpose)->first();
 
-    if ( Wallet::where('UserId', $upload->UserId)->where('DepositPurpose', $upload->DepositPurpose)->exists()) {
+    if ( Wallet::where('UserId', $upload->UserId)->where('DepositPurpose', $deposite_purpose)->exists()) {
       
      
         // Calculate the new amount
