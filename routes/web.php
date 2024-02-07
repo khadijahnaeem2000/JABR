@@ -92,6 +92,8 @@ Route::put('/approvedWallet/{trans}',[App\Http\Controllers\WalletTransactionCont
 //Withdraw
 Route::group(['middleware' => ['withdrawRole']], function () {
 Route::get('Withdraw',[App\Http\Controllers\WithdrawController::class,'index'])->name('Withdraw');
+Route::delete('DeleteWithdraw/{id}',[App\Http\Controllers\WithdrawController::class,'destroy'])->name('DeleteWithdraw');
+Route::put('/approvedWithDraw/{with}',[App\Http\Controllers\WithdrawController::class,'approvedWithDraw'])->name('approvedWithDraw');
 });
 //Task Request
 Route::group(['middleware' => ['checkUserRole']], function () {
